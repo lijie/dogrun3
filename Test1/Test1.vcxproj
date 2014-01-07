@@ -57,7 +57,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\..\cocos2d-x-2.2\external;$(ProjectDir)..\..\..\cocos2d-x-2.2\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\..\cocos2d-x-2.2\CocosDenshion\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <SuppressStartupBanner>false</SuppressStartupBanner>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
