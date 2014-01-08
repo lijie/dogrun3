@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "GameScene.h"
+#include "game_scene.h"
 #include "dog.h"
 
 USING_NS_CC;
@@ -15,8 +15,8 @@ AppDelegate::~AppDelegate()
 bool AppDelegate::applicationDidFinishLaunching() {
   DogRunInit();
 
-	// init user
-	User::InitCurrent();
+    // init user
+    User::InitCurrent();
 
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();

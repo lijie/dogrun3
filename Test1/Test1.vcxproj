@@ -110,15 +110,21 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
     <ClCompile Include="..\protocol\dogattr.pb.cc" />
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\dog.cpp" />
-    <ClCompile Include="..\src\GameScene.cpp" />
+    <ClCompile Include="..\src\game_scene.cpp" />
+    <ClCompile Include="..\src\layers.cpp" />
     <ClCompile Include="..\src\main.cpp" />
+    <ClCompile Include="..\src\menu_items.cpp" />
+    <ClCompile Include="..\src\sprites.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\protocol\dogattr.pb.h" />
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\dog.h" />
-    <ClInclude Include="..\src\GameScene.h" />
+    <ClInclude Include="..\src\game_scene.h" />
+    <ClInclude Include="..\src\layers.h" />
     <ClInclude Include="..\src\main.h" />
+    <ClInclude Include="..\src\menu_items.h" />
+    <ClInclude Include="..\src\sprites.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
