@@ -58,6 +58,7 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\..\cocos2d-x-2.2\external;$(ProjectDir)..\..\..\cocos2d-x-2.2\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\..\cocos2d-x-2.2\CocosDenshion\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
+      <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
