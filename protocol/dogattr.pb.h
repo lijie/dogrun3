@@ -39,6 +39,8 @@ class FoodConfig;
 class FoodConfigArray;
 class TrainConfig;
 class TrainConfigArray;
+class PlayConfig;
+class PlayConfigArray;
 class DogAttr;
 
 // ===================================================================
@@ -634,6 +636,213 @@ class TrainConfigArray : public ::google::protobuf::Message {
 };
 // -------------------------------------------------------------------
 
+class PlayConfig : public ::google::protobuf::Message {
+ public:
+  PlayConfig();
+  virtual ~PlayConfig();
+
+  PlayConfig(const PlayConfig& from);
+
+  inline PlayConfig& operator=(const PlayConfig& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayConfig& default_instance();
+
+  void Swap(PlayConfig* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayConfig* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayConfig& from);
+  void MergeFrom(const PlayConfig& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // required int32 type = 1;
+  inline bool has_type() const;
+  inline void clear_type();
+  static const int kTypeFieldNumber = 1;
+  inline ::google::protobuf::int32 type() const;
+  inline void set_type(::google::protobuf::int32 value);
+
+  // required int32 str = 2;
+  inline bool has_str() const;
+  inline void clear_str();
+  static const int kStrFieldNumber = 2;
+  inline ::google::protobuf::int32 str() const;
+  inline void set_str(::google::protobuf::int32 value);
+
+  // required int32 speed = 3;
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 3;
+  inline ::google::protobuf::int32 speed() const;
+  inline void set_speed(::google::protobuf::int32 value);
+
+  // required int32 intimacy = 4;
+  inline bool has_intimacy() const;
+  inline void clear_intimacy();
+  static const int kIntimacyFieldNumber = 4;
+  inline ::google::protobuf::int32 intimacy() const;
+  inline void set_intimacy(::google::protobuf::int32 value);
+
+  // required int32 exp = 5;
+  inline bool has_exp() const;
+  inline void clear_exp();
+  static const int kExpFieldNumber = 5;
+  inline ::google::protobuf::int32 exp() const;
+  inline void set_exp(::google::protobuf::int32 value);
+
+  // @@protoc_insertion_point(class_scope:dogrun2.PlayConfig)
+ private:
+  inline void set_has_type();
+  inline void clear_has_type();
+  inline void set_has_str();
+  inline void clear_has_str();
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_intimacy();
+  inline void clear_has_intimacy();
+  inline void set_has_exp();
+  inline void clear_has_exp();
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::int32 type_;
+  ::google::protobuf::int32 str_;
+  ::google::protobuf::int32 speed_;
+  ::google::protobuf::int32 intimacy_;
+  ::google::protobuf::int32 exp_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+
+  friend void  protobuf_AddDesc_dogattr_2eproto();
+  friend void protobuf_AssignDesc_dogattr_2eproto();
+  friend void protobuf_ShutdownFile_dogattr_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayConfig* default_instance_;
+};
+// -------------------------------------------------------------------
+
+class PlayConfigArray : public ::google::protobuf::Message {
+ public:
+  PlayConfigArray();
+  virtual ~PlayConfigArray();
+
+  PlayConfigArray(const PlayConfigArray& from);
+
+  inline PlayConfigArray& operator=(const PlayConfigArray& from) {
+    CopyFrom(from);
+    return *this;
+  }
+
+  inline const ::google::protobuf::UnknownFieldSet& unknown_fields() const {
+    return _unknown_fields_;
+  }
+
+  inline ::google::protobuf::UnknownFieldSet* mutable_unknown_fields() {
+    return &_unknown_fields_;
+  }
+
+  static const ::google::protobuf::Descriptor* descriptor();
+  static const PlayConfigArray& default_instance();
+
+  void Swap(PlayConfigArray* other);
+
+  // implements Message ----------------------------------------------
+
+  PlayConfigArray* New() const;
+  void CopyFrom(const ::google::protobuf::Message& from);
+  void MergeFrom(const ::google::protobuf::Message& from);
+  void CopyFrom(const PlayConfigArray& from);
+  void MergeFrom(const PlayConfigArray& from);
+  void Clear();
+  bool IsInitialized() const;
+
+  int ByteSize() const;
+  bool MergePartialFromCodedStream(
+      ::google::protobuf::io::CodedInputStream* input);
+  void SerializeWithCachedSizes(
+      ::google::protobuf::io::CodedOutputStream* output) const;
+  ::google::protobuf::uint8* SerializeWithCachedSizesToArray(::google::protobuf::uint8* output) const;
+  int GetCachedSize() const { return _cached_size_; }
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const;
+  public:
+
+  ::google::protobuf::Metadata GetMetadata() const;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  // repeated .dogrun2.PlayConfig cfg = 1;
+  inline int cfg_size() const;
+  inline void clear_cfg();
+  static const int kCfgFieldNumber = 1;
+  inline const ::dogrun2::PlayConfig& cfg(int index) const;
+  inline ::dogrun2::PlayConfig* mutable_cfg(int index);
+  inline ::dogrun2::PlayConfig* add_cfg();
+  inline const ::google::protobuf::RepeatedPtrField< ::dogrun2::PlayConfig >&
+      cfg() const;
+  inline ::google::protobuf::RepeatedPtrField< ::dogrun2::PlayConfig >*
+      mutable_cfg();
+
+  // @@protoc_insertion_point(class_scope:dogrun2.PlayConfigArray)
+ private:
+
+  ::google::protobuf::UnknownFieldSet _unknown_fields_;
+
+  ::google::protobuf::RepeatedPtrField< ::dogrun2::PlayConfig > cfg_;
+
+  mutable int _cached_size_;
+  ::google::protobuf::uint32 _has_bits_[(1 + 31) / 32];
+
+  friend void  protobuf_AddDesc_dogattr_2eproto();
+  friend void protobuf_AssignDesc_dogattr_2eproto();
+  friend void protobuf_ShutdownFile_dogattr_2eproto();
+
+  void InitAsDefaultInstance();
+  static PlayConfigArray* default_instance_;
+};
+// -------------------------------------------------------------------
+
 class DogAttr : public ::google::protobuf::Message {
  public:
   DogAttr();
@@ -1152,6 +1361,149 @@ TrainConfigArray::cfg() const {
 }
 inline ::google::protobuf::RepeatedPtrField< ::dogrun2::TrainConfig >*
 TrainConfigArray::mutable_cfg() {
+  return &cfg_;
+}
+
+// -------------------------------------------------------------------
+
+// PlayConfig
+
+// required int32 type = 1;
+inline bool PlayConfig::has_type() const {
+  return (_has_bits_[0] & 0x00000001u) != 0;
+}
+inline void PlayConfig::set_has_type() {
+  _has_bits_[0] |= 0x00000001u;
+}
+inline void PlayConfig::clear_has_type() {
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline void PlayConfig::clear_type() {
+  type_ = 0;
+  clear_has_type();
+}
+inline ::google::protobuf::int32 PlayConfig::type() const {
+  return type_;
+}
+inline void PlayConfig::set_type(::google::protobuf::int32 value) {
+  set_has_type();
+  type_ = value;
+}
+
+// required int32 str = 2;
+inline bool PlayConfig::has_str() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void PlayConfig::set_has_str() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void PlayConfig::clear_has_str() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void PlayConfig::clear_str() {
+  str_ = 0;
+  clear_has_str();
+}
+inline ::google::protobuf::int32 PlayConfig::str() const {
+  return str_;
+}
+inline void PlayConfig::set_str(::google::protobuf::int32 value) {
+  set_has_str();
+  str_ = value;
+}
+
+// required int32 speed = 3;
+inline bool PlayConfig::has_speed() const {
+  return (_has_bits_[0] & 0x00000004u) != 0;
+}
+inline void PlayConfig::set_has_speed() {
+  _has_bits_[0] |= 0x00000004u;
+}
+inline void PlayConfig::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline void PlayConfig::clear_speed() {
+  speed_ = 0;
+  clear_has_speed();
+}
+inline ::google::protobuf::int32 PlayConfig::speed() const {
+  return speed_;
+}
+inline void PlayConfig::set_speed(::google::protobuf::int32 value) {
+  set_has_speed();
+  speed_ = value;
+}
+
+// required int32 intimacy = 4;
+inline bool PlayConfig::has_intimacy() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PlayConfig::set_has_intimacy() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PlayConfig::clear_has_intimacy() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PlayConfig::clear_intimacy() {
+  intimacy_ = 0;
+  clear_has_intimacy();
+}
+inline ::google::protobuf::int32 PlayConfig::intimacy() const {
+  return intimacy_;
+}
+inline void PlayConfig::set_intimacy(::google::protobuf::int32 value) {
+  set_has_intimacy();
+  intimacy_ = value;
+}
+
+// required int32 exp = 5;
+inline bool PlayConfig::has_exp() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PlayConfig::set_has_exp() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PlayConfig::clear_has_exp() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PlayConfig::clear_exp() {
+  exp_ = 0;
+  clear_has_exp();
+}
+inline ::google::protobuf::int32 PlayConfig::exp() const {
+  return exp_;
+}
+inline void PlayConfig::set_exp(::google::protobuf::int32 value) {
+  set_has_exp();
+  exp_ = value;
+}
+
+// -------------------------------------------------------------------
+
+// PlayConfigArray
+
+// repeated .dogrun2.PlayConfig cfg = 1;
+inline int PlayConfigArray::cfg_size() const {
+  return cfg_.size();
+}
+inline void PlayConfigArray::clear_cfg() {
+  cfg_.Clear();
+}
+inline const ::dogrun2::PlayConfig& PlayConfigArray::cfg(int index) const {
+  return cfg_.Get(index);
+}
+inline ::dogrun2::PlayConfig* PlayConfigArray::mutable_cfg(int index) {
+  return cfg_.Mutable(index);
+}
+inline ::dogrun2::PlayConfig* PlayConfigArray::add_cfg() {
+  return cfg_.Add();
+}
+inline const ::google::protobuf::RepeatedPtrField< ::dogrun2::PlayConfig >&
+PlayConfigArray::cfg() const {
+  return cfg_;
+}
+inline ::google::protobuf::RepeatedPtrField< ::dogrun2::PlayConfig >*
+PlayConfigArray::mutable_cfg() {
   return &cfg_;
 }
 

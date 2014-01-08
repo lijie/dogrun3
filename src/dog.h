@@ -77,4 +77,7 @@ protected:
 
   int Dog::Levelup();
 };
+
+int DogRunInit();
+
 #endif // ! __DOGRUN2_DOG__

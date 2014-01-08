@@ -13,6 +13,8 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
+  DogRunInit();
+
 	// init user
 	User::InitCurrent();
 

@@ -33,6 +33,18 @@ message TrainConfigArray {
 	repeated TrainConfig cfg = 1;
 };
 
+message PlayConfig {
+	required int32 type = 1;
+	required int32 str = 2;
+	required int32 speed = 3;
+	required int32 intimacy = 4;
+	required int32 exp = 5;
+};
+
+message PlayConfigArray {
+	repeated PlayConfig cfg = 1;
+};
+
 message DogAttr {
 	required string name = 1;
 	required int32 lv = 2;
