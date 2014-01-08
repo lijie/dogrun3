@@ -65,7 +65,7 @@ void User::InitCurrent() {
   assert(u != NULL);
 
   u->set_id("FirstUser");
-  u->set_title("吉娃娃喂养专家");
+  u->set_title("FirstTitle");
   u->set_money(1000);
   u->set_heart(1000);
 
@@ -86,6 +86,7 @@ int User::UseMoney(int money) {
   if (money_ < money)
     return -1;
 
+  CCLOGINFO("Use Money %d -> %d\n", money_, money_ - money);
   money_ -= money;
   return 0;
 }
