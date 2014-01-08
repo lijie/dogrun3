@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "GameScene.h"
+#include "game_scene.h"
 #include "dog.h"
 
 USING_NS_CC;

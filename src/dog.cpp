@@ -65,7 +65,7 @@ void User::InitCurrent() {
   assert(u != NULL);
 
   u->set_id("FirstUser");
-  u->set_title("吉娃娃喂养专家");
+  u->set_title("123456");
   u->set_money(1000);
   u->set_heart(1000);
 
