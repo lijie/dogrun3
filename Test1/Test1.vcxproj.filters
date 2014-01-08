@@ -27,6 +27,9 @@
     <ClCompile Include="..\src\dog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\protocol\dogattr.pb.cc">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -40,6 +43,9 @@
     </ClInclude>
     <ClInclude Include="..\src\dog.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\protocol\dogattr.pb.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,12 +4,7 @@
 #include "dog.h"
 
 Dog::Dog() {
-  lv_ = 1;
-  star_ = 1;
-  str_ = 1;
-  speed_ = 1;
-  intimacy_ = 1;
-  name_ = "FirstDog";
+  attr_.set_name("FirstDog");
   feedcd_ = 0;
   traincd_ = 0;
   playcd_ = 0;
@@ -22,8 +17,8 @@ int Dog::Feed(int feedtype) {
     return -1;
   }
 
-  str_++;
-  exp_++;
+  attr_.set_str(attr_.str() + 1);
+  attr_.set_exp(attr_.exp() + 1);
   feedcd_ = now + kDefalutFeedCD;
   return 0;
 }
@@ -35,8 +30,8 @@ int Dog::Train(int traintype) {
     return -1;
   }
 
-  speed_++;
-  exp_++;
+  attr_.set_speed(attr_.speed() + 1);
+  attr_.set_exp(attr_.exp() + 1);
   traincd_ = now + kDefaultTrainCD;
   return 0;
 }
@@ -48,8 +43,8 @@ int Dog::Play(int playtype) {
     return -1;
   }
 
-  intimacy_++;
-  exp_++;
+  attr_.set_exp(attr_.exp() + 1);
+  attr_.set_intimacy(attr_.intimacy() + 1);
   playcd_ = now + kDefaultPlayCD;
   return 0;
 }

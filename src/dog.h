@@ -3,9 +3,11 @@
 
 #include <string>
 #include <vector>
+#include "protocol/dogattr.pb.h"
 
 using std::string;
 using std::vector;
+using dogrun2::DogAttr;
 
 const int kDefalutFeedCD = 60;
 const int kDefaultTrainCD = 60;
@@ -62,26 +64,12 @@ public:
   virtual int Train(int traintype);
   virtual int Play(int playtype);
 
-  // attr
-  const string& name() {return name_;}
-  int lv() {return lv_;}
-  int star() {return star_;}
-  int str() {return str_;}
-  int speed() {return speed_;}
-  int intimacy() {return intimacy_;}
-  int exp() {return exp_;}
+  const DogAttr& attr() {return attr_;}
   User *owner();
 
-  // set methods for attr
   void set_owner(User *owner) {owner_ = owner;}
 protected:
-  string name_;
-  int lv_;
-  int exp_;
-  int star_;
-  int str_;
-  int speed_;
-  int intimacy_;
+  DogAttr attr_;
   time_t feedcd_;
   time_t traincd_;
   time_t playcd_;

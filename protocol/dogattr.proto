@@ -1,0 +1,45 @@
+package dogrun2;
+
+message DogLevelConfig {
+	required int32 lv = 1;
+	required int32 exp = 2;
+};
+
+message DogLevelConfigArray {
+	repeated DogLevelConfig cfg = 1;
+};
+
+message FoodConfig {
+	required int32 type = 1;
+	required int32 str = 2;
+	required int32 speed = 3;
+	required int32 intimacy = 4;
+	required int32 exp = 5;
+};
+
+message FoodConfigArray {
+	repeated FoodConfig cfg = 1;
+};
+
+message TrainConfig {
+	required int32 type = 1;
+	required int32 str = 2;
+	required int32 speed = 3;
+	required int32 intimacy = 4;
+	required int32 exp = 5;
+};
+
+message TrainConfigArray {
+	repeated TrainConfig cfg = 1;
+};
+
+message DogAttr {
+	required string name = 1;
+	required int32 lv = 2;
+	required int32 exp = 3;
+	required int32 star = 4;
+	required int32 str = 5;
+	required int32 speed = 6;
+	required int32 intimacy = 7;
+	required int32 id = 8;
+};
