@@ -14,6 +14,13 @@ const int kDefaultTrainCD = 60;
 const int kDefaultPlayCD = 60;
 
 enum {
+  kFeedCD = 0,
+  kPlayCD = 1,
+  kTrainCD = 2,
+  kOperationCDNR,
+};
+
+enum {
   kDogStarD = 1,
   kDogStarC = 2,
   kDogStarB = 3,
@@ -57,12 +64,15 @@ protected:
   static User* current_;
 };
 
+const int kTimeDaySeconds = 60 * 1024 * 1024;
+
 class Dog {
 public:
   Dog();
   virtual int Feed(int foodtype);
   virtual int Train(int traintype);
   virtual int Play(int playtype);
+  virtual int ClearCD(int cdtype);
 
   const DogAttr& attr() {return attr_;}
   User *owner();
@@ -70,9 +80,9 @@ public:
   void set_owner(User *owner) {owner_ = owner;}
 protected:
   DogAttr attr_;
-  time_t feedcd_;
-  time_t traincd_;
-  time_t playcd_;
+  time_t cd_[kOperationCDNR];
+  time_t cd_clear_time_[kOperationCDNR];
+  int cd_clear_count_[kOperationCDNR];
   User *owner_;
 
   int Dog::Levelup();
