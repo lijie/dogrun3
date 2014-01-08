@@ -4,7 +4,8 @@
 
 USING_NS_CC;
 
-AppDelegate::AppDelegate() {
+AppDelegate::AppDelegate() 
+{
 
 }
 
@@ -13,15 +14,15 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-	// init user
-	User::InitCurrent();
+    // init user
+    User::InitCurrent();
 
     // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
-	
+
     // turn on display FPS
     pDirector->setDisplayStats(true);
 
@@ -34,7 +35,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
     // run
     pDirector->runWithScene(pScene);
 
-	CCLOG("%s\n", User::current()->id().c_str());
+    CCLOG("%s\n", User::current()->id().c_str());
     return true;
 }
 
