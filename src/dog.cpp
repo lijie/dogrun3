@@ -178,7 +178,7 @@ int DogRunInit() {
   if (!PlayCfg) {
     PlayCfg = new dogrun2::PlayConfigArray;
     assert(PlayCfg != NULL);
-    ParseFromFile("etc/Play.cfg", PlayCfg);
+    ParseFromFile("etc/play.cfg", PlayCfg);
   }
 
   return 0;
