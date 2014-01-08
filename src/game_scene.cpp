@@ -12,6 +12,7 @@ bool GameScene::init()
 
   // init plist
   CCSpriteFrameCache *c = CCSpriteFrameCache::sharedSpriteFrameCache();
+  CCFileUtils::sharedFileUtils()->addSearchPath("Resources");
   c->addSpriteFramesWithFile("dogrun2.plist", "dogrun2.png");
 
 #if 0

@@ -5,25 +5,41 @@
 
 USING_NS_CC;
 
-class DogLayer : public CCLayer
-{
+class DogLayer : public CCLayer {
 public:
-    virtual bool init();
-    CREATE_FUNC(DogLayer);
+  virtual bool init();
+  CREATE_FUNC(DogLayer);
 
-    void MenuClickCallback(CCObject* pSender);
+  void MenuClickCallback(CCObject* pSender);
+
 protected:
-    CCSprite *bg_;
-    DogSprite *dog_;
-    CCMenu *main_menu_;
+  void InitMenuItem();
+
+protected:
+  CCSprite *bg_;
+  DogSprite *dog_;
+  CCMenu *main_menu_;
 };
 
-class UserLayer : public CCLayer
-{
+//class MainMenuLayer : public CCLayer {
+//public:
+//  virtual bool init();
+//  CREATE_FUNC(MainMenuLayer);
+//
+//  void MenuClickCallback(CCObject* pSender);
+//
+//protected:
+//  void InitMenuItem();
+//
+//protected:
+//  CCMenu *main_menu_;
+//};
+
+class UserLayer : public CCLayer {
 public:
-    virtual bool init();
-    CREATE_FUNC(UserLayer);
+  virtual bool init();
+  CREATE_FUNC(UserLayer);
 protected:
-    CCSprite *bg_;
+  CCSprite *bg_;
 };
 

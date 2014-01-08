@@ -1,4 +1,4 @@
-#include "game_scene.h"
+#include "sprites.h"
 #include "dog.h"
 
 bool DogSprite::init()
