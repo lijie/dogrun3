@@ -2,6 +2,29 @@
 #include "dog.h"
 #include "layers.h"
 #include "sprites.h"
+#ifdef LINUX
+#include "unistd.h"
+#endif
+
+static void AddSearchPath() {
+#ifdef LINUX
+  char fullpath[256] = {0};
+  ssize_t length = readlink("/proc/self/exe", fullpath, sizeof(fullpath)-1);
+
+  if (length <= 0) {
+        return;
+  }
+
+  fullpath[length] = '\0';
+  std::string appPath = fullpath;
+  string path = appPath.substr(0, appPath.find_last_of("/"));
+  path += "/../../Resources";
+  CCFileUtils::sharedFileUtils()->addSearchPath(path.c_str());
+#endif
+#ifdef WIN32
+  CCFileUtils::sharedFileUtils()->addSearchPath("Resources");
+#endif
+}
 
 bool GameScene::init()
 {
@@ -13,6 +36,12 @@ bool GameScene::init()
   // init plist
   CCSpriteFrameCache *c = CCSpriteFrameCache::sharedSpriteFrameCache();
   CCFileUtils::sharedFileUtils()->addSearchPath("Resources");
+  AddSearchPath();
+
+  const std::vector<std::string>& v = CCFileUtils::sharedFileUtils()->getSearchPaths();
+  for (size_t i = 0; i < v.size(); i++) {
+    printf("search path %s\n", v[i].c_str());
+  }
   c->addSpriteFramesWithFile("dogrun2.plist", "dogrun2.png");
 
 #if 0

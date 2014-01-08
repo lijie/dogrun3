@@ -85,7 +85,7 @@ protected:
   int cd_clear_count_[kOperationCDNR];
   User *owner_;
 
-  int Dog::Levelup();
+  int Levelup();
 };
 
 int DogRunInit();

@@ -1,6 +1,5 @@
 #pragma once
 #include "cocos2d.h"
-#include "dog.h"
 
 USING_NS_CC;
 class DogLayer;

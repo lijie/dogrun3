@@ -129,6 +129,8 @@ int User::UseMoney(int money) {
 
 #ifdef WIN32
 #include <io.h>
+#else
+#include <unistd.h>
 #endif
 #include <fcntl.h>
 #include <sys/types.h>
