@@ -1,9 +1,6 @@
 #include "layers.h"
 
-void DogLayer::MenuClickCallback(CCObject* pSender)
-{
-  int a = 0;
-  a++;
+void DogLayer::MenuClickCallback(CCObject* sender) {
 }
 
 bool DogLayer::init() {
@@ -17,17 +14,53 @@ bool DogLayer::init() {
   dog_ = DogSprite::create();
   dog_->setPosition(ccp(400, 240));
   this->addChild(dog_);
-
-  InitMenuItem();
-  /*CCSprite* mail_sprite = CCSprite::create();
-  mail_sprite->initWithSpriteFrameName("mail.png");*/
-
-  /*CCMenuItemSprite* mail_item = CCMenuItemSprite::create(
-  mail_sprite, mail_sprite, mail_sprite, this, menu_selector(DogLayer::MenuClickCallback));*/
   return true;
 }
 
-void DogLayer::InitMenuItem() {
+void UserLayer::MenuClickCallback(CCObject* sender) {
+  int a = 0;
+  a++;
+}
+
+bool UserLayer::init() {
+  if (!CCLayer::init())
+    return false;
+
+  plank_ = CCSprite::create("plank.png");
+  plank_->setPosition(ccp(400, 480 - 61));
+  this->addChild(plank_, 1);
+
+  CCSprite* mail_sprite = CCSprite::create();
+  mail_sprite->initWithSpriteFrameName("mail.png");
+
+  CCMenuItemSprite* mail_item = CCMenuItemSprite::create(
+  mail_sprite, mail_sprite, mail_sprite, this, menu_selector(UserLayer::MenuClickCallback));
+
+  mail_menu_ = CCMenu::create( mail_item, NULL);
+  mail_menu_->setPosition(ccp(0, 0));
+  CCPoint base_Position = mail_menu_->getPosition();
+  int base_x = 50; int base_y = 300;
+
+  mail_item->setPosition( ccp(base_Position.x + base_x, base_Position.y + base_y));
+
+  addChild(mail_menu_);
+  return true;
+}
+
+void MainMenuLayer::MenuClickCallback(CCObject* sender) {
+
+}
+
+bool MainMenuLayer::init() {
+  if (!CCLayer::init())
+    return false;
+
+  InitMenuItem();
+
+  return true;
+}
+
+void MainMenuLayer::InitMenuItem() {
   CCSprite* friend_sprite = CCSprite::create();
   friend_sprite->initWithSpriteFrameName("friend.png");
 
@@ -47,27 +80,27 @@ void DogLayer::InitMenuItem() {
   reward_sprite->initWithSpriteFrameName("reward.png");
 
   CCMenuItemSprite* friend_item = CCMenuItemSprite::create(
-    friend_sprite, friend_sprite, friend_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    friend_sprite, friend_sprite, friend_sprite, this, menu_selector(MainMenuLayer::MenuClickCallback));
   
   CCMenuItemSprite* step_item = CCMenuItemSprite::create(
-    step_sprite, step_sprite, step_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    step_sprite, step_sprite, step_sprite, this, menu_selector(MainMenuLayer::MenuClickCallback));
 
   CCMenuItemSprite* warehouse_item = CCMenuItemSprite::create(
-    warehouse_sprite, warehouse_sprite, warehouse_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    warehouse_sprite, warehouse_sprite, warehouse_sprite, this, menu_selector(MainMenuLayer::MenuClickCallback));
 
   CCMenuItemSprite* gold_item = CCMenuItemSprite::create(
-    gold_sprite, gold_sprite, gold_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    gold_sprite, gold_sprite, gold_sprite, this, menu_selector(MainMenuLayer::MenuClickCallback));
 
   CCMenuItemSprite* shop_item = CCMenuItemSprite::create(
-    shop_sprite, shop_sprite, shop_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    shop_sprite, shop_sprite, shop_sprite, this, menu_selector(MainMenuLayer::MenuClickCallback));
 
   CCMenuItemSprite* reward_item = CCMenuItemSprite::create(
-    reward_sprite, reward_sprite, reward_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    reward_sprite, reward_sprite, reward_sprite, this, menu_selector(MainMenuLayer::MenuClickCallback));
 
-  main_menu_ = CCMenu::create( friend_item, step_item, warehouse_item,
+  menu_ = CCMenu::create( friend_item, step_item, warehouse_item,
     gold_item, shop_item, reward_item, NULL);
-  main_menu_->setPosition(ccp(0, 0));
-  CCPoint base_Position = main_menu_->getPosition();
+  menu_->setPosition(ccp(0, 0));
+  CCPoint base_Position = menu_->getPosition();
   int base_x = 350; int base_y = 40; int delt = 80;
 
   friend_item->setPosition   ( ccp(base_Position.x + 50,   base_Position.y + base_y));
@@ -78,15 +111,54 @@ void DogLayer::InitMenuItem() {
   reward_item->setPosition   ( ccp(base_Position.x + base_x + delt*5,  base_Position.y + base_y));
   //main_menu_->alignItemsVertically();
 
-  addChild(main_menu_);
+  addChild(menu_);
 }
 
-bool UserLayer::init() {
+void DogMenuLayer::MenuClickCallback(CCObject* sender) {
+}
+
+bool DogMenuLayer::init() {
   if (!CCLayer::init())
     return false;
 
-  bg_ = CCSprite::create("plank.png");
-  bg_->setPosition(ccp(400, 480 - 61));
-  this->addChild(bg_, 1);
+  InitMenuItem();
   return true;
+}
+
+void DogMenuLayer::InitMenuItem() {
+  CCSprite* food_sprite = CCSprite::create();
+  food_sprite->initWithSpriteFrameName("food.png");
+
+  CCSprite* train_sprite = CCSprite::create();
+  train_sprite->initWithSpriteFrameName("train.png");
+
+  CCSprite* play_sprite = CCSprite::create();
+  play_sprite->initWithSpriteFrameName("play.png");
+
+  CCSprite* game_sprite = CCSprite::create();
+  game_sprite->initWithSpriteFrameName("game.png");
+
+  CCMenuItemSprite* food_item = CCMenuItemSprite::create(
+    food_sprite, food_sprite, food_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+  
+  CCMenuItemSprite* train_item = CCMenuItemSprite::create(
+    train_sprite, train_sprite, train_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+
+  CCMenuItemSprite* play_item = CCMenuItemSprite::create(
+    play_sprite, play_sprite, play_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+
+  CCMenuItemSprite* game_item = CCMenuItemSprite::create(
+    game_sprite, game_sprite, game_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+
+  menu_ = CCMenu::create(food_item, train_item, play_item, game_item, NULL);
+  menu_->setPosition(ccp(0, 0));
+  CCPoint base_Position = menu_->getPosition();
+  int base_x = 100; int base_y = 50; int delt = 200;
+
+  food_item->setPosition ( ccp(base_Position.x + base_x,   base_Position.y + base_y));
+  train_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
+  play_item->setPosition ( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
+  game_item->setPosition ( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
+
+  addChild(menu_);
 }

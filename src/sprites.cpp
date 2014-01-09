@@ -1,5 +1,6 @@
 #include "sprites.h"
 #include "dog.h"
+#include "event_mgr.h"
 
 bool DogSprite::init()
 {
@@ -8,6 +9,7 @@ bool DogSprite::init()
 
   this->initWithSpriteFrameName("dog.png");
   dog_ = User::current()->dogs(0);
+
   return true;
 }
 
@@ -42,7 +44,7 @@ void DogSprite::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
   CCPoint cur_xy = touch->getLocation();
   if(start_xy_.fuzzyEquals(cur_xy, 2.0f)) {
-    //on_click
+    EventMgr::Instance().Response(1);
   }
 }
 

@@ -120,6 +120,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
     <ClInclude Include="..\protocol\dogattr.pb.h" />
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\dog.h" />
+    <ClInclude Include="..\src\event_mgr.h" />
     <ClInclude Include="..\src\game_scene.h" />
     <ClInclude Include="..\src\layers.h" />
     <ClInclude Include="..\src\main.h" />
