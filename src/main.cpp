@@ -4,6 +4,16 @@
 
 USING_NS_CC;
 
+static int AppRun() {
+  // create the application instance
+  AppDelegate app;
+  CCEGLView* eglView = CCEGLView::sharedOpenGLView();
+  eglView->setViewName("DogRun2");
+  eglView->setFrameSize(800, 480);
+  return CCApplication::sharedApplication()->run();
+}
+
+#ifdef WIN32
 int APIENTRY _tWinMain(HINSTANCE hInstance,
                        HINSTANCE hPrevInstance,
                        LPTSTR    lpCmdLine,
@@ -13,9 +23,10 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     UNREFERENCED_PARAMETER(lpCmdLine);
 
     // create the application instance
-    AppDelegate app;
-    CCEGLView* eglView = CCEGLView::sharedOpenGLView();
-    eglView->setViewName("HelloCpp");
-    eglView->setFrameSize(800, 480);
-    return CCApplication::sharedApplication()->run();
+    return AppRun();
 }
+#else
+int main(int argc, char **argv) {
+  return AppRun();
+}
+#endif

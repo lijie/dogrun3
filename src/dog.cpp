@@ -6,17 +6,16 @@
 static dogrun2::FoodConfigArray *FoodCfg = NULL;
 static dogrun2::TrainConfigArray *TrainCfg = NULL;
 static dogrun2::PlayConfigArray *PlayCfg = NULL;
+static dogrun2::DogLevelConfigArray *DogLevelCfg = NULL;
 
 Dog::Dog() {
   attr_.set_name("FirstDog");
-  feedcd_ = 0;
-  traincd_ = 0;
-  playcd_ = 0;
+  memset(cd_, 0, sizeof(cd_));
 }
 
 int Dog::Feed(int feedtype) {
   time_t now = time(NULL);
-  if (feedcd_ > now) {
+  if (cd_[kFeedCD] > now) {
     CCLOGERROR("feed in cd.\n");
     return -1;
   }
@@ -24,13 +23,13 @@ int Dog::Feed(int feedtype) {
   const dogrun2::FoodConfig& cfg = FoodCfg->cfg(feedtype);
   attr_.set_str(attr_.str() + cfg.str());
   attr_.set_exp(attr_.exp() + cfg.exp());
-  feedcd_ = now + kDefalutFeedCD;
+  cd_[kFeedCD] = now + kDefalutFeedCD;
   return 0;
 }
 
 int Dog::Train(int traintype) {
   time_t now = time(NULL);
-  if (traincd_ > now) {
+  if (cd_[kTrainCD] > now) {
     CCLOGERROR("Train in cd.\n");
     return -1;
   }
@@ -38,24 +37,60 @@ int Dog::Train(int traintype) {
   const dogrun2::TrainConfig& cfg = TrainCfg->cfg(traintype);
   attr_.set_speed(attr_.speed() + cfg.speed());
   attr_.set_exp(attr_.exp() + cfg.exp());
-  traincd_ = now + kDefaultTrainCD;
+  cd_[kTrainCD] = now + kDefaultTrainCD;
   return 0;
 }
 
 int Dog::Play(int playtype) {
   time_t now = time(NULL);
-  if (playcd_ > now) {
+  if (cd_[kPlayCD] > now) {
     CCLOGERROR("Play in cd.\n");
     return -1;
   }
 
   attr_.set_exp(attr_.exp() + 1);
   attr_.set_intimacy(attr_.intimacy() + 1);
-  playcd_ = now + kDefaultPlayCD;
+  cd_[kPlayCD] = now + kDefaultPlayCD;
   return 0;
 }
 
 int Dog::Levelup() {
+  int nextlv = attr_.lv() + 1;
+  if (nextlv >= DogLevelCfg->cfg_size()) {
+    CCLOGERROR("Dog reaches max level %d\n", attr_.lv());
+    return -1;
+  }
+  const dogrun2::DogLevelConfig& c = DogLevelCfg->cfg(nextlv);
+  if (attr_.exp() >= c.exp()) {
+    CCLOG("levelup %d -> %d\n", attr_.lv(), nextlv);
+    attr_.set_lv(nextlv);
+  }
+  return 0;
+}
+
+int Dog::ClearCD(int cdtype) {
+  if (cdtype >= kOperationCDNR)
+    return -1;
+
+  time_t now = time(NULL);
+  if (cd_clear_count_[cdtype] < 10) {
+    // first clear
+    if (cd_clear_count_[cdtype] == 0) {
+      cd_clear_time_[cdtype] = now;
+    }
+  }
+
+  // if beyond one day
+  time_t last = cd_clear_time_[cdtype];
+  if (now - last >= kTimeDaySeconds) {
+    cd_clear_count_[cdtype] = 0;
+    cd_clear_time_[cdtype] = now;
+  } else {
+    return -1;
+  }
+
+  cd_clear_count_[cdtype]++;
+  cd_[cdtype] = 0;
   return 0;
 }
 
@@ -94,6 +129,8 @@ int User::UseMoney(int money) {
 
 #ifdef WIN32
 #include <io.h>
+#else
+#include <unistd.h>
 #endif
 #include <fcntl.h>
 #include <sys/types.h>
@@ -143,7 +180,7 @@ int DogRunInit() {
   if (!PlayCfg) {
     PlayCfg = new dogrun2::PlayConfigArray;
     assert(PlayCfg != NULL);
-    ParseFromFile("etc/Play.cfg", PlayCfg);
+    ParseFromFile("etc/play.cfg", PlayCfg);
   }
 
   return 0;
