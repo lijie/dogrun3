@@ -93,7 +93,7 @@ bool GameScene::init() {
 
 void GameScene::DogMenuClickCallback(CCObject* sender)
 {
-  menu_flag_ = (++menu_flag_)%2;
+  menu_flag_ = (menu_flag_ + 1) % 2;
   menu_layer_->switchTo(menu_flag_);
 }
 
