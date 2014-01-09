@@ -1,0 +1,50 @@
+package dogrun2cs;
+
+enum Command {
+     kCmdUserLoginReq = 1;
+     kCmdUserLoginRsp = 2;
+     kCmdUserLogoutReq = 3;
+     kCmdUserLogoutRsp = 4;
+     kCmdDogFeedReq = 5;
+     kCmdDogFeedRsp = 6;
+     kCmdDogTrainReq = 7;
+     kCmdDogTrainRsp = 8;
+     kCmdDogPlayReq = 9;
+     kCmdDogPlayRsp = 10;
+};
+
+message UserLoginReq {
+};
+
+message UserLoginRsp {
+};
+
+message UserLogoutReq {
+};
+
+message UserLogoutRsp {
+};
+
+message DogFeedReq {
+};
+
+message DogFeedRsp {
+};
+
+message DogTrainReq {
+};
+
+message DogTrainRsp {
+};
+
+message DogPlayReq {
+};
+
+message DogPlayRsp {
+};
+
+message UserInfo {
+};
+
+message DogInfo {
+};
