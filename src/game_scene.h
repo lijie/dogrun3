@@ -25,7 +25,12 @@ public:
 
   // implement the "static node()" method manually
 
-  void MenuClickCallback(CCObject* sender);
+  void DogMenuClickCallback(CCObject* sender);
+  void TrainItemClickCallback(CCObject* sender);
+  void PlayItemClickCallback(CCObject* sender);
+  void BackItemClickCallback(CCObject* sender);
+  
+  
   CREATE_FUNC(GameScene);
 
 protected:

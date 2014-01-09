@@ -1,4 +1,5 @@
 #include "layers.h"
+#include "event_mgr.h"
 
 void DogLayer::MenuClickCallback(CCObject* sender) {
 }
@@ -114,7 +115,18 @@ void MainMenuLayer::InitMenuItem() {
   addChild(menu_);
 }
 
-void DogMenuLayer::MenuClickCallback(CCObject* sender) {
+void DogMenuLayer::FoodItemClickCallback(CCObject* sender) {
+}
+
+void DogMenuLayer::TrainItemClickCallback(CCObject* sender) {
+  EventMgr::Instance().Response(2);
+}
+
+void DogMenuLayer::PlayItemClickCallback(CCObject* sender) {
+  EventMgr::Instance().Response(3);
+}
+
+void DogMenuLayer::GameItemClickCallback(CCObject* sender) {
 }
 
 bool DogMenuLayer::init() {
@@ -139,16 +151,16 @@ void DogMenuLayer::InitMenuItem() {
   game_sprite->initWithSpriteFrameName("game.png");
 
   CCMenuItemSprite* food_item = CCMenuItemSprite::create(
-    food_sprite, food_sprite, food_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    food_sprite, food_sprite, food_sprite, this, menu_selector(DogMenuLayer::FoodItemClickCallback));
   
   CCMenuItemSprite* train_item = CCMenuItemSprite::create(
-    train_sprite, train_sprite, train_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    train_sprite, train_sprite, train_sprite, this, menu_selector(DogMenuLayer::TrainItemClickCallback));
 
   CCMenuItemSprite* play_item = CCMenuItemSprite::create(
-    play_sprite, play_sprite, play_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    play_sprite, play_sprite, play_sprite, this, menu_selector(DogMenuLayer::PlayItemClickCallback));
 
   CCMenuItemSprite* game_item = CCMenuItemSprite::create(
-    game_sprite, game_sprite, game_sprite, this, menu_selector(DogLayer::MenuClickCallback));
+    game_sprite, game_sprite, game_sprite, this, menu_selector(DogMenuLayer::GameItemClickCallback));
 
   menu_ = CCMenu::create(food_item, train_item, play_item, game_item, NULL);
   menu_->setPosition(ccp(0, 0));
@@ -159,6 +171,146 @@ void DogMenuLayer::InitMenuItem() {
   train_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
   play_item->setPosition ( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
   game_item->setPosition ( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
+
+  addChild(menu_);
+}
+
+void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
+  EventMgr::Instance().Response(4);
+}
+
+void TrainMenuLayer::Train1ItemClickCallback(CCObject* sender) {
+}
+
+void TrainMenuLayer::Train2ItemClickCallback(CCObject* sender) {
+}
+
+void TrainMenuLayer::Train3ItemClickCallback(CCObject* sender) {
+}
+
+void TrainMenuLayer::Train4ItemClickCallback(CCObject* sender) {
+}
+
+bool TrainMenuLayer::init() {
+  if (!CCLayer::init())
+    return false;
+
+  InitMenuItem();
+  return true;
+}
+
+void TrainMenuLayer::InitMenuItem() {
+  
+  CCSprite* back_sprite = CCSprite::create();
+  back_sprite->initWithSpriteFrameName("back.png");
+
+  CCSprite* train1_sprite = CCSprite::create();
+  train1_sprite->initWithSpriteFrameName("train.png");
+
+  CCSprite* train2_sprite = CCSprite::create();
+  train2_sprite->initWithSpriteFrameName("train.png");
+
+  CCSprite* train3_sprite = CCSprite::create();
+  train3_sprite->initWithSpriteFrameName("train.png");
+
+  CCSprite* train4_sprite = CCSprite::create();
+  train4_sprite->initWithSpriteFrameName("train.png");
+
+  CCMenuItemSprite* back_item = CCMenuItemSprite::create(
+    back_sprite, back_sprite, back_sprite, this, menu_selector(TrainMenuLayer::BackItemClickCallback));
+  
+  CCMenuItemSprite* train1_item = CCMenuItemSprite::create(
+    train1_sprite, train1_sprite, train1_sprite, this, menu_selector(TrainMenuLayer::Train1ItemClickCallback));
+
+  CCMenuItemSprite* train2_item = CCMenuItemSprite::create(
+    train2_sprite, train2_sprite, train2_sprite, this, menu_selector(TrainMenuLayer::Train2ItemClickCallback));
+
+  CCMenuItemSprite* train3_item = CCMenuItemSprite::create(
+    train3_sprite, train3_sprite, train3_sprite, this, menu_selector(TrainMenuLayer::Train3ItemClickCallback));
+
+  CCMenuItemSprite* train4_item = CCMenuItemSprite::create(
+    train4_sprite, train4_sprite, train4_sprite, this, menu_selector(TrainMenuLayer::Train4ItemClickCallback));
+
+  menu_ = CCMenu::create(back_item, train1_item, train2_item, train3_item, train4_item, NULL);
+  menu_->setPosition(ccp(0, 0));
+  CCPoint base_Position = menu_->getPosition();
+  int base_x = 150; int base_y = 50; int delt = 200;
+
+  back_item->setPosition  ( ccp(base_Position.x + 30,   base_Position.y + base_y));
+  train1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y));
+  train2_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
+  train3_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
+  train4_item->setPosition( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
+
+  addChild(menu_);
+}
+
+void PlayMenuLayer::BackItemClickCallback(CCObject* sender) {
+  EventMgr::Instance().Response(4);
+}
+
+void PlayMenuLayer::WalkItemClickCallback(CCObject* sender) {
+}
+
+void PlayMenuLayer::TouchItemClickCallback(CCObject* sender) {
+}
+
+void PlayMenuLayer::BallItemClickCallback(CCObject* sender) {
+}
+
+void PlayMenuLayer::FrisbeeItemClickCallback(CCObject* sender) {
+}
+
+bool PlayMenuLayer::init() {
+  if (!CCLayer::init())
+    return false;
+
+  InitMenuItem();
+  return true;
+}
+
+void PlayMenuLayer::InitMenuItem() {
+  
+  CCSprite* back_sprite = CCSprite::create();
+  back_sprite->initWithSpriteFrameName("back.png");
+
+  CCSprite* play1_sprite = CCSprite::create();
+  play1_sprite->initWithSpriteFrameName("play.png");
+
+  CCSprite* play2_sprite = CCSprite::create();
+  play2_sprite->initWithSpriteFrameName("play.png");
+
+  CCSprite* play3_sprite = CCSprite::create();
+  play3_sprite->initWithSpriteFrameName("play.png");
+
+  CCSprite* play4_sprite = CCSprite::create();
+  play4_sprite->initWithSpriteFrameName("play.png");
+
+  CCMenuItemSprite* back_item = CCMenuItemSprite::create(
+    back_sprite, back_sprite, back_sprite, this, menu_selector(PlayMenuLayer::BackItemClickCallback));
+  
+  CCMenuItemSprite* play1_item = CCMenuItemSprite::create(
+    play1_sprite, play1_sprite, play1_sprite, this, menu_selector(PlayMenuLayer::WalkItemClickCallback));
+
+  CCMenuItemSprite* play2_item = CCMenuItemSprite::create(
+    play2_sprite, play2_sprite, play2_sprite, this, menu_selector(PlayMenuLayer::TouchItemClickCallback));
+
+  CCMenuItemSprite* play3_item = CCMenuItemSprite::create(
+    play3_sprite, play3_sprite, play3_sprite, this, menu_selector(PlayMenuLayer::BallItemClickCallback));
+
+  CCMenuItemSprite* play4_item = CCMenuItemSprite::create(
+    play4_sprite, play4_sprite, play4_sprite, this, menu_selector(PlayMenuLayer::FrisbeeItemClickCallback));
+
+  menu_ = CCMenu::create(back_item, play1_item, play2_item, play3_item, play4_item, NULL);
+  menu_->setPosition(ccp(0, 0));
+  CCPoint base_Position = menu_->getPosition();
+  int base_x = 150; int base_y = 50; int delt = 200;
+
+  back_item->setPosition  ( ccp(base_Position.x + 30,   base_Position.y + base_y));
+  play1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y));
+  play2_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
+  play3_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
+  play4_item->setPosition( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
 
   addChild(menu_);
 }

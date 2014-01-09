@@ -72,7 +72,10 @@ bool GameScene::init() {
 
   MainMenuLayer* main_menu_layer = MainMenuLayer::create();
   DogMenuLayer* dog_menu_layer = DogMenuLayer::create();
-  menu_layer_ = CCLayerMultiplex::create(main_menu_layer, dog_menu_layer, NULL);
+  TrainMenuLayer* train_menu_layer = TrainMenuLayer::create();
+  PlayMenuLayer* play_menu_layer = PlayMenuLayer::create();
+  menu_layer_ = CCLayerMultiplex::create(main_menu_layer, dog_menu_layer,
+        train_menu_layer, play_menu_layer, NULL);
 
   this->addChild(menu_layer_, kLayerMenu);
 
@@ -80,15 +83,33 @@ bool GameScene::init() {
   menu_layer_->switchTo(menu_flag_);
 
 
-  EventMgr::Instance().Register(1, this, callfuncO_selector(GameScene::MenuClickCallback));
+  EventMgr::Instance().Register(1, this, callfuncO_selector(GameScene::DogMenuClickCallback));
+  EventMgr::Instance().Register(2, this, callfuncO_selector(GameScene::TrainItemClickCallback));
+  EventMgr::Instance().Register(3, this, callfuncO_selector(GameScene::PlayItemClickCallback));
+  EventMgr::Instance().Register(4, this, callfuncO_selector(GameScene::BackItemClickCallback));
 
   return true;
 }
 
-void GameScene::MenuClickCallback(CCObject* sender)
+void GameScene::DogMenuClickCallback(CCObject* sender)
 {
   menu_flag_ = (++menu_flag_)%2;
   menu_layer_->switchTo(menu_flag_);
+}
+
+void GameScene::TrainItemClickCallback(CCObject* sender)
+{
+  menu_layer_->switchTo(2);
+}
+
+void GameScene::PlayItemClickCallback(CCObject* sender)
+{
+  menu_layer_->switchTo(3);
+}
+
+void GameScene::BackItemClickCallback(CCObject* sender)
+{
+  menu_layer_->switchTo(1);
 }
 
 void GameScene::menuCloseCallback(CCObject* pSender) {
