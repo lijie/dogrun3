@@ -205,16 +205,16 @@ void TrainMenuLayer::InitMenuItem() {
   back_sprite->initWithSpriteFrameName("back.png");
 
   CCSprite* train1_sprite = CCSprite::create();
-  train1_sprite->initWithSpriteFrameName("train.png");
+  train1_sprite->initWithSpriteFrameName("white.png");
 
   CCSprite* train2_sprite = CCSprite::create();
-  train2_sprite->initWithSpriteFrameName("train.png");
+  train2_sprite->initWithSpriteFrameName("white.png");
 
   CCSprite* train3_sprite = CCSprite::create();
-  train3_sprite->initWithSpriteFrameName("train.png");
+  train3_sprite->initWithSpriteFrameName("white.png");
 
   CCSprite* train4_sprite = CCSprite::create();
-  train4_sprite->initWithSpriteFrameName("train.png");
+  train4_sprite->initWithSpriteFrameName("white.png");
 
   CCMenuItemSprite* back_item = CCMenuItemSprite::create(
     back_sprite, back_sprite, back_sprite, this, menu_selector(TrainMenuLayer::BackItemClickCallback));
@@ -231,18 +231,23 @@ void TrainMenuLayer::InitMenuItem() {
   CCMenuItemSprite* train4_item = CCMenuItemSprite::create(
     train4_sprite, train4_sprite, train4_sprite, this, menu_selector(TrainMenuLayer::Train4ItemClickCallback));
 
-  menu_ = CCMenu::create(back_item, train1_item, train2_item, train3_item, train4_item, NULL);
-  menu_->setPosition(ccp(0, 0));
-  CCPoint base_Position = menu_->getPosition();
-  int base_x = 150; int base_y = 50; int delt = 200;
+  //menu_ = CCMenu::create(back_item, train1_item, train2_item, train3_item, train4_item, NULL);
+  //menu_->setPosition(ccp(0, 0));
+  addChild(back_item);
+  addChild(train1_item);
+  addChild(train2_item);
+  addChild(train3_item);
+  addChild(train4_item);
+  CCPoint base_Position = getPosition();
+  int base_x = 160; int base_y = 50; int delt = 180;
 
-  back_item->setPosition  ( ccp(base_Position.x + 30,   base_Position.y + base_y));
+  back_item->setPosition  ( ccp(base_Position.x + 40,   base_Position.y + base_y));
   train1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y));
   train2_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
   train3_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
   train4_item->setPosition( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
 
-  addChild(menu_);
+  //addChild(menu_);
 }
 
 void PlayMenuLayer::BackItemClickCallback(CCObject* sender) {

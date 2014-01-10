@@ -459,19 +459,45 @@
                 <key>sourceSize</key>
                 <string>{54,66}</string>
             </dict>
+            <key>white.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{239,708},{142,84}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{142,84}}</string>
+                <key>sourceSize</key>
+                <string>{142,84}</string>
+            </dict>
+            <key>white_little.png</key>
+            <dict>
+                <key>frame</key>
+                <string>{{383,708},{49,49}}</string>
+                <key>offset</key>
+                <string>{0,0}</string>
+                <key>rotated</key>
+                <false/>
+                <key>sourceColorRect</key>
+                <string>{{0,0},{49,49}}</string>
+                <key>sourceSize</key>
+                <string>{49,49}</string>
+            </dict>
         </dict>
         <key>metadata</key>
         <dict>
             <key>format</key>
             <integer>2</integer>
             <key>realTextureFileName</key>
-            <string>11.png</string>
+            <string>12.png</string>
             <key>size</key>
             <string>{512,1024}</string>
             <key>smartupdate</key>
-            <string>$TexturePacker:SmartUpdate:ce6c1e9261b186af25f470ea3ae5d9a8:d4adf0a71479e999a4ff20e2000ef569:858e50caa60b1aa72adf72e171d4b558$</string>
+            <string>$TexturePacker:SmartUpdate:eff36a9a1bd86a2fc845ad0e6d9f85ce:a8cc0f503208c6c298064f77f8377877:84bc683e1a75a162453334fdb5b30d64$</string>
             <key>textureFileName</key>
-            <string>11.png</string>
+            <string>12.png</string>
         </dict>
     </dict>
 </plist>
