@@ -221,15 +221,19 @@ void TrainMenuLayer::InitMenuItem() {
   
   FSMenuItem* train1_item = FSMenuItem::create(
     train1_sprite, train1_sprite, train1_sprite, this, menu_selector(TrainMenuLayer::Train1ItemClickCallback));
+  train1_item->InitData("train_desc", 1);
 
-  CCMenuItemSprite* train2_item = CCMenuItemSprite::create(
+  FSMenuItem* train2_item = FSMenuItem::create(
     train2_sprite, train2_sprite, train2_sprite, this, menu_selector(TrainMenuLayer::Train2ItemClickCallback));
+  train2_item->InitData("train_desc", 1);
 
-  CCMenuItemSprite* train3_item = CCMenuItemSprite::create(
+  FSMenuItem* train3_item = FSMenuItem::create(
     train3_sprite, train3_sprite, train3_sprite, this, menu_selector(TrainMenuLayer::Train3ItemClickCallback));
+  train3_item->InitData("train_desc", 2);
 
-  CCMenuItemSprite* train4_item = CCMenuItemSprite::create(
+  FSMenuItem* train4_item = FSMenuItem::create(
     train4_sprite, train4_sprite, train4_sprite, this, menu_selector(TrainMenuLayer::Train4ItemClickCallback));
+  train4_item->InitData("train_desc", 2);
 
   menu_ = CCMenu::create(back_item, train1_item, train2_item, train3_item, train4_item, NULL);
   menu_->setPosition(ccp(0, 0));
@@ -238,7 +242,7 @@ void TrainMenuLayer::InitMenuItem() {
   int base_x = 160; int base_y = 50; int delt = 180;
 
   back_item->setPosition  ( ccp(base_Position.x + 40,   base_Position.y + base_y));
-  train1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y + 100));
+  train1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y));
   train2_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
   train3_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
   train4_item->setPosition( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
@@ -290,17 +294,21 @@ void PlayMenuLayer::InitMenuItem() {
   CCMenuItemSprite* back_item = CCMenuItemSprite::create(
     back_sprite, back_sprite, back_sprite, this, menu_selector(PlayMenuLayer::BackItemClickCallback));
   
-  CCMenuItemSprite* play1_item = CCMenuItemSprite::create(
+  FSMenuItem* play1_item = FSMenuItem::create(
     play1_sprite, play1_sprite, play1_sprite, this, menu_selector(PlayMenuLayer::WalkItemClickCallback));
+  play1_item->InitData("walk_desc", 1);
 
-  CCMenuItemSprite* play2_item = CCMenuItemSprite::create(
+  FSMenuItem* play2_item = FSMenuItem::create(
     play2_sprite, play2_sprite, play2_sprite, this, menu_selector(PlayMenuLayer::TouchItemClickCallback));
-
-  CCMenuItemSprite* play3_item = CCMenuItemSprite::create(
+  play2_item->InitData("touch_desc", 1);
+  
+  FSMenuItem* play3_item = FSMenuItem::create(
     play3_sprite, play3_sprite, play3_sprite, this, menu_selector(PlayMenuLayer::BallItemClickCallback));
+  play3_item->InitData("ball_desc", 2);
 
-  CCMenuItemSprite* play4_item = CCMenuItemSprite::create(
+  FSMenuItem* play4_item = FSMenuItem::create(
     play4_sprite, play4_sprite, play4_sprite, this, menu_selector(PlayMenuLayer::FrisbeeItemClickCallback));
+  play4_item->InitData("frisbee_desc", 2);
 
   menu_ = CCMenu::create(back_item, play1_item, play2_item, play3_item, play4_item, NULL);
   menu_->setPosition(ccp(0, 0));
