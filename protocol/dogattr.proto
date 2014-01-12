@@ -1,4 +1,4 @@
-package dogrun2;
+package dogrun2cs;
 
 message DogLevelConfig {
 	required int32 lv = 1;
