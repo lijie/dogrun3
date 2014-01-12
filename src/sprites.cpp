@@ -7,9 +7,16 @@ bool DogSprite::init()
   if (!CCSprite::init())
     return false;
 
+  ability_status_ = false;
   this->initWithSpriteFrameName("dog.png");
   dog_ = User::current()->dogs(0);
 
+  ability_sprite_ = CCSprite::create();
+  ability_sprite_->initWithSpriteFrameName("dog_ability.png");
+  addChild(ability_sprite_, 1);
+  ability_sprite_->setAnchorPoint(ccp(0,0));
+  ability_sprite_->setPosition(ccp(-96,96));
+  ability_sprite_->setVisible(ability_status_);
   return true;
 }
 
@@ -44,6 +51,8 @@ void DogSprite::ccTouchEnded(CCTouch* touch, CCEvent* event)
 {
   CCPoint cur_xy = touch->getLocation();
   if(start_xy_.fuzzyEquals(cur_xy, 2.0f)) {
+    ability_status_ = !ability_status_;
+    ability_sprite_->setVisible(ability_status_);
     EventMgr::Instance().Response(1);
   }
 }

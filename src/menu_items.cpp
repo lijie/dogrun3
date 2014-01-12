@@ -80,6 +80,14 @@ void FSMenuItem::InitData(int item_type, int data_index ) {
   sprite->setAnchorPoint(ccp(0,0));
   sprite->setPosition(ccp(cfg->icon().pos_x(), cfg->icon().pos_y()));
 
+  CCLabelTTF *label_icon_num = CCLabelTTF::create(
+    cfg->icon_num().desc().c_str(),
+    cfg->icon_num().font().c_str(),
+    cfg->icon_num().font_size());
+  addChild(label_icon_num, 1);
+  label_icon_num->setAnchorPoint(ccp(0,0));
+  label_icon_num->setPosition(ccp(cfg->icon_num().pos_x(), cfg->icon_num().pos_y()));
+
   return ;
 }
 

@@ -25,5 +25,7 @@ protected:
     CCPoint start_xy_;
     CCRect rect();
     Dog* dog_;
+    CCSprite* ability_sprite_;
+    bool ability_status_;
 };
 

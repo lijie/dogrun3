@@ -10,10 +10,12 @@ bool DogLayer::init() {
     return false;
 
   bg_ = CCSprite::create("background.png");
-  bg_->setPosition(ccp(400, 240));
+  bg_->setAnchorPoint(ccp(0,0));
+  bg_->setPosition(ccp(0, 0));
   this->addChild(bg_);
 
   dog_ = DogSprite::create();
+  dog_->setAnchorPoint(ccp(0,0));
   dog_->setPosition(ccp(400, 240));
   this->addChild(dog_);
   return true;
