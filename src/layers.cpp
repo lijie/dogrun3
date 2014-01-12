@@ -1,5 +1,6 @@
 #include "layers.h"
 #include "event_mgr.h"
+#include "protocol/uiconfig.pb.h"
 
 void DogLayer::MenuClickCallback(CCObject* sender) {
 }
@@ -42,7 +43,7 @@ bool UserLayer::init() {
   CCPoint base_Position = mail_menu_->getPosition();
   int base_x = 50; int base_y = 300;
 
-  mail_item->setPosition( ccp(base_Position.x + base_x, base_Position.y + base_y));
+  mail_item->setPosition( ccp(base_x, base_y));
 
   addChild(mail_menu_);
   return true;
@@ -104,12 +105,12 @@ void MainMenuLayer::InitMenuItem() {
   CCPoint base_Position = menu_->getPosition();
   int base_x = 350; int base_y = 40; int delt = 80;
 
-  friend_item->setPosition   ( ccp(base_Position.x + 50,   base_Position.y + base_y));
-  step_item->setPosition     ( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
-  warehouse_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
-  gold_item->setPosition     ( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
-  shop_item->setPosition     ( ccp(base_Position.x + base_x + delt*4,  base_Position.y + base_y));
-  reward_item->setPosition   ( ccp(base_Position.x + base_x + delt*5,  base_Position.y + base_y));
+  friend_item->setPosition   ( ccp(50,   base_y));
+  step_item->setPosition     ( ccp(base_x + delt*1,  base_y));
+  warehouse_item->setPosition( ccp(base_x + delt*2,  base_y));
+  gold_item->setPosition     ( ccp(base_x + delt*3,  base_y));
+  shop_item->setPosition     ( ccp(base_x + delt*4,  base_y));
+  reward_item->setPosition   ( ccp(base_x + delt*5,  base_y));
   //main_menu_->alignItemsVertically();
 
   addChild(menu_);
@@ -163,14 +164,25 @@ void DogMenuLayer::InitMenuItem() {
     game_sprite, game_sprite, game_sprite, this, menu_selector(DogMenuLayer::GameItemClickCallback));
 
   menu_ = CCMenu::create(food_item, train_item, play_item, game_item, NULL);
+  menu_->setAnchorPoint(ccp(0, 0));
   menu_->setPosition(ccp(0, 0));
-  CCPoint base_Position = menu_->getPosition();
-  int base_x = 100; int base_y = 50; int delt = 200;
 
-  food_item->setPosition ( ccp(base_Position.x + base_x,   base_Position.y + base_y));
-  train_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
-  play_item->setPosition ( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
-  game_item->setPosition ( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
+  int base_x = 8; int base_y = 10; int delt = 18; int last_item_x = 0;
+
+  food_item->setAnchorPoint(ccp(0, 0));
+  food_item->setPosition ( ccp(base_x, base_y));
+
+  last_item_x = (int)food_item->getContentSize().width + delt;
+  train_item->setAnchorPoint(ccp(0, 0));
+  train_item->setPosition( ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)train_item->getContentSize().width + delt;
+  play_item->setAnchorPoint(ccp(0, 0));
+  play_item->setPosition ( ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)play_item->getContentSize().width + delt;
+  game_item->setAnchorPoint(ccp(0, 0));
+  game_item->setPosition ( ccp(base_x + last_item_x, base_y));
 
   addChild(menu_);
 }
@@ -221,31 +233,44 @@ void TrainMenuLayer::InitMenuItem() {
   
   FSMenuItem* train1_item = FSMenuItem::create(
     train1_sprite, train1_sprite, train1_sprite, this, menu_selector(TrainMenuLayer::Train1ItemClickCallback));
-  train1_item->InitData("train_desc", 1);
+  train1_item->InitData(dogrun2::kItemTrain, 0);
 
   FSMenuItem* train2_item = FSMenuItem::create(
     train2_sprite, train2_sprite, train2_sprite, this, menu_selector(TrainMenuLayer::Train2ItemClickCallback));
-  train2_item->InitData("train_desc", 1);
+  train2_item->InitData(dogrun2::kItemTrain, 1);
 
   FSMenuItem* train3_item = FSMenuItem::create(
     train3_sprite, train3_sprite, train3_sprite, this, menu_selector(TrainMenuLayer::Train3ItemClickCallback));
-  train3_item->InitData("train_desc", 2);
+  train3_item->InitData(dogrun2::kItemTrain, 2);
 
   FSMenuItem* train4_item = FSMenuItem::create(
     train4_sprite, train4_sprite, train4_sprite, this, menu_selector(TrainMenuLayer::Train4ItemClickCallback));
-  train4_item->InitData("train_desc", 2);
+  train4_item->InitData(dogrun2::kItemTrain, 3);
 
   menu_ = CCMenu::create(back_item, train1_item, train2_item, train3_item, train4_item, NULL);
+  menu_->setAnchorPoint(ccp(0, 0));
   menu_->setPosition(ccp(0, 0));
 
-  CCPoint base_Position = getPosition();
-  int base_x = 160; int base_y = 50; int delt = 180;
+  int base_x = 15; int base_y = 10; int delt = 35; int last_item_x = 0;
 
-  back_item->setPosition  ( ccp(base_Position.x + 40,   base_Position.y + base_y));
-  train1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y));
-  train2_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
-  train3_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
-  train4_item->setPosition( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
+  back_item->setAnchorPoint(ccp(0, 0));
+  back_item->setPosition(ccp(base_x, base_y));
+
+  last_item_x += (int)back_item->getContentSize().width + delt;
+  train1_item->setAnchorPoint(ccp(0, 0));
+  train1_item->setPosition(ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)train1_item->getContentSize().width + delt;
+  train2_item->setAnchorPoint(ccp(0, 0));
+  train2_item->setPosition(ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)train2_item->getContentSize().width + delt;
+  train3_item->setAnchorPoint(ccp(0, 0));
+  train3_item->setPosition(ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)train3_item->getContentSize().width + delt;
+  train4_item->setAnchorPoint(ccp(0, 0));
+  train4_item->setPosition(ccp(base_x + last_item_x, base_y));
 
   addChild(menu_);
 }
@@ -279,47 +304,61 @@ void PlayMenuLayer::InitMenuItem() {
   CCSprite* back_sprite = CCSprite::create();
   back_sprite->initWithSpriteFrameName("back.png");
 
-  CCSprite* play1_sprite = CCSprite::create();
-  play1_sprite->initWithSpriteFrameName("white.png");
+  CCSprite* walk_sprite = CCSprite::create();
+  walk_sprite->initWithSpriteFrameName("white.png");
 
-  CCSprite* play2_sprite = CCSprite::create();
-  play2_sprite->initWithSpriteFrameName("white.png");
+  CCSprite* touch_sprite = CCSprite::create();
+  touch_sprite->initWithSpriteFrameName("white.png");
 
-  CCSprite* play3_sprite = CCSprite::create();
-  play3_sprite->initWithSpriteFrameName("white.png");
+  CCSprite* ball_sprite = CCSprite::create();
+  ball_sprite->initWithSpriteFrameName("white.png");
 
-  CCSprite* play4_sprite = CCSprite::create();
-  play4_sprite->initWithSpriteFrameName("white.png");
+  CCSprite* frisbee_sprite = CCSprite::create();
+  frisbee_sprite->initWithSpriteFrameName("white.png");
 
   CCMenuItemSprite* back_item = CCMenuItemSprite::create(
     back_sprite, back_sprite, back_sprite, this, menu_selector(PlayMenuLayer::BackItemClickCallback));
   
-  FSMenuItem* play1_item = FSMenuItem::create(
-    play1_sprite, play1_sprite, play1_sprite, this, menu_selector(PlayMenuLayer::WalkItemClickCallback));
-  play1_item->InitData("walk_desc", 1);
+  FSMenuItem* walk_item = FSMenuItem::create(
+    walk_sprite, walk_sprite, walk_sprite, this, menu_selector(PlayMenuLayer::WalkItemClickCallback));
+  walk_item->InitData(dogrun2::kItemPlay, 0);
 
-  FSMenuItem* play2_item = FSMenuItem::create(
-    play2_sprite, play2_sprite, play2_sprite, this, menu_selector(PlayMenuLayer::TouchItemClickCallback));
-  play2_item->InitData("touch_desc", 1);
+  FSMenuItem* touch_item = FSMenuItem::create(
+    touch_sprite, touch_sprite, touch_sprite, this, menu_selector(PlayMenuLayer::TouchItemClickCallback));
+  touch_item->InitData(dogrun2::kItemPlay, 1);
   
-  FSMenuItem* play3_item = FSMenuItem::create(
-    play3_sprite, play3_sprite, play3_sprite, this, menu_selector(PlayMenuLayer::BallItemClickCallback));
-  play3_item->InitData("ball_desc", 2);
+  FSMenuItem* ball_item = FSMenuItem::create(
+    ball_sprite, ball_sprite, ball_sprite, this, menu_selector(PlayMenuLayer::BallItemClickCallback));
+  ball_item->InitData(dogrun2::kItemPlay, 2);
 
-  FSMenuItem* play4_item = FSMenuItem::create(
-    play4_sprite, play4_sprite, play4_sprite, this, menu_selector(PlayMenuLayer::FrisbeeItemClickCallback));
-  play4_item->InitData("frisbee_desc", 2);
+  FSMenuItem* frisbee_item = FSMenuItem::create(
+    frisbee_sprite, frisbee_sprite, frisbee_sprite, this, menu_selector(PlayMenuLayer::FrisbeeItemClickCallback));
+  frisbee_item->InitData(dogrun2::kItemPlay, 3);
 
-  menu_ = CCMenu::create(back_item, play1_item, play2_item, play3_item, play4_item, NULL);
+  menu_ = CCMenu::create(back_item, walk_item, touch_item, ball_item, frisbee_item, NULL);
+  menu_->setAnchorPoint(ccp(0, 0));
   menu_->setPosition(ccp(0, 0));
-  CCPoint base_Position = menu_->getPosition();
-  int base_x = 160; int base_y = 50; int delt = 180;
 
-  back_item->setPosition  ( ccp(base_Position.x + 40,   base_Position.y + base_y));
-  play1_item->setPosition( ccp(base_Position.x + base_x,  base_Position.y + base_y));
-  play2_item->setPosition( ccp(base_Position.x + base_x + delt*1,  base_Position.y + base_y));
-  play3_item->setPosition( ccp(base_Position.x + base_x + delt*2,  base_Position.y + base_y));
-  play4_item->setPosition( ccp(base_Position.x + base_x + delt*3,  base_Position.y + base_y));
+  int base_x = 15; int base_y = 10; int delt = 35; int last_item_x = 0;
+
+  back_item->setAnchorPoint(ccp(0, 0));
+  back_item->setPosition(ccp(base_x, base_y));
+
+  last_item_x += (int)back_item->getContentSize().width + delt;
+  walk_item->setAnchorPoint(ccp(0, 0));
+  walk_item->setPosition(ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)walk_item->getContentSize().width + delt;
+  touch_item->setAnchorPoint(ccp(0, 0));
+  touch_item->setPosition(ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)touch_item->getContentSize().width + delt;
+  ball_item->setAnchorPoint(ccp(0, 0));
+  ball_item->setPosition(ccp(base_x + last_item_x, base_y));
+
+  last_item_x += (int)ball_item->getContentSize().width + delt;
+  frisbee_item->setAnchorPoint(ccp(0, 0));
+  frisbee_item->setPosition(ccp(base_x + last_item_x, base_y));
 
   addChild(menu_);
 }

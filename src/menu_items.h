@@ -2,7 +2,6 @@
 #include "cocos2d.h"
 
 USING_NS_CC;
-static CCDictionary *g_dict = CCDictionary::createWithContentsOfFile("etc/ui.xml");
 
 class ClockMenuItem : public CCMenuItemSprite {
 public:
@@ -36,7 +35,6 @@ public:
                              CCObject *target, 
                              SEL_MenuHandler selector);
 
-  void InitData(const char* desc, int icon_type );
-  //CREATE_FUNC(FSMenuItem);
+  void InitData(int item_type, int data_index);
 };
 

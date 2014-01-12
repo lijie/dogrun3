@@ -1,0 +1,35 @@
+package dogrun2;
+
+enum kItemType{
+    kItemTrain = 0;
+    kItemPlay = 1;
+};
+
+message UIElementFont {
+    required string desc = 1;
+    required string font = 2;
+    required int32 pos_x = 3;
+    required int32 pos_y = 4;
+    required int32 font_size = 5;
+    
+};
+
+message UIElementIcon {
+    required string icon = 1;
+    required int32 pos_x = 2;
+    required int32 pos_y = 3;
+    required int32 scale = 4;
+    
+};
+
+message UIItemConf {
+    required UIElementFont title = 1;
+    required UIElementFont speed = 2;
+    required UIElementFont exp = 3;
+    required UIElementIcon icon = 4;
+    required UIElementFont icon_num = 5;
+};
+
+message UIItemConfArray {
+    repeated UIItemConf conf = 1;
+};

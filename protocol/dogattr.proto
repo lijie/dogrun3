@@ -23,10 +23,13 @@ message FoodConfigArray {
 
 message TrainConfig {
 	required int32 type = 1;
-	required int32 str = 2;
+	required int32 strong = 2;
 	required int32 speed = 3;
-	required int32 intimacy = 4;
 	required int32 exp = 5;
+	required int32 time = 6;
+	required int32 consume_type = 7;
+	required int32 consume_value = 8;
+	required int32 cd = 9;
 };
 
 message TrainConfigArray {

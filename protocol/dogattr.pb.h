@@ -490,12 +490,12 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // required int32 str = 2;
-  inline bool has_str() const;
-  inline void clear_str();
-  static const int kStrFieldNumber = 2;
-  inline ::google::protobuf::int32 str() const;
-  inline void set_str(::google::protobuf::int32 value);
+  // required int32 strong = 2;
+  inline bool has_strong() const;
+  inline void clear_strong();
+  static const int kStrongFieldNumber = 2;
+  inline ::google::protobuf::int32 strong() const;
+  inline void set_strong(::google::protobuf::int32 value);
 
   // required int32 speed = 3;
   inline bool has_speed() const;
@@ -504,13 +504,6 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 speed() const;
   inline void set_speed(::google::protobuf::int32 value);
 
-  // required int32 intimacy = 4;
-  inline bool has_intimacy() const;
-  inline void clear_intimacy();
-  static const int kIntimacyFieldNumber = 4;
-  inline ::google::protobuf::int32 intimacy() const;
-  inline void set_intimacy(::google::protobuf::int32 value);
-
   // required int32 exp = 5;
   inline bool has_exp() const;
   inline void clear_exp();
@@ -518,29 +511,66 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
 
+  // required int32 time = 6;
+  inline bool has_time() const;
+  inline void clear_time();
+  static const int kTimeFieldNumber = 6;
+  inline ::google::protobuf::int32 time() const;
+  inline void set_time(::google::protobuf::int32 value);
+
+  // required int32 consume_type = 7;
+  inline bool has_consume_type() const;
+  inline void clear_consume_type();
+  static const int kConsumeTypeFieldNumber = 7;
+  inline ::google::protobuf::int32 consume_type() const;
+  inline void set_consume_type(::google::protobuf::int32 value);
+
+  // required int32 consume_value = 8;
+  inline bool has_consume_value() const;
+  inline void clear_consume_value();
+  static const int kConsumeValueFieldNumber = 8;
+  inline ::google::protobuf::int32 consume_value() const;
+  inline void set_consume_value(::google::protobuf::int32 value);
+
+  // required int32 cd = 9;
+  inline bool has_cd() const;
+  inline void clear_cd();
+  static const int kCdFieldNumber = 9;
+  inline ::google::protobuf::int32 cd() const;
+  inline void set_cd(::google::protobuf::int32 value);
+
   // @@protoc_insertion_point(class_scope:dogrun2.TrainConfig)
  private:
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_str();
-  inline void clear_has_str();
+  inline void set_has_strong();
+  inline void clear_has_strong();
   inline void set_has_speed();
   inline void clear_has_speed();
-  inline void set_has_intimacy();
-  inline void clear_has_intimacy();
   inline void set_has_exp();
   inline void clear_has_exp();
+  inline void set_has_time();
+  inline void clear_has_time();
+  inline void set_has_consume_type();
+  inline void clear_has_consume_type();
+  inline void set_has_consume_value();
+  inline void clear_has_consume_value();
+  inline void set_has_cd();
+  inline void clear_has_cd();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 type_;
-  ::google::protobuf::int32 str_;
+  ::google::protobuf::int32 strong_;
   ::google::protobuf::int32 speed_;
-  ::google::protobuf::int32 intimacy_;
   ::google::protobuf::int32 exp_;
+  ::google::protobuf::int32 time_;
+  ::google::protobuf::int32 consume_type_;
+  ::google::protobuf::int32 consume_value_;
+  ::google::protobuf::int32 cd_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_dogattr_2eproto();
   friend void protobuf_AssignDesc_dogattr_2eproto();
@@ -1247,26 +1277,26 @@ inline void TrainConfig::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// required int32 str = 2;
-inline bool TrainConfig::has_str() const {
+// required int32 strong = 2;
+inline bool TrainConfig::has_strong() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void TrainConfig::set_has_str() {
+inline void TrainConfig::set_has_strong() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void TrainConfig::clear_has_str() {
+inline void TrainConfig::clear_has_strong() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void TrainConfig::clear_str() {
-  str_ = 0;
-  clear_has_str();
+inline void TrainConfig::clear_strong() {
+  strong_ = 0;
+  clear_has_strong();
 }
-inline ::google::protobuf::int32 TrainConfig::str() const {
-  return str_;
+inline ::google::protobuf::int32 TrainConfig::strong() const {
+  return strong_;
 }
-inline void TrainConfig::set_str(::google::protobuf::int32 value) {
-  set_has_str();
-  str_ = value;
+inline void TrainConfig::set_strong(::google::protobuf::int32 value) {
+  set_has_strong();
+  strong_ = value;
 }
 
 // required int32 speed = 3;
@@ -1291,37 +1321,15 @@ inline void TrainConfig::set_speed(::google::protobuf::int32 value) {
   speed_ = value;
 }
 
-// required int32 intimacy = 4;
-inline bool TrainConfig::has_intimacy() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void TrainConfig::set_has_intimacy() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void TrainConfig::clear_has_intimacy() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void TrainConfig::clear_intimacy() {
-  intimacy_ = 0;
-  clear_has_intimacy();
-}
-inline ::google::protobuf::int32 TrainConfig::intimacy() const {
-  return intimacy_;
-}
-inline void TrainConfig::set_intimacy(::google::protobuf::int32 value) {
-  set_has_intimacy();
-  intimacy_ = value;
-}
-
 // required int32 exp = 5;
 inline bool TrainConfig::has_exp() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void TrainConfig::set_has_exp() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void TrainConfig::clear_has_exp() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void TrainConfig::clear_exp() {
   exp_ = 0;
@@ -1333,6 +1341,94 @@ inline ::google::protobuf::int32 TrainConfig::exp() const {
 inline void TrainConfig::set_exp(::google::protobuf::int32 value) {
   set_has_exp();
   exp_ = value;
+}
+
+// required int32 time = 6;
+inline bool TrainConfig::has_time() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void TrainConfig::set_has_time() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void TrainConfig::clear_has_time() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void TrainConfig::clear_time() {
+  time_ = 0;
+  clear_has_time();
+}
+inline ::google::protobuf::int32 TrainConfig::time() const {
+  return time_;
+}
+inline void TrainConfig::set_time(::google::protobuf::int32 value) {
+  set_has_time();
+  time_ = value;
+}
+
+// required int32 consume_type = 7;
+inline bool TrainConfig::has_consume_type() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void TrainConfig::set_has_consume_type() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void TrainConfig::clear_has_consume_type() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void TrainConfig::clear_consume_type() {
+  consume_type_ = 0;
+  clear_has_consume_type();
+}
+inline ::google::protobuf::int32 TrainConfig::consume_type() const {
+  return consume_type_;
+}
+inline void TrainConfig::set_consume_type(::google::protobuf::int32 value) {
+  set_has_consume_type();
+  consume_type_ = value;
+}
+
+// required int32 consume_value = 8;
+inline bool TrainConfig::has_consume_value() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void TrainConfig::set_has_consume_value() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void TrainConfig::clear_has_consume_value() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void TrainConfig::clear_consume_value() {
+  consume_value_ = 0;
+  clear_has_consume_value();
+}
+inline ::google::protobuf::int32 TrainConfig::consume_value() const {
+  return consume_value_;
+}
+inline void TrainConfig::set_consume_value(::google::protobuf::int32 value) {
+  set_has_consume_value();
+  consume_value_ = value;
+}
+
+// required int32 cd = 9;
+inline bool TrainConfig::has_cd() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void TrainConfig::set_has_cd() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void TrainConfig::clear_has_cd() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void TrainConfig::clear_cd() {
+  cd_ = 0;
+  clear_has_cd();
+}
+inline ::google::protobuf::int32 TrainConfig::cd() const {
+  return cd_;
+}
+inline void TrainConfig::set_cd(::google::protobuf::int32 value) {
+  set_has_cd();
+  cd_ = value;
 }
 
 // -------------------------------------------------------------------

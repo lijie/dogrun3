@@ -108,6 +108,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\protocol\dogattr.pb.cc" />
+    <ClCompile Include="..\protocol\uiconfig.pb.cc" />
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\dog.cpp" />
     <ClCompile Include="..\src\game_scene.cpp" />
@@ -115,10 +116,13 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
     <ClCompile Include="..\src\main.cpp" />
     <ClCompile Include="..\src\menu_items.cpp" />
     <ClCompile Include="..\src\sprites.cpp" />
+    <ClCompile Include="..\src\ui_config_init.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\protocol\dogattr.pb.h" />
+    <ClInclude Include="..\protocol\uiconfig.pb.h" />
     <ClInclude Include="..\src\AppDelegate.h" />
+    <ClInclude Include="..\src\common.h" />
     <ClInclude Include="..\src\dog.h" />
     <ClInclude Include="..\src\event_mgr.h" />
     <ClInclude Include="..\src\game_scene.h" />
@@ -126,6 +130,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
     <ClInclude Include="..\src\main.h" />
     <ClInclude Include="..\src\menu_items.h" />
     <ClInclude Include="..\src\sprites.h" />
+    <ClInclude Include="..\src\ui_config_init.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
