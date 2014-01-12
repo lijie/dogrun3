@@ -42,7 +42,7 @@ bool UserLayer::init() {
 
   mail_menu_ = CCMenu::create( mail_item, NULL);
   mail_menu_->setPosition(ccp(0, 0));
-  CCPoint base_Position = mail_menu_->getPosition();
+  // CCPoint base_Position = mail_menu_->getPosition();
   int base_x = 50; int base_y = 300;
 
   mail_item->setPosition( ccp(base_x, base_y));
@@ -104,7 +104,7 @@ void MainMenuLayer::InitMenuItem() {
   menu_ = CCMenu::create( friend_item, step_item, warehouse_item,
     gold_item, shop_item, reward_item, NULL);
   menu_->setPosition(ccp(0, 0));
-  CCPoint base_Position = menu_->getPosition();
+  // CCPoint base_Position = menu_->getPosition();
   int base_x = 350; int base_y = 40; int delt = 80;
 
   friend_item->setPosition   ( ccp(50,   base_y));

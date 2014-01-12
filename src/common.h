@@ -20,7 +20,7 @@ using google::protobuf::io::ZeroCopyInputStream;
 using google::protobuf::TextFormat;
 using std::string;
 
-static int ParseFromFile(const string& filepath, google::protobuf::Message *output) {
+static inline int ParseFromFile(const string& filepath, google::protobuf::Message *output) {
 #ifdef WIN32
   int fd = _open(filepath.c_str(), _O_RDONLY);
 #else
