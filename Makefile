@@ -1,6 +1,6 @@
 EXECUTABLE = DogRun2
 
-INCLUDES = -I./
+INCLUDES = -I./ -I./dep/protobuf-2.5.0/src
 
 SOURCES = $(wildcard src/*.cpp)
 
