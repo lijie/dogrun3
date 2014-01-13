@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "ui_config_init.h"
 #include "common.h"
 #include "protocol/uiconfig.pb.h"
