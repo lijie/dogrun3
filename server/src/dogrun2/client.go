@@ -36,9 +36,7 @@ const (
 	CLI_PROC_RET_KICK = iota
 )
 
-type ClientProc interface {
-	Proc(*Msg) int
-}
+type ClientProc func(*Msg) int
 
 // cmd proc func array
 var procFuncArray [128]ClientProc
@@ -47,12 +45,23 @@ func init() {
 	for i := 0; i < 128; i++ {
 		procFuncArray[i] = nil
 	}
+
+	// cmd 0 is reserved
+	t := func(msg *Msg) int {
+		return 0
+	}
+
+	ClientProcRegister(0, t)
 }
 
 // Register your client cmd proc function
 func ClientProcRegister(cmd int, proc ClientProc) error {
 	if cmd >= 128 {
 		return errors.New("Command is too big")
+	}
+
+	if procFuncArray[cmd] != nil {
+		return errors.New("Command is already registed")
 	}
 
 	procFuncArray[cmd] = proc
@@ -114,7 +123,7 @@ func (c *Client) procMsg(msg *Msg) {
 	}
 
 	proc := procFuncArray[msg.H.Cmd]
-	ret := proc.Proc(msg)
+	ret := proc(msg)
 
 	// proc error and client should be kick off
 	if ret == CLI_PROC_RET_KICK {
