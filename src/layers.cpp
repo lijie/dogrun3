@@ -22,31 +22,65 @@ bool DogLayer::init() {
 }
 
 void UserLayer::MailClickCallback(CCObject* sender) {
-  int a = 0;
-  a++;
+
+}
+
+void UserLayer::GoldBarClickCallback(CCObject* sender) {
+
+}
+
+void UserLayer::NameClickCallback(CCObject* sender) {
+
 }
 
 bool UserLayer::init() {
   if (!CCLayer::init())
     return false;
 
-  plank_ = CCSprite::create("plank.png");
-  plank_->setAnchorPoint(ccp(0,0));
-  plank_->setPosition(ccp((800-769)/2, 480-122));
-  addChild(plank_, 1);
+  CCSprite* plank_sprite = CCSprite::create("plank.png");
+  plank_sprite->setAnchorPoint(ccp(0,0));
+  plank_sprite->setPosition(ccp((800-769)/2, 480-122));
+  addChild(plank_sprite);
+
+  CCSprite* gold_bar_sprite = CCSprite::create();
+  gold_bar_sprite->initWithSpriteFrameName("gold_bar.png");
+  CCMenuItemSprite* gold_bar_item = CCMenuItemSprite::create(
+    gold_bar_sprite, gold_bar_sprite, gold_bar_sprite, this, menu_selector(UserLayer::GoldBarClickCallback));
+  gold_bar_item->setAnchorPoint(ccp(0,0));
+  gold_bar_item->setPosition(ccp(335,67));
+
+  CCSprite* name_sprite = CCSprite::create();
+  name_sprite->initWithSpriteFrameName("down.png");
+  CCMenuItemSprite* name_item = CCMenuItemSprite::create(
+    name_sprite, name_sprite, name_sprite, this, menu_selector(UserLayer::GoldBarClickCallback));
+  name_item->setAnchorPoint(ccp(0,0));
+  name_item->setPosition(ccp(287,62));
+
+
+  CCSprite* heart_bar = CCSprite::create();
+  heart_bar->initWithSpriteFrameName("like_bar.png");
+  heart_bar->setAnchorPoint(ccp(0,0));
+  heart_bar->setPosition(ccp(610, 67));
+  plank_sprite->addChild(heart_bar, 2);
+
+  CCSprite* heart = CCSprite::create();
+  heart->initWithSpriteFrameName("like.png");
+  heart->setAnchorPoint(ccp(0,0));
+  heart->setPosition(ccp(-15, 0));
+  heart_bar->addChild(heart, 2);
 
   CCSprite* mail_sprite = CCSprite::create();
   mail_sprite->initWithSpriteFrameName("mail.png");
 
   CCMenuItemSprite* mail_item = CCMenuItemSprite::create(
   mail_sprite, mail_sprite, mail_sprite, this, menu_selector(UserLayer::MailClickCallback));
-
-  mail_menu_ = CCMenu::create( mail_item, NULL);
   mail_item->setAnchorPoint(ccp(0,0));
-  mail_menu_->setAnchorPoint(ccp(0, 0));
-  mail_menu_->setPosition(ccp(25, 260));
+  mail_item->setPosition(ccp(0, -80));
 
-  addChild(mail_menu_);
+  menu_ = CCMenu::create(mail_item, gold_bar_item, name_item, NULL);
+  menu_->setAnchorPoint(ccp(0, 0));
+  menu_->setPosition(ccp(0, 0));
+  plank_sprite->addChild(menu_, 1);
   return true;
 }
 

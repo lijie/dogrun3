@@ -45,6 +45,9 @@
     <ClCompile Include="..\src\ui_config_init.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\common.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -74,13 +77,13 @@
     <ClInclude Include="..\protocol\dogattr.pb.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\common.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\src\ui_config_init.h">
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\protocol\uiconfig.pb.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\common.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

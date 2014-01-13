@@ -1,4 +1,6 @@
 #include "ui_config_init.h"
+#include "common.h"
+#include "protocol/uiconfig.pb.h"
 
 static dogrun2::UIItemConfArray *UITrainCfg = NULL;
 static dogrun2::UIItemConfArray *UIPlayCfg = NULL;

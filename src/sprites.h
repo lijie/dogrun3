@@ -4,8 +4,8 @@
 
 USING_NS_CC;
 
-class DogSprite : public CCSprite, public CCTargetedTouchDelegate
-{
+class DogSprite : public CCSprite,
+                  public CCTargetedTouchDelegate {
 public:
     virtual bool init();
     virtual void onEnter();

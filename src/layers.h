@@ -92,8 +92,9 @@ public:
   virtual bool init();
   CREATE_FUNC(UserLayer);
   void MailClickCallback(CCObject* sender);
+  void GoldBarClickCallback(CCObject* sender);
+  void NameClickCallback(CCObject* sender);
 protected:
-  CCSprite *plank_;
-  CCMenu *mail_menu_;
+  CCMenu *menu_;
 };
 
