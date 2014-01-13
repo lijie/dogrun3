@@ -91,7 +91,7 @@ class UserLayer : public CCLayer {
 public:
   virtual bool init();
   CREATE_FUNC(UserLayer);
-  void MenuClickCallback(CCObject* sender);
+  void MailClickCallback(CCObject* sender);
 protected:
   CCSprite *plank_;
   CCMenu *mail_menu_;

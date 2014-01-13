@@ -21,7 +21,7 @@ bool DogLayer::init() {
   return true;
 }
 
-void UserLayer::MenuClickCallback(CCObject* sender) {
+void UserLayer::MailClickCallback(CCObject* sender) {
   int a = 0;
   a++;
 }
@@ -31,21 +31,20 @@ bool UserLayer::init() {
     return false;
 
   plank_ = CCSprite::create("plank.png");
-  plank_->setPosition(ccp(400, 480 - 61));
-  this->addChild(plank_, 1);
+  plank_->setAnchorPoint(ccp(0,0));
+  plank_->setPosition(ccp((800-769)/2, 480-122));
+  addChild(plank_, 1);
 
   CCSprite* mail_sprite = CCSprite::create();
   mail_sprite->initWithSpriteFrameName("mail.png");
 
   CCMenuItemSprite* mail_item = CCMenuItemSprite::create(
-  mail_sprite, mail_sprite, mail_sprite, this, menu_selector(UserLayer::MenuClickCallback));
+  mail_sprite, mail_sprite, mail_sprite, this, menu_selector(UserLayer::MailClickCallback));
 
   mail_menu_ = CCMenu::create( mail_item, NULL);
-  mail_menu_->setPosition(ccp(0, 0));
-  // CCPoint base_Position = mail_menu_->getPosition();
-  int base_x = 50; int base_y = 300;
-
-  mail_item->setPosition( ccp(base_x, base_y));
+  mail_item->setAnchorPoint(ccp(0,0));
+  mail_menu_->setAnchorPoint(ccp(0, 0));
+  mail_menu_->setPosition(ccp(25, 260));
 
   addChild(mail_menu_);
   return true;
