@@ -1,6 +1,9 @@
 #ifndef  __DOGRUN2_UI_CINFIG_INIT__
 #define  __DOGRUN2_UI_CINFIG_INIT__
-#include "protocol/uiconfig.pb.h"
+
+namespace dogrun2 {
+  class UIItemConfArray;
+}
 
 dogrun2::UIItemConfArray* GetUITrainCfg();
 dogrun2::UIItemConfArray* GetUIPlayCfg();

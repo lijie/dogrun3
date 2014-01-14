@@ -4,3 +4,9 @@
 /dep/protobuf-2.5.0/vsprojects/Debug.win32
 /DogRun.opensdf
 /DogRun.v11.suo
+/Release.win32
+/Release
+/dep/protobuf-2.5.0/vsprojects/Release
+/dep/protobuf-2.5.0/vsprojects/Release.win32
+/Test1/Release
+/Test1/Release.win32

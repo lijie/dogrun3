@@ -1,5 +1,6 @@
 #include "menu_items.h"
 #include "ui_config_init.h"
+#include "protocol/uiconfig.pb.h"
 
 bool ClockMenuItem::init() {
   return CCMenuItemSprite::init();

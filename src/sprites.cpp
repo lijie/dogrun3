@@ -76,3 +76,29 @@ void DogSprite::onExit() {
   CCSprite::onExit();
 } 
 
+bool HeartBarSprite::init() {
+  heart_mid_ = CCSprite::create();
+  heart_mid_->initWithSpriteFrameName("like_mid.png");
+  heart_mid_->setAnchorPoint(ccp(0,0));
+  heart_mid_->setPosition(ccp(10, 2));
+  heart_mid_->setScaleX(float(4/4));
+  addChild(heart_mid_, 1);
+
+  CCSprite* heart_right = CCSprite::create();
+  heart_right->initWithSpriteFrameName("like_right.png");
+  heart_right->setAnchorPoint(ccp(0,0));
+  heart_right->setPosition(ccp(14, 2));
+  return 0;
+}
+
+void HeartBarSprite::SetHeartBar(int cur_num, int max_num) {
+  if(max_num > 0) {
+    max_num_ = max_num;
+  }
+
+  cur_num_ = cur_num;
+
+
+
+}
+
