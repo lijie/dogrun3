@@ -5,22 +5,33 @@ import "fmt"
 import "os"
 import "time"
 import "errors"
+import "io"
 import proto "code.google.com/p/goprotobuf/proto"
 import "dogrun2cs"
+
+var ErrReadPacket = errors.New("Read packet from client error")
+var ErrUnmarshalMessage = errors.New("Unmarshal protobuff message error")
+var ErrInvalidHeader = errors.New("Invalid message header")
+
+const (
+	Dogrun2ProtoMagic = 0x20140114
+)
 
 // each client has a Client object
 // we can pre-alloc many Client objects for performance
 type Client struct {
-	conn *net.TCPConn
-	enable bool
+	U User
+	Conn *net.TCPConn
+	Enable bool
 }
 
 // Header for client request packet
 type Header struct {
-	Magic int
-	Cmd int
-	Seq int
-	Err int
+	Magic uint32
+	Cmd uint32
+	Seq uint32
+	Err uint32
+	Size uint32
 	Userid string
 }
 
@@ -36,7 +47,7 @@ const (
 	CLI_PROC_RET_KICK = iota
 )
 
-type ClientProc func(*Msg) int
+type ClientProc func(*Client, *Msg) int
 
 // cmd proc func array
 var procFuncArray [128]ClientProc
@@ -47,7 +58,7 @@ func init() {
 	}
 
 	// cmd 0 is reserved
-	t := func(msg *Msg) int {
+	t := func(c *Client, msg *Msg) int {
 		return 0
 	}
 
@@ -82,7 +93,7 @@ func (c *Client) Proc() {
 	req_chan := make(chan *Msg, 1)
 	// read request from client
 	// process req and send rsp
-	for c.enable {
+	for c.Enable {
 		select {
 		case msg := <-c.readMsg(req_chan):
 			c.procMsg(msg)
@@ -96,17 +107,13 @@ func (c *Client) Proc() {
 
 // read packet from tcp conn
 func (c *Client) readMsg(req_chan chan *Msg) chan *Msg {
-	var msg Msg
-
-	// protobuf test
-	r := dogrun2cs.DogFeedReq {
-		Dogid: proto.Int32(1),
-		Feedtype: proto.Int32(2),
+	if msg, err := readPacket(c.Conn); err != nil {
+		// if readPacket err, close client
+		c.Enable = false
+		req_chan <- nil
+	} else {
+		req_chan <- msg
 	}
-
-	msg.M = &r
-	req_chan <- &msg
-	c.enable = false
 	return req_chan
 }
 
@@ -123,29 +130,80 @@ func (c *Client) procMsg(msg *Msg) {
 	}
 
 	proc := procFuncArray[msg.H.Cmd]
-	ret := proc(msg)
+	ret := proc(c, msg)
 
 	// proc error and client should be kick off
 	if ret == CLI_PROC_RET_KICK {
-		c.enable = false
+		c.Enable = false
 	}
 }
 
 // heartbeat timeout
 func (c *Client) procTimeout() {
-	c.enable = false
+	c.Enable = false
 }
 
 // client current client
 func (c *Client) Close() {
-	if c.conn != nil {
-		c.conn.Close()
+	if c.Conn != nil {
+		c.Conn.Close()
 	}
 }
 
 func NewClient(conn *net.TCPConn) *Client {
 	return &Client{
-		conn: conn,
-		enable: true,
+		Conn: conn,
+		Enable: true,
 	}
+}
+
+const (
+	HeaderSize = 20 + 64
+)
+
+func parseUint32(buf []byte) uint32 {
+	return uint32(buf[0]) << 24 | uint32(buf[1]) << 16 | uint32(buf[2]) << 8 | uint32(buf[0])
+}
+
+func parseHeader(buf []byte, h *Header) error {
+	h.Magic = parseUint32(buf[0:4])
+	if h.Magic != Dogrun2ProtoMagic {
+		return ErrInvalidHeader
+	}
+	h.Cmd = parseUint32(buf[4:8])
+	if h.Cmd >= 128 {
+		return ErrInvalidHeader
+	}
+	h.Seq = parseUint32(buf[8:12])
+	h.Err = parseUint32(buf[12:16])
+	h.Size = parseUint32(buf[16:20])
+	h.Userid = string(buf[20:])
+	return nil
+}
+
+func readPacket(conn *net.TCPConn) (*Msg, error) {
+	var hbuf [HeaderSize]byte
+
+	n, err := io.ReadFull(conn, hbuf[0:])
+	if n != HeaderSize || err != nil {
+		return nil, ErrReadPacket
+	}
+
+	msg := Msg{}
+	if err = parseHeader(hbuf[0:], &msg.H); err != nil {
+		return nil, err
+	}
+
+	bodysize := int(msg.H.Size - HeaderSize)
+	body := make([]byte, bodysize)
+	n, err = io.ReadFull(conn, body)
+	if n != bodysize || err != nil {
+		return nil, ErrReadPacket
+	}
+
+	if err = proto.Unmarshal(body, msg.M); err != nil {
+		return nil, ErrUnmarshalMessage
+	}
+
+	return &msg, nil
 }
