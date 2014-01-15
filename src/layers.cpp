@@ -52,7 +52,7 @@ bool UserLayer::init() {
   char num[32] = {0};
   snprintf(num,sizeof(num),"%d", 10241024);
   gold_num_ = CCLabelTTF::create( num, "Arial", 24);
-  CCSize size = gold_num_->getContentSize();
+  // CCSize size = gold_num_->getContentSize();
   //gold_num_->setAnchorPoint(ccp(size.width, 0));
   gold_num_->setAnchorPoint(ccp(0, 0));
   gold_num_->setPosition(ccp(90, 4));
