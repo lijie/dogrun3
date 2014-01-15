@@ -34,7 +34,10 @@ public:
                              CCNode *disabledSprite, 
                              CCObject *target, 
                              SEL_MenuHandler selector);
-
+  void ItemClickCallback(CCObject* sender);
   void InitData(int item_type, int data_index);
+protected:
+  int item_type_;
+  int data_index_;
 };
 

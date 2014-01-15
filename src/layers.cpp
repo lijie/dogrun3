@@ -254,6 +254,7 @@ void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
 }
 
 void TrainMenuLayer::Train1ItemClickCallback(CCObject* sender) {
+
 }
 
 void TrainMenuLayer::Train2ItemClickCallback(CCObject* sender) {

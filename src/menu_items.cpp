@@ -1,6 +1,7 @@
 #include "menu_items.h"
 #include "ui_config_init.h"
 #include "protocol/uiconfig.pb.h"
+#include "dog.h"
 
 bool ClockMenuItem::init() {
   return CCMenuItemSprite::init();
@@ -33,7 +34,7 @@ FSMenuItem* FSMenuItem::create(CCNode *normalSprite,
   return ret;
 }
 
-void FSMenuItem::InitData(int item_type, int data_index ) {
+void FSMenuItem::InitData(int item_type, int data_index) {
   const dogrun2::UIItemConf* cfg = NULL;
   switch(item_type) {
   case dogrun2::kItemTrain:
@@ -49,6 +50,8 @@ void FSMenuItem::InitData(int item_type, int data_index ) {
   default:
     return;
   }
+  item_type_ = item_type;
+  data_index_ = data_index;
 
   CCLabelTTF *label_desc = CCLabelTTF::create(
     cfg->title().desc().c_str(),
@@ -90,5 +93,15 @@ void FSMenuItem::InitData(int item_type, int data_index ) {
   label_icon_num->setPosition(ccp(cfg->icon_num().pos_x(), cfg->icon_num().pos_y()));
 
   return ;
+}
+
+void FSMenuItem::ItemClickCallback(CCObject* sender) {
+  int ret = 0;
+  ret = User::current()->dogs(0)->Train(this->data_index_);
+  if(ret >= 0) {
+    //setNormalImage(normalSprite);
+    //setSelectedImage(selectedSprite);
+    //setDisabledImage(disabledSprite);
+  }
 }
 
