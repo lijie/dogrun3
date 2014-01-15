@@ -104,6 +104,13 @@ void HeartProgressBar::CreateSprite(CCNode* parent) {
   heart_right_->setAnchorPoint(ccp(0,0));
   heart_right_->setVisible(false);
   parent->addChild(heart_right_, 1);
+
+  char num[32] = {0};
+  snprintf(num,sizeof(num),"%d", 1024);
+  heart_num_ = 
+    CCLabelTTF::create( num, "Arial", 24);
+  parent->addChild(heart_num_, 3);
+  heart_num_->setPosition(ccp(70, 20));
 }
 
 void HeartProgressBar::SetHeartProgressBar(float cur_num) {

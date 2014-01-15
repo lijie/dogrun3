@@ -49,13 +49,36 @@ bool UserLayer::init() {
   gold_bar_item->setAnchorPoint(ccp(0,0));
   gold_bar_item->setPosition(ccp(335,67));
 
-  CCSprite* name_sprite = CCSprite::create();
-  name_sprite->initWithSpriteFrameName("down.png");
-  CCMenuItemSprite* name_item = CCMenuItemSprite::create(
-    name_sprite, name_sprite, name_sprite, this, menu_selector(UserLayer::GoldBarClickCallback));
-  name_item->setAnchorPoint(ccp(0,0));
-  name_item->setPosition(ccp(287,62));
+  char num[32] = {0};
+  snprintf(num,sizeof(num),"%d", 10241024);
+  gold_num_ = CCLabelTTF::create( num, "Arial", 24);
+  CCSize size = gold_num_->getContentSize();
+  //gold_num_->setAnchorPoint(ccp(size.width, 0));
+  gold_num_->setAnchorPoint(ccp(0, 0));
+  gold_num_->setPosition(ccp(90, 4));
+  gold_bar_item->addChild(gold_num_, 3);
 
+  CCSprite* achievement_sprite = CCSprite::create();
+  achievement_sprite->initWithSpriteFrameName("down.png");
+  CCMenuItemSprite* achievement_item = CCMenuItemSprite::create(
+    achievement_sprite, achievement_sprite, achievement_sprite, 
+    this, menu_selector(UserLayer::GoldBarClickCallback));
+  achievement_item->setAnchorPoint(ccp(0,0));
+  achievement_item->setPosition(ccp(287,62));
+
+  char achievement_str[32] = {0};
+  snprintf(achievement_str,sizeof(achievement_str),"%s", "吉娃娃饲养家");
+  CCLabelTTF* achievement_desc = CCLabelTTF::create( achievement_str, "Arial", 20);
+  achievement_desc->setAnchorPoint(ccp(0, 0));
+  achievement_desc->setPosition(ccp(150, 62));
+  plank_sprite->addChild(achievement_desc, 3);
+
+  char name_str[32] = {0};
+  snprintf(name_str,sizeof(name_str),"%s", "clowl");
+  CCLabelTTF* name_desc = CCLabelTTF::create( name_str, "Arial", 20);
+  name_desc->setAnchorPoint(ccp(0, 0));
+  name_desc->setPosition(ccp(150, 92));
+  plank_sprite->addChild(name_desc, 3);
 
   CCSprite* heart_bar = CCSprite::create();
   heart_bar->initWithSpriteFrameName("like_bar.png");
@@ -81,7 +104,7 @@ bool UserLayer::init() {
   mail_item->setAnchorPoint(ccp(0,0));
   mail_item->setPosition(ccp(0, -80));
 
-  menu_ = CCMenu::create(mail_item, gold_bar_item, name_item, NULL);
+  menu_ = CCMenu::create(mail_item, gold_bar_item, achievement_item, NULL);
   menu_->setAnchorPoint(ccp(0, 0));
   menu_->setPosition(ccp(0, 0));
   plank_sprite->addChild(menu_, 1);

@@ -40,6 +40,7 @@ protected:
   CCSprite* heart_left_;
   CCSprite* heart_mid_;
   CCSprite* heart_right_;
+  CCLabelTTF* heart_num_;
 };
 
 
