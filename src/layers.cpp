@@ -69,6 +69,10 @@ bool UserLayer::init() {
   heart->setPosition(ccp(-15, 0));
   heart_bar->addChild(heart, 2);
 
+  heart_progress_bar_.SetMaxNum(2000);
+  heart_progress_bar_.CreateSprite(heart_bar);
+  heart_progress_bar_.SetHeartProgressBar(1000);
+
   CCSprite* mail_sprite = CCSprite::create();
   mail_sprite->initWithSpriteFrameName("mail.png");
 

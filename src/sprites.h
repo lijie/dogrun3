@@ -29,14 +29,15 @@ protected:
   bool ability_status_;
 };
 
-class HeartBarSprite : public CCSprite {
+class HeartProgressBar{
 public:
-  virtual bool init();
-  void SetHeartBar(int cur_num, int max_num);
-  CREATE_FUNC(HeartBarSprite);
+  HeartProgressBar(){};
+  void SetMaxNum(int max_num);
+  void SetHeartProgressBar(float cur_num);
+  void CreateSprite(CCNode* parent);
 protected:
-  int max_num_;
-  int cur_num_;
+  float max_num_;
+  CCSprite* heart_left_;
   CCSprite* heart_mid_;
   CCSprite* heart_right_;
 };

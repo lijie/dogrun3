@@ -76,29 +76,59 @@ void DogSprite::onExit() {
   CCSprite::onExit();
 } 
 
-bool HeartBarSprite::init() {
-  heart_mid_ = CCSprite::create();
-  heart_mid_->initWithSpriteFrameName("like_mid.png");
-  heart_mid_->setAnchorPoint(ccp(0,0));
-  heart_mid_->setPosition(ccp(10, 2));
-  heart_mid_->setScaleX(float(4/4));
-  addChild(heart_mid_, 1);
-
-  CCSprite* heart_right = CCSprite::create();
-  heart_right->initWithSpriteFrameName("like_right.png");
-  heart_right->setAnchorPoint(ccp(0,0));
-  heart_right->setPosition(ccp(14, 2));
-  return 0;
+void HeartProgressBar::SetMaxNum(int max_num) {
+  max_num_ = max_num;
 }
 
-void HeartBarSprite::SetHeartBar(int cur_num, int max_num) {
-  if(max_num > 0) {
-    max_num_ = max_num;
+void HeartProgressBar::CreateSprite(CCNode* parent) {
+  heart_left_ = CCSprite::create();
+  heart_left_->initWithSpriteFrameName("like_left.png");
+  heart_left_->setAnchorPoint(ccp(0,0));
+  heart_left_->setPosition(ccp(2, 2));
+  parent->addChild(heart_left_, 1);
+
+  int heart_left_width = heart_left_->getTextureRect().size.width;
+  heart_mid_ = CCSprite::create();
+  //heart_mid_->initWithFile("like_mid.png");
+  heart_mid_->initWithSpriteFrameName("like_mid.png");
+  heart_mid_->setAnchorPoint(ccp(0,0));
+  heart_mid_->setPosition(ccp(heart_left_width +2, 2));
+  heart_mid_->setVisible(false);
+  //heart_mid_->setScaleX(float(4/4));
+  ccTexParams params = { GL_LINEAR, GL_LINEAR, GL_REPEAT, GL_REPEAT};
+  heart_mid_->getTexture()->setTexParameters(&params);
+  parent->addChild(heart_mid_, 1);
+
+  heart_right_ = CCSprite::create();
+  heart_right_->initWithSpriteFrameName("like_right.png");
+  heart_right_->setAnchorPoint(ccp(0,0));
+  heart_right_->setVisible(false);
+  parent->addChild(heart_right_, 1);
+}
+
+void HeartProgressBar::SetHeartProgressBar(float cur_num) {
+  float scalex = ((cur_num*(104/max_num_)))/4;
+  heart_mid_->setScaleX(scalex);
+  heart_mid_->setVisible(true);
+  int heart_right_width = heart_right_->getTextureRect().size.width;
+  if(cur_num > heart_right_width) {
+    heart_right_->setVisible(true);
+    int mid_real_width = heart_mid_->getContentSize().width * scalex;
+    int heart_left_width = heart_left_->getTextureRect().size.width;
+    heart_right_->setPosition(ccp(mid_real_width + heart_left_width, 2));
+    //heart_right_->setPosition(ccp(122, 2));
   }
 
-  cur_num_ = cur_num;
-
-
+  //float mid_real_width = cur_num*(104/max_num_);
+  //CCRect rect(0, 0, mid_real_width, 36);
+  //heart_mid_->setVisible(true);
+  //heart_mid_->setTextureRect(rect);
+  //int heart_right_width = heart_right_->getTextureRect().size.width;
+  //if(cur_num > heart_right_width) {
+  //  int heart_left_width = heart_left_->getTextureRect().size.width;
+  //  heart_right_->setVisible(true);
+  //  heart_right_->setPosition(ccp(mid_real_width + heart_left_width+2, 2));
+  //}
 
 }
 

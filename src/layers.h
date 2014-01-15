@@ -95,6 +95,7 @@ public:
   void GoldBarClickCallback(CCObject* sender);
   void NameClickCallback(CCObject* sender);
 protected:
+  HeartProgressBar heart_progress_bar_;
   CCMenu *menu_;
 };
 
