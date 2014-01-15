@@ -95,13 +95,10 @@ void FSMenuItem::InitData(int item_type, int data_index) {
   return ;
 }
 
-void FSMenuItem::ItemClickCallback(CCObject* sender) {
+void FSMenuItem::ItemClickCallback() {
   int ret = 0;
   ret = User::current()->dogs(0)->Train(this->data_index_);
   if(ret >= 0) {
-    //setNormalImage(normalSprite);
-    //setSelectedImage(selectedSprite);
-    //setDisabledImage(disabledSprite);
   }
 }
 

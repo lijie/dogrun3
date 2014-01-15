@@ -64,9 +64,12 @@ public:
 
 protected:
   void InitMenuItem();
-
+  void CreateTraining();
+  void CreateTrainDone();
 protected:
   CCMenu *menu_;
+  CCSprite* training_sprite_;
+  CCSprite* traindone_sprite_;
 };
 
 class PlayMenuLayer : public CCLayer {

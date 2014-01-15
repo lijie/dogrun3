@@ -249,21 +249,41 @@ void DogMenuLayer::InitMenuItem() {
   addChild(menu_);
 }
 
+void TrainMenuLayer::CreateTraining() {
+  training_sprite_ = CCSprite::create();
+  training_sprite_->initWithSpriteFrameName("training.png");
+}
+
+void TrainMenuLayer::CreateTrainDone() {
+  traindone_sprite_ = CCSprite::create();
+  traindone_sprite_->initWithSpriteFrameName("train_done.png");
+}
+
 void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
   EventMgr::Instance().Response(4);
 }
 
 void TrainMenuLayer::Train1ItemClickCallback(CCObject* sender) {
+  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->ItemClickCallback();
 
+  training_sprite_ = CCSprite::create();
+  training_sprite_->initWithSpriteFrameName("training.png");
+
+  CCPoint point = ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->getPosition();
+  training_sprite_->setPosition(point);
+  //menu_->addChild();
 }
 
 void TrainMenuLayer::Train2ItemClickCallback(CCObject* sender) {
+  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->ItemClickCallback();
 }
 
 void TrainMenuLayer::Train3ItemClickCallback(CCObject* sender) {
+  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(2)))->ItemClickCallback();
 }
 
 void TrainMenuLayer::Train4ItemClickCallback(CCObject* sender) {
+  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(3)))->ItemClickCallback();
 }
 
 bool TrainMenuLayer::init() {
