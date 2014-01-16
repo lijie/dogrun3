@@ -93,15 +93,39 @@ void FSMenuItem::InitData(int item_type, int data_index) {
   label_icon_num->setAnchorPoint(ccp(0,0));
   label_icon_num->setPosition(ccp(cfg->icon_num().pos_x(), cfg->icon_num().pos_y()));
 
+  label_cd_time_ = CCLabelTTF::create(
+    "",
+    cfg->icon_num().font().c_str(),
+    cfg->icon_num().font_size());
+  addChild(label_cd_time_, 1);
+  label_cd_time_->setAnchorPoint(ccp(0,0));
+  label_cd_time_->setPosition(ccp(cfg->icon_num().pos_x() + 50, cfg->icon_num().pos_y()));
+  label_cd_time_->setVisible(true);
+
   return ;
+}
+
+void FSMenuItem::OnTime(float cd_time) {
+  if(--cd_time_ > 0) {
+    label_cd_time_->setVisible(true);
+    char cd_time_str[32] = {0};
+    snprintf(cd_time_str,sizeof(cd_time_str),"%d", (int)cd_time_);
+    label_cd_time_->setString(cd_time_str);
+  }
+  else
+  {
+    label_cd_time_->setVisible(false);
+  }
 }
 
 void FSMenuItem::ItemClickCallback() {
   int ret = 0;
-  ret = User::current()->dogs(0)->Train(this->data_index_);
+  ret = User::current()->dogs(0)->Train(data_index_);
   if(ret >= 0) {
     EventMgr::Instance().Response(kEventDogAttrChange);
     EventMgr::Instance().Response(kEventUserInfoChange);
+    cd_time_ = User::current()->dogs(0)->remain_time(kTrainCD);
+    schedule(schedule_selector(FSMenuItem::OnTime), 1.0f, cd_time_, 1.0f);
   }
 }
 

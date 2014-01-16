@@ -78,6 +78,7 @@ public:
   User *owner();
 
   void set_owner(User *owner) {owner_ = owner;}
+  time_t remain_time(int type){return cd_[kTrainCD] - time(NULL);};
 protected:
   DogAttr attr_;
   time_t cd_[kOperationCDNR];

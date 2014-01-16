@@ -38,7 +38,7 @@ int Dog::Train(int traintype) {
   const dogrun2::TrainConfig& cfg = TrainCfg->cfg(traintype);
   attr_.set_speed(attr_.speed() + cfg.speed());
   attr_.set_exp(attr_.exp() + cfg.exp());
-  cd_[kTrainCD] = now + kDefaultTrainCD; 
+  cd_[kTrainCD] = now + cfg.cd();
   owner_->set_money(owner_->money() - cfg.consume_gold());
   owner_->set_heart(owner_->heart() - cfg.consume_heart());
   return 0;

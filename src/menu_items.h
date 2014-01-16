@@ -35,9 +35,12 @@ public:
                              CCObject *target, 
                              SEL_MenuHandler selector);
   void ItemClickCallback();
+  void OnTime(float cd_time);
   void InitData(int item_type, int data_index);
 protected:
   int item_type_;
   int data_index_;
+  float cd_time_;
+  CCLabelTTF *label_cd_time_;
 };
 
