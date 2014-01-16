@@ -11,9 +11,11 @@ enum Command {
      kCmdDogTrainRsp = 8;
      kCmdDogPlayReq = 9;
      kCmdDogPlayRsp = 10;
+     kCmdSvrErrNtf = 11;
 };
 
 message UserLoginReq {
+	required string userid = 1;
 };
 
 message UserLoginRsp {
@@ -50,3 +52,7 @@ message UserInfo {
 
 message DogInfo {
 };
+
+message SvrErrNtf {
+	required string message = 1;
+}

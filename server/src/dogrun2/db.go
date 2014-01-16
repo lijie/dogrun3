@@ -27,6 +27,7 @@ func ConnectMongo(ip string) error {
 	if err != nil {
 		return err
 	}
+	session.SetMode(mgo.Monotonic, true)
 	mongodbSession = session
 	return nil
 }

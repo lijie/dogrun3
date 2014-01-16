@@ -13,6 +13,9 @@ func clientRequest(conn *net.TCPConn) {
 func main() {
 	fmt.Printf("Start Server...\n")
 
+	// init db
+	dogrun2.ConnectMongo("127.0.0.1")
+
 	// TODO: move to args or config file
 	service := ":20000"
 

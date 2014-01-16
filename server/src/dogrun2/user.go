@@ -1,16 +1,22 @@
 package dogrun2
 
 import "errors"
+import "log"
+import "dogrun2cs"
+import "labix.org/v2/mgo"
+import "labix.org/v2/mgo/bson"
+import proto "code.google.com/p/goprotobuf/proto"
 
 func init() {
 	// register login cmd
-	ClientProcRegister(1, ProcUserLogin)
+	ClientProcRegister(int(dogrun2cs.Command_kCmdUserLoginReq), ProcUserLogin)
 }
 
 // user in memory
 type User struct {
 	ready bool
 	c *Client
+	udb UserDb
 }
 
 // user in database
@@ -38,7 +44,16 @@ type UserDb struct {
 	LastLogin uint32
 }
 
-func (u *User) Load() error {
+func (u *User) Load(userid string) error {
+	c := SharedDBSession().DB("dogrun2").C("user")
+	err := c.Find(bson.M{"_id": userid}).One(&u.udb)
+	if err == mgo.ErrNotFound {
+		u.udb.UserId = userid
+	} else if err != nil {
+		log.Println(err)
+		return err
+	}
+	u.ready = true
 	return nil
 }
 
@@ -55,8 +70,8 @@ func (u *User) Logout() {
 	u.ready = false
 }
 
-func (u *User) Login() error {
-	if err := u.Load(); err != nil {
+func (u *User) Login(userid string) error {
+	if err := u.Load(userid); err != nil {
 		return errors.New("DBError")
 	}
 
@@ -81,7 +96,12 @@ func ProcUserLogin(c *Client, msg *Msg) int {
 
 	// TODO: check if user already login in other server
 
-	if err := c.U.Login(); err != nil {
+	var req dogrun2cs.UserLoginReq
+	if err := proto.Unmarshal(msg.Body, &req); err != nil {
+		return CLI_PROC_RET_KICK
+	}
+
+	if err := c.U.Login(req.GetUserid()); err != nil {
 		return CLI_PROC_RET_KICK
 	}
 
