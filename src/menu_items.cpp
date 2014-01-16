@@ -2,6 +2,7 @@
 #include "ui_config_init.h"
 #include "protocol/uiconfig.pb.h"
 #include "dog.h"
+#include "event_mgr.h"
 
 bool ClockMenuItem::init() {
   return CCMenuItemSprite::init();
@@ -99,7 +100,8 @@ void FSMenuItem::ItemClickCallback() {
   int ret = 0;
   ret = User::current()->dogs(0)->Train(this->data_index_);
   if(ret >= 0) {
-
+    EventMgr::Instance().Response(kEventDogAttrChange);
+    EventMgr::Instance().Response(kEventUserInfoChange);
   }
 }
 

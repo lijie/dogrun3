@@ -36,9 +36,9 @@ class User {
 public:
   // attr
   const string& id() {return id_;};
-  const string& title();
-  int money();
-  int heart();
+  const string& title(){return title_;};
+  int money(){return money_;};
+  int heart(){return heart_;};
 
   static User *current() {return current_;};
   static void InitCurrent();

@@ -20,6 +20,7 @@ public:
   virtual void touchDelegateRelease();
   bool containsTouchLocation(CCTouch* touch);
 
+  void DogAttrChangeCallBack(CCObject* sender);
   CREATE_FUNC(DogSprite);
 protected:
   CCPoint last_xy_;
@@ -34,8 +35,10 @@ class DogAttrPanelSprite : public CCSprite {
 public:
   virtual bool init();
   CREATE_FUNC(DogAttrPanelSprite);
+  void UpdateAttr();
 protected:
   Dog* dog_;
+  CCLabelTTF* label_dog_name_;
   CCLabelTTF* label_dog_lv_;
   CCLabelTTF* label_dog_strong_;
   CCLabelTTF* label_dog_speed_;

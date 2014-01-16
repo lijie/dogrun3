@@ -97,7 +97,9 @@ public:
   void MailClickCallback(CCObject* sender);
   void GoldBarClickCallback(CCObject* sender);
   void NameClickCallback(CCObject* sender);
+  void UpdataUserInfo(CCObject* sender);
 protected:
+  User* user_;
   HeartProgressBar heart_progress_bar_;
   CCLabelTTF* gold_num_;
   CCMenu *menu_;

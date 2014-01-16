@@ -129,8 +129,8 @@ void protobuf_AssignDesc_dogattr_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, speed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, time_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_value_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_heart_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_gold_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, cd_),
   };
   TrainConfig_reflection_ =
@@ -285,17 +285,17 @@ void protobuf_AddDesc_dogattr_2eproto() {
     "(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017FoodConfigArray\022 \n\003cf"
     "g\030\001 \003(\0132\023.dogrun2.FoodConfig\"\216\001\n\013TrainCo"
     "nfig\022\014\n\004type\030\001 \002(\005\022\016\n\006strong\030\002 \002(\005\022\r\n\005sp"
-    "eed\030\003 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004time\030\006 \002(\005\022\024\n\014"
-    "consume_type\030\007 \002(\005\022\025\n\rconsume_value\030\010 \002("
+    "eed\030\003 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004time\030\006 \002(\005\022\025\n\r"
+    "consume_heart\030\007 \002(\005\022\024\n\014consume_gold\030\010 \002("
     "\005\022\n\n\002cd\030\t \002(\005\"5\n\020TrainConfigArray\022!\n\003cfg"
     "\030\001 \003(\0132\024.dogrun2.TrainConfig\"U\n\nPlayConf"
     "ig\022\014\n\004type\030\001 \002(\005\022\013\n\003str\030\002 \002(\005\022\r\n\005speed\030\003"
     " \002(\005\022\020\n\010intimacy\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017P"
     "layConfigArray\022 \n\003cfg\030\001 \003(\0132\023.dogrun2.Pl"
-    "ayConfig\"x\n\007DogAttr\022\014\n\004name\030\001 \002(\t\022\n\n\002lv\030"
-    "\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\014\n\004star\030\004 \002(\005\022\013\n\003str\030"
-    "\005 \002(\005\022\r\n\005speed\030\006 \002(\005\022\020\n\010intimacy\030\007 \002(\005\022\n"
-    "\n\002id\030\010 \002(\005", 730);
+    "ayConfig\"{\n\007DogAttr\022\014\n\004name\030\001 \002(\t\022\r\n\002lv\030"
+    "\002 \002(\005:\0011\022\013\n\003exp\030\003 \002(\005\022\014\n\004star\030\004 \002(\005\022\013\n\003s"
+    "tr\030\005 \002(\005\022\r\n\005speed\030\006 \002(\005\022\020\n\010intimacy\030\007 \002("
+    "\005\022\n\n\002id\030\010 \002(\005", 733);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dogattr.proto", &protobuf_RegisterTypes);
   DogLevelConfig::default_instance_ = new DogLevelConfig();
@@ -1364,8 +1364,8 @@ const int TrainConfig::kStrongFieldNumber;
 const int TrainConfig::kSpeedFieldNumber;
 const int TrainConfig::kExpFieldNumber;
 const int TrainConfig::kTimeFieldNumber;
-const int TrainConfig::kConsumeTypeFieldNumber;
-const int TrainConfig::kConsumeValueFieldNumber;
+const int TrainConfig::kConsumeHeartFieldNumber;
+const int TrainConfig::kConsumeGoldFieldNumber;
 const int TrainConfig::kCdFieldNumber;
 #endif  // !_MSC_VER
 
@@ -1390,8 +1390,8 @@ void TrainConfig::SharedCtor() {
   speed_ = 0;
   exp_ = 0;
   time_ = 0;
-  consume_type_ = 0;
-  consume_value_ = 0;
+  consume_heart_ = 0;
+  consume_gold_ = 0;
   cd_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
@@ -1433,8 +1433,8 @@ void TrainConfig::Clear() {
     speed_ = 0;
     exp_ = 0;
     time_ = 0;
-    consume_type_ = 0;
-    consume_value_ = 0;
+    consume_heart_ = 0;
+    consume_gold_ = 0;
     cd_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1522,35 +1522,35 @@ bool TrainConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(56)) goto parse_consume_type;
+        if (input->ExpectTag(56)) goto parse_consume_heart;
         break;
       }
 
-      // required int32 consume_type = 7;
+      // required int32 consume_heart = 7;
       case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_consume_type:
+         parse_consume_heart:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &consume_type_)));
-          set_has_consume_type();
+                 input, &consume_heart_)));
+          set_has_consume_heart();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(64)) goto parse_consume_value;
+        if (input->ExpectTag(64)) goto parse_consume_gold;
         break;
       }
 
-      // required int32 consume_value = 8;
+      // required int32 consume_gold = 8;
       case 8: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_consume_value:
+         parse_consume_gold:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &consume_value_)));
-          set_has_consume_value();
+                 input, &consume_gold_)));
+          set_has_consume_gold();
         } else {
           goto handle_uninterpreted;
         }
@@ -1617,14 +1617,14 @@ void TrainConfig::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->time(), output);
   }
 
-  // required int32 consume_type = 7;
-  if (has_consume_type()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->consume_type(), output);
+  // required int32 consume_heart = 7;
+  if (has_consume_heart()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->consume_heart(), output);
   }
 
-  // required int32 consume_value = 8;
-  if (has_consume_value()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->consume_value(), output);
+  // required int32 consume_gold = 8;
+  if (has_consume_gold()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->consume_gold(), output);
   }
 
   // required int32 cd = 9;
@@ -1665,14 +1665,14 @@ void TrainConfig::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->time(), target);
   }
 
-  // required int32 consume_type = 7;
-  if (has_consume_type()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->consume_type(), target);
+  // required int32 consume_heart = 7;
+  if (has_consume_heart()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->consume_heart(), target);
   }
 
-  // required int32 consume_value = 8;
-  if (has_consume_value()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->consume_value(), target);
+  // required int32 consume_gold = 8;
+  if (has_consume_gold()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->consume_gold(), target);
   }
 
   // required int32 cd = 9;
@@ -1726,18 +1726,18 @@ int TrainConfig::ByteSize() const {
           this->time());
     }
 
-    // required int32 consume_type = 7;
-    if (has_consume_type()) {
+    // required int32 consume_heart = 7;
+    if (has_consume_heart()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->consume_type());
+          this->consume_heart());
     }
 
-    // required int32 consume_value = 8;
-    if (has_consume_value()) {
+    // required int32 consume_gold = 8;
+    if (has_consume_gold()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->consume_value());
+          this->consume_gold());
     }
 
     // required int32 cd = 9;
@@ -1789,11 +1789,11 @@ void TrainConfig::MergeFrom(const TrainConfig& from) {
     if (from.has_time()) {
       set_time(from.time());
     }
-    if (from.has_consume_type()) {
-      set_consume_type(from.consume_type());
+    if (from.has_consume_heart()) {
+      set_consume_heart(from.consume_heart());
     }
-    if (from.has_consume_value()) {
-      set_consume_value(from.consume_value());
+    if (from.has_consume_gold()) {
+      set_consume_gold(from.consume_gold());
     }
     if (from.has_cd()) {
       set_cd(from.cd());
@@ -1827,8 +1827,8 @@ void TrainConfig::Swap(TrainConfig* other) {
     std::swap(speed_, other->speed_);
     std::swap(exp_, other->exp_);
     std::swap(time_, other->time_);
-    std::swap(consume_type_, other->consume_type_);
-    std::swap(consume_value_, other->consume_value_);
+    std::swap(consume_heart_, other->consume_heart_);
+    std::swap(consume_gold_, other->consume_gold_);
     std::swap(cd_, other->cd_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
@@ -2656,7 +2656,7 @@ DogAttr::DogAttr(const DogAttr& from)
 void DogAttr::SharedCtor() {
   _cached_size_ = 0;
   name_ = const_cast< ::std::string*>(&::google::protobuf::internal::kEmptyString);
-  lv_ = 0;
+  lv_ = 1;
   exp_ = 0;
   star_ = 0;
   str_ = 0;
@@ -2706,7 +2706,7 @@ void DogAttr::Clear() {
         name_->clear();
       }
     }
-    lv_ = 0;
+    lv_ = 1;
     exp_ = 0;
     star_ = 0;
     str_ = 0;
@@ -2740,7 +2740,7 @@ bool DogAttr::MergePartialFromCodedStream(
         break;
       }
 
-      // required int32 lv = 2;
+      // required int32 lv = 2 [default = 1];
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
@@ -2879,7 +2879,7 @@ void DogAttr::SerializeWithCachedSizes(
       1, this->name(), output);
   }
 
-  // required int32 lv = 2;
+  // required int32 lv = 2 [default = 1];
   if (has_lv()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->lv(), output);
   }
@@ -2932,7 +2932,7 @@ void DogAttr::SerializeWithCachedSizes(
         1, this->name(), target);
   }
 
-  // required int32 lv = 2;
+  // required int32 lv = 2 [default = 1];
   if (has_lv()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->lv(), target);
   }
@@ -2985,7 +2985,7 @@ int DogAttr::ByteSize() const {
           this->name());
     }
 
-    // required int32 lv = 2;
+    // required int32 lv = 2 [default = 1];
     if (has_lv()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(

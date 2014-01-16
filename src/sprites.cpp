@@ -1,6 +1,7 @@
 #include "sprites.h"
 #include "dog.h"
 #include "event_mgr.h"
+
 bool DogAttrPanelSprite::init() {
   if (!CCSprite::init())
     return false;
@@ -10,10 +11,10 @@ bool DogAttrPanelSprite::init() {
 
   char dog_name[32] = {0};
   snprintf(dog_name,sizeof(dog_name),"%s", dog_->attr().name().c_str());
-  CCLabelTTF* label_dog_name = CCLabelTTF::create( dog_name, "Arial", 20);
-  label_dog_name->setAnchorPoint(ccp(0, 0));
-  label_dog_name->setPosition(ccp(98, 139));
-  addChild(label_dog_name, 1);
+  label_dog_name_ = CCLabelTTF::create( dog_name, "Arial", 20);
+  label_dog_name_->setAnchorPoint(ccp(0, 0));
+  label_dog_name_->setPosition(ccp(98, 139));
+  addChild(label_dog_name_, 1);
 
   char dog_character[32] = {0};
   snprintf(dog_character,sizeof(dog_character),"%s", "A等级");
@@ -53,6 +54,32 @@ bool DogAttrPanelSprite::init() {
   return true;
 }
 
+void DogAttrPanelSprite::UpdateAttr() {
+  char dog_name[32] = {0};
+  snprintf(dog_name,sizeof(dog_name),"%s", dog_->attr().name().c_str());
+  label_dog_name_->setString(dog_name);
+
+  char dog_lv[32] = {0};
+  snprintf(dog_lv,sizeof(dog_lv),"%s  %d", "Lv", dog_->attr().lv());
+  label_dog_lv_->setString(dog_lv);
+
+  char dog_strong[32] = {0};
+  snprintf(dog_strong,sizeof(dog_strong),"%d", dog_->attr().str());
+  label_dog_strong_->setString(dog_strong);
+
+  char dog_speed[32] = {0};
+  snprintf(dog_speed,sizeof(dog_speed),"%d", dog_->attr().speed());
+  label_dog_speed_->setString(dog_speed);
+
+  char dog_intimacy[32] = {0};
+  snprintf(dog_intimacy,sizeof(dog_intimacy),"%d", dog_->attr().intimacy());
+  label_dog_intimacy_->setString(dog_intimacy);
+}
+
+void DogSprite::DogAttrChangeCallBack(CCObject* sender) {
+  dog_attr_sprite_->UpdateAttr();
+}
+
 bool DogSprite::init() {
   if (!CCSprite::init())
     return false;
@@ -67,6 +94,8 @@ bool DogSprite::init() {
   dog_attr_sprite_->setVisible(dog_attr_status_);
   addChild(dog_attr_sprite_, 1);
 
+  EventMgr::Instance().Register(kEventDogAttrChange,
+    this, callfuncO_selector(DogSprite::DogAttrChangeCallBack));
   //ability_sprite_ = CCSprite::create();
   //ability_sprite_->initWithSpriteFrameName("dog_ability.png");
   //addChild(ability_sprite_, 1);
@@ -104,7 +133,7 @@ void DogSprite::ccTouchEnded(CCTouch* touch, CCEvent* event) {
   if(start_xy_.fuzzyEquals(cur_xy, 2.0f)) {
     dog_attr_status_ = !dog_attr_status_;
     dog_attr_sprite_->setVisible(dog_attr_status_);
-    EventMgr::Instance().Response(1);
+    EventMgr::Instance().Response(kEventClickDogMenu);
   }
 }
 
@@ -171,6 +200,9 @@ void HeartProgressBar::CreateSprite(CCNode* parent) {
 }
 
 void HeartProgressBar::SetHeartProgressBar(float cur_num) {
+  char num[32] = {0};
+  snprintf(num,sizeof(num),"%d", (int)cur_num);
+  heart_num_->setString(num);
   float scalex = ((cur_num*(104/max_num_)))/4;
   heart_mid_->setScaleX(scalex);
   heart_mid_->setVisible(true);

@@ -83,10 +83,10 @@ bool GameScene::init() {
   menu_layer_->switchTo(menu_flag_);
 
 
-  EventMgr::Instance().Register(1, this, callfuncO_selector(GameScene::DogMenuClickCallback));
-  EventMgr::Instance().Register(2, this, callfuncO_selector(GameScene::TrainItemClickCallback));
-  EventMgr::Instance().Register(3, this, callfuncO_selector(GameScene::PlayItemClickCallback));
-  EventMgr::Instance().Register(4, this, callfuncO_selector(GameScene::BackItemClickCallback));
+  EventMgr::Instance().Register(kEventClickDogMenu, this, callfuncO_selector(GameScene::DogMenuClickCallback));
+  EventMgr::Instance().Register(kEventClickTrainItem, this, callfuncO_selector(GameScene::TrainItemClickCallback));
+  EventMgr::Instance().Register(kEventClickPlayItem, this, callfuncO_selector(GameScene::PlayItemClickCallback));
+  EventMgr::Instance().Register(kEventClickBackItem, this, callfuncO_selector(GameScene::BackItemClickCallback));
 
   return true;
 }

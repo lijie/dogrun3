@@ -33,9 +33,21 @@ void UserLayer::NameClickCallback(CCObject* sender) {
 
 }
 
+void UserLayer::UpdataUserInfo(CCObject* sender) {
+  char num[32] = {0};
+  snprintf(num,sizeof(num),"%d", user_->money());
+  gold_num_->setString(num);
+  heart_progress_bar_.SetHeartProgressBar(user_->heart());
+}
+
 bool UserLayer::init() {
   if (!CCLayer::init())
     return false;
+
+  user_ = User::current();
+
+  EventMgr::Instance().Register(kEventUserInfoChange,
+    this, callfuncO_selector(UserLayer::UpdataUserInfo));
 
   CCSprite* plank_sprite = CCSprite::create("plank.png");
   plank_sprite->setAnchorPoint(ccp(0,0));
@@ -50,10 +62,8 @@ bool UserLayer::init() {
   gold_bar_item->setPosition(ccp(335,67));
 
   char num[32] = {0};
-  snprintf(num,sizeof(num),"%d", 10241024);
+  snprintf(num,sizeof(num),"%d", user_->money());
   gold_num_ = CCLabelTTF::create( num, "Arial", 24);
-  // CCSize size = gold_num_->getContentSize();
-  //gold_num_->setAnchorPoint(ccp(size.width, 0));
   gold_num_->setAnchorPoint(ccp(0, 0));
   gold_num_->setPosition(ccp(90, 4));
   gold_bar_item->addChild(gold_num_, 3);
@@ -67,7 +77,7 @@ bool UserLayer::init() {
   achievement_item->setPosition(ccp(287,62));
 
   char achievement_str[32] = {0};
-  snprintf(achievement_str,sizeof(achievement_str),"%s", "吉娃娃饲养家");
+  snprintf(achievement_str,sizeof(achievement_str),"%s", user_->title().c_str());
   CCLabelTTF* achievement_desc = CCLabelTTF::create( achievement_str, "Arial", 20);
   achievement_desc->setAnchorPoint(ccp(0, 0));
   achievement_desc->setPosition(ccp(150, 62));
@@ -92,9 +102,9 @@ bool UserLayer::init() {
   heart->setPosition(ccp(-15, 0));
   heart_bar->addChild(heart, 2);
 
-  heart_progress_bar_.SetMaxNum(2000);
+  heart_progress_bar_.SetMaxNum(20000);
   heart_progress_bar_.CreateSprite(heart_bar);
-  heart_progress_bar_.SetHeartProgressBar(1000);
+  heart_progress_bar_.SetHeartProgressBar(user_->heart());
 
   CCSprite* mail_sprite = CCSprite::create();
   mail_sprite->initWithSpriteFrameName("mail.png");
@@ -182,11 +192,11 @@ void DogMenuLayer::FoodItemClickCallback(CCObject* sender) {
 }
 
 void DogMenuLayer::TrainItemClickCallback(CCObject* sender) {
-  EventMgr::Instance().Response(2);
+  EventMgr::Instance().Response(kEventClickTrainItem);
 }
 
 void DogMenuLayer::PlayItemClickCallback(CCObject* sender) {
-  EventMgr::Instance().Response(3);
+  EventMgr::Instance().Response(kEventClickPlayItem);
 }
 
 void DogMenuLayer::GameItemClickCallback(CCObject* sender) {
@@ -260,7 +270,7 @@ void TrainMenuLayer::CreateTrainDone() {
 }
 
 void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
-  EventMgr::Instance().Response(4);
+  EventMgr::Instance().Response(kEventClickBackItem);
 }
 
 void TrainMenuLayer::Train1ItemClickCallback(CCObject* sender) {
@@ -352,7 +362,7 @@ void TrainMenuLayer::InitMenuItem() {
 }
 
 void PlayMenuLayer::BackItemClickCallback(CCObject* sender) {
-  EventMgr::Instance().Response(4);
+  EventMgr::Instance().Response(kEventClickBackItem);
 }
 
 void PlayMenuLayer::WalkItemClickCallback(CCObject* sender) {

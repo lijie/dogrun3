@@ -26,8 +26,8 @@ message UserLogoutRsp {
 };
 
 message DogFeedReq {
-	required int32 dogid = 1;
-	required int32 feedtype = 2;
+     required int32 dogid = 1;
+     required int32 feedtype = 2;
 };
 
 message DogFeedRsp {

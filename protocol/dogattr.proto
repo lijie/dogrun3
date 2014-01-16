@@ -1,4 +1,4 @@
-package dogrun2cs;
+package dogrun2;
 
 message DogLevelConfig {
 	required int32 lv = 1;
@@ -27,8 +27,8 @@ message TrainConfig {
 	required int32 speed = 3;
 	required int32 exp = 5;
 	required int32 time = 6;
-	required int32 consume_type = 7;
-	required int32 consume_value = 8;
+	required int32 consume_heart = 7;
+	required int32 consume_gold = 8;
 	required int32 cd = 9;
 };
 
@@ -50,7 +50,7 @@ message PlayConfigArray {
 
 message DogAttr {
 	required string name = 1;
-	required int32 lv = 2;
+	required int32 lv = 2 [default = 1];
 	required int32 exp = 3;
 	required int32 star = 4;
 	required int32 str = 5;

@@ -4,6 +4,18 @@
 #include <list>
 USING_NS_CC;
 
+enum {
+  kEventClickDogMenu = 1,
+  kEventClickTrainItem = 2,
+  kEventClickPlayItem = 3,
+  kEventClickBackItem = 4,
+  kEventDogAttrChange = 5,
+  kEventUserInfoChange = 6,
+  //kEventClickDog = 6,
+  //kEventClickDog = 7,
+};
+
+
 class ResponserInfo {
 public:
   ResponserInfo(){}

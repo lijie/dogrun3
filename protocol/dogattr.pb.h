@@ -518,19 +518,19 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 time() const;
   inline void set_time(::google::protobuf::int32 value);
 
-  // required int32 consume_type = 7;
-  inline bool has_consume_type() const;
-  inline void clear_consume_type();
-  static const int kConsumeTypeFieldNumber = 7;
-  inline ::google::protobuf::int32 consume_type() const;
-  inline void set_consume_type(::google::protobuf::int32 value);
+  // required int32 consume_heart = 7;
+  inline bool has_consume_heart() const;
+  inline void clear_consume_heart();
+  static const int kConsumeHeartFieldNumber = 7;
+  inline ::google::protobuf::int32 consume_heart() const;
+  inline void set_consume_heart(::google::protobuf::int32 value);
 
-  // required int32 consume_value = 8;
-  inline bool has_consume_value() const;
-  inline void clear_consume_value();
-  static const int kConsumeValueFieldNumber = 8;
-  inline ::google::protobuf::int32 consume_value() const;
-  inline void set_consume_value(::google::protobuf::int32 value);
+  // required int32 consume_gold = 8;
+  inline bool has_consume_gold() const;
+  inline void clear_consume_gold();
+  static const int kConsumeGoldFieldNumber = 8;
+  inline ::google::protobuf::int32 consume_gold() const;
+  inline void set_consume_gold(::google::protobuf::int32 value);
 
   // required int32 cd = 9;
   inline bool has_cd() const;
@@ -551,10 +551,10 @@ class TrainConfig : public ::google::protobuf::Message {
   inline void clear_has_exp();
   inline void set_has_time();
   inline void clear_has_time();
-  inline void set_has_consume_type();
-  inline void clear_has_consume_type();
-  inline void set_has_consume_value();
-  inline void clear_has_consume_value();
+  inline void set_has_consume_heart();
+  inline void clear_has_consume_heart();
+  inline void set_has_consume_gold();
+  inline void clear_has_consume_gold();
   inline void set_has_cd();
   inline void clear_has_cd();
 
@@ -565,8 +565,8 @@ class TrainConfig : public ::google::protobuf::Message {
   ::google::protobuf::int32 speed_;
   ::google::protobuf::int32 exp_;
   ::google::protobuf::int32 time_;
-  ::google::protobuf::int32 consume_type_;
-  ::google::protobuf::int32 consume_value_;
+  ::google::protobuf::int32 consume_heart_;
+  ::google::protobuf::int32 consume_gold_;
   ::google::protobuf::int32 cd_;
 
   mutable int _cached_size_;
@@ -939,7 +939,7 @@ class DogAttr : public ::google::protobuf::Message {
   inline ::std::string* release_name();
   inline void set_allocated_name(::std::string* name);
 
-  // required int32 lv = 2;
+  // required int32 lv = 2 [default = 1];
   inline bool has_lv() const;
   inline void clear_lv();
   static const int kLvFieldNumber = 2;
@@ -1365,48 +1365,48 @@ inline void TrainConfig::set_time(::google::protobuf::int32 value) {
   time_ = value;
 }
 
-// required int32 consume_type = 7;
-inline bool TrainConfig::has_consume_type() const {
+// required int32 consume_heart = 7;
+inline bool TrainConfig::has_consume_heart() const {
   return (_has_bits_[0] & 0x00000020u) != 0;
 }
-inline void TrainConfig::set_has_consume_type() {
+inline void TrainConfig::set_has_consume_heart() {
   _has_bits_[0] |= 0x00000020u;
 }
-inline void TrainConfig::clear_has_consume_type() {
+inline void TrainConfig::clear_has_consume_heart() {
   _has_bits_[0] &= ~0x00000020u;
 }
-inline void TrainConfig::clear_consume_type() {
-  consume_type_ = 0;
-  clear_has_consume_type();
+inline void TrainConfig::clear_consume_heart() {
+  consume_heart_ = 0;
+  clear_has_consume_heart();
 }
-inline ::google::protobuf::int32 TrainConfig::consume_type() const {
-  return consume_type_;
+inline ::google::protobuf::int32 TrainConfig::consume_heart() const {
+  return consume_heart_;
 }
-inline void TrainConfig::set_consume_type(::google::protobuf::int32 value) {
-  set_has_consume_type();
-  consume_type_ = value;
+inline void TrainConfig::set_consume_heart(::google::protobuf::int32 value) {
+  set_has_consume_heart();
+  consume_heart_ = value;
 }
 
-// required int32 consume_value = 8;
-inline bool TrainConfig::has_consume_value() const {
+// required int32 consume_gold = 8;
+inline bool TrainConfig::has_consume_gold() const {
   return (_has_bits_[0] & 0x00000040u) != 0;
 }
-inline void TrainConfig::set_has_consume_value() {
+inline void TrainConfig::set_has_consume_gold() {
   _has_bits_[0] |= 0x00000040u;
 }
-inline void TrainConfig::clear_has_consume_value() {
+inline void TrainConfig::clear_has_consume_gold() {
   _has_bits_[0] &= ~0x00000040u;
 }
-inline void TrainConfig::clear_consume_value() {
-  consume_value_ = 0;
-  clear_has_consume_value();
+inline void TrainConfig::clear_consume_gold() {
+  consume_gold_ = 0;
+  clear_has_consume_gold();
 }
-inline ::google::protobuf::int32 TrainConfig::consume_value() const {
-  return consume_value_;
+inline ::google::protobuf::int32 TrainConfig::consume_gold() const {
+  return consume_gold_;
 }
-inline void TrainConfig::set_consume_value(::google::protobuf::int32 value) {
-  set_has_consume_value();
-  consume_value_ = value;
+inline void TrainConfig::set_consume_gold(::google::protobuf::int32 value) {
+  set_has_consume_gold();
+  consume_gold_ = value;
 }
 
 // required int32 cd = 9;
@@ -1677,7 +1677,7 @@ inline void DogAttr::set_allocated_name(::std::string* name) {
   }
 }
 
-// required int32 lv = 2;
+// required int32 lv = 2 [default = 1];
 inline bool DogAttr::has_lv() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
@@ -1688,7 +1688,7 @@ inline void DogAttr::clear_has_lv() {
   _has_bits_[0] &= ~0x00000002u;
 }
 inline void DogAttr::clear_lv() {
-  lv_ = 0;
+  lv_ = 1;
   clear_has_lv();
 }
 inline ::google::protobuf::int32 DogAttr::lv() const {
