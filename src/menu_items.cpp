@@ -99,6 +99,7 @@ void FSMenuItem::ItemClickCallback() {
   int ret = 0;
   ret = User::current()->dogs(0)->Train(this->data_index_);
   if(ret >= 0) {
+
   }
 }
 

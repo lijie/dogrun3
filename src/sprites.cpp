@@ -1,21 +1,78 @@
 #include "sprites.h"
 #include "dog.h"
 #include "event_mgr.h"
+bool DogAttrPanelSprite::init() {
+  if (!CCSprite::init())
+    return false;
+
+  this->initWithSpriteFrameName("dog_ability.png");
+  dog_ = User::current()->dogs(0);
+
+  char dog_name[32] = {0};
+  snprintf(dog_name,sizeof(dog_name),"%s", dog_->attr().name().c_str());
+  CCLabelTTF* label_dog_name = CCLabelTTF::create( dog_name, "Arial", 20);
+  label_dog_name->setAnchorPoint(ccp(0, 0));
+  label_dog_name->setPosition(ccp(98, 139));
+  addChild(label_dog_name, 1);
+
+  char dog_character[32] = {0};
+  snprintf(dog_character,sizeof(dog_character),"%s", "A等级");
+  CCLabelTTF* label_dog_character = CCLabelTTF::create( dog_character, "Arial", 20);
+  label_dog_character->setAnchorPoint(ccp(0, 0));
+  label_dog_character->setPosition(ccp(98, 111));
+  addChild(label_dog_character, 1);
+
+  char dog_lv[32] = {0};
+  snprintf(dog_lv,sizeof(dog_lv),"%s  %d", "Lv", dog_->attr().lv());
+  label_dog_lv_ = CCLabelTTF::create( dog_lv, "Arial", 20);
+  label_dog_lv_->setAnchorPoint(ccp(0, 0));
+  label_dog_lv_->setPosition(ccp(30, 80));
+  addChild(label_dog_lv_, 1);
+
+  char dog_strong[32] = {0};
+  snprintf(dog_strong,sizeof(dog_strong),"%d", dog_->attr().str());
+  label_dog_strong_ = CCLabelTTF::create( dog_strong, "Arial", 20);
+  label_dog_strong_->setAnchorPoint(ccp(0, 0));
+  label_dog_strong_->setPosition(ccp(30, 24));
+  addChild(label_dog_strong_, 1);
+
+  char dog_speed[32] = {0};
+  snprintf(dog_speed,sizeof(dog_speed),"%d", dog_->attr().speed());
+  label_dog_speed_ = CCLabelTTF::create( dog_speed, "Arial", 20);
+  label_dog_speed_->setAnchorPoint(ccp(0, 0));
+  label_dog_speed_->setPosition(ccp(110, 24));
+  addChild(label_dog_speed_, 1);
+
+  char dog_intimacy[32] = {0};
+  snprintf(dog_intimacy,sizeof(dog_intimacy),"%d", dog_->attr().intimacy());
+  label_dog_intimacy_ = CCLabelTTF::create( dog_intimacy, "Arial", 20);
+  label_dog_intimacy_->setAnchorPoint(ccp(0, 0));
+  label_dog_intimacy_->setPosition(ccp(185, 24));
+  addChild(label_dog_intimacy_, 1);
+
+  return true;
+}
 
 bool DogSprite::init() {
   if (!CCSprite::init())
     return false;
 
-  ability_status_ = false;
+  dog_attr_status_ = false;
   this->initWithSpriteFrameName("dog.png");
   dog_ = User::current()->dogs(0);
 
-  ability_sprite_ = CCSprite::create();
-  ability_sprite_->initWithSpriteFrameName("dog_ability.png");
-  addChild(ability_sprite_, 1);
-  ability_sprite_->setAnchorPoint(ccp(0,0));
-  ability_sprite_->setPosition(ccp(-96,96));
-  ability_sprite_->setVisible(ability_status_);
+  dog_attr_sprite_ = DogAttrPanelSprite::create();
+  dog_attr_sprite_->setAnchorPoint(ccp(0,0));
+  dog_attr_sprite_->setPosition(ccp(-96,96));
+  dog_attr_sprite_->setVisible(dog_attr_status_);
+  addChild(dog_attr_sprite_, 1);
+
+  //ability_sprite_ = CCSprite::create();
+  //ability_sprite_->initWithSpriteFrameName("dog_ability.png");
+  //addChild(ability_sprite_, 1);
+  //ability_sprite_->setAnchorPoint(ccp(0,0));
+  //ability_sprite_->setPosition(ccp(-96,96));
+  //ability_sprite_->setVisible(ability_status_);
   return true;
 }
 
@@ -45,8 +102,8 @@ bool DogSprite::ccTouchBegan(CCTouch* touch, CCEvent* event) {
 void DogSprite::ccTouchEnded(CCTouch* touch, CCEvent* event) {
   CCPoint cur_xy = touch->getLocation();
   if(start_xy_.fuzzyEquals(cur_xy, 2.0f)) {
-    ability_status_ = !ability_status_;
-    ability_sprite_->setVisible(ability_status_);
+    dog_attr_status_ = !dog_attr_status_;
+    dog_attr_sprite_->setVisible(dog_attr_status_);
     EventMgr::Instance().Response(1);
   }
 }

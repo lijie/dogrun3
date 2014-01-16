@@ -3,6 +3,7 @@
 #include "dog.h"
 
 USING_NS_CC;
+class DogAttrPanelSprite;
 
 class DogSprite : public CCSprite,
   public CCTargetedTouchDelegate {
@@ -25,8 +26,20 @@ protected:
   CCPoint start_xy_;
   CCRect rect();
   Dog* dog_;
-  CCSprite* ability_sprite_;
-  bool ability_status_;
+  DogAttrPanelSprite* dog_attr_sprite_;
+  bool dog_attr_status_;
+};
+
+class DogAttrPanelSprite : public CCSprite {
+public:
+  virtual bool init();
+  CREATE_FUNC(DogAttrPanelSprite);
+protected:
+  Dog* dog_;
+  CCLabelTTF* label_dog_lv_;
+  CCLabelTTF* label_dog_strong_;
+  CCLabelTTF* label_dog_speed_;
+  CCLabelTTF* label_dog_intimacy_;
 };
 
 class HeartProgressBar{

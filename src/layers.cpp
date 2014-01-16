@@ -265,25 +265,18 @@ void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
 
 void TrainMenuLayer::Train1ItemClickCallback(CCObject* sender) {
   ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->ItemClickCallback();
-
-  training_sprite_ = CCSprite::create();
-  training_sprite_->initWithSpriteFrameName("training.png");
-
-  CCPoint point = ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->getPosition();
-  training_sprite_->setPosition(point);
-  //menu_->addChild();
 }
 
 void TrainMenuLayer::Train2ItemClickCallback(CCObject* sender) {
-  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->ItemClickCallback();
-}
-
-void TrainMenuLayer::Train3ItemClickCallback(CCObject* sender) {
   ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(2)))->ItemClickCallback();
 }
 
-void TrainMenuLayer::Train4ItemClickCallback(CCObject* sender) {
+void TrainMenuLayer::Train3ItemClickCallback(CCObject* sender) {
   ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(3)))->ItemClickCallback();
+}
+
+void TrainMenuLayer::Train4ItemClickCallback(CCObject* sender) {
+  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(4)))->ItemClickCallback();
 }
 
 bool TrainMenuLayer::init() {
