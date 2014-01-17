@@ -34,6 +34,7 @@ bool GameScene::init() {
   if (!CCScene::init())
     return false;
 
+  CCDirector::sharedDirector()->setProjection(kCCDirectorProjection2D);
   // init plist
   CCSpriteFrameCache *c = CCSpriteFrameCache::sharedSpriteFrameCache();
   CCFileUtils::sharedFileUtils()->addSearchPath("Resources");
