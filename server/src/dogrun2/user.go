@@ -2,6 +2,7 @@ package dogrun2
 
 import "errors"
 import "log"
+import "time"
 import "dogrun2cs"
 import "labix.org/v2/mgo"
 import "labix.org/v2/mgo/bson"
@@ -14,9 +15,15 @@ func init() {
 
 // user in memory
 type User struct {
+	// whether or not user is login
 	ready bool
+	// client info
 	c *Client
+	// data struct saved in db
 	udb UserDb
+	// whether of not user info is changed.
+	// true means should sync to db
+	dirty bool
 }
 
 // user in database
@@ -31,16 +38,16 @@ type UserDbDog struct {
 }
 
 type UserDbAttr struct {
-	Name string
-	Title string
 	Money uint32
 	Heart uint32
 }
 
 type UserDb struct {
 	UserId string `bson:"_id"`
-	Dogs UserDbDog
+	Name string
+	Title string
 	Attr UserDbAttr
+	Dogs UserDbDog
 	LastLogin uint32
 }
 
@@ -58,12 +65,33 @@ func (u *User) Load(userid string) error {
 }
 
 func (u *User) Store() error {
+	c := SharedDBSession().DB("dogrun2").C("user")
+	_, err := c.Upsert(bson.M{"_id": u.udb.UserId}, &u.udb)
+	if err != nil {
+		log.Printf("Store err %v\n", err)
+		return err
+	}
+
+	return nil
+}
+
+// I don't knwo how to update part of a doc,
+// this func doen't work correctly.
+func (u *User) fastStore(id string, change interface{}) error {
+	c := SharedDBSession().DB("dogrun2").C("user")
+	_, err := c.Upsert(bson.M{"_id": id}, change)
+	if err != nil {
+		log.Printf("fastStore err %v\n", err)
+		return err
+	}
+
 	return nil
 }
 
 func (u *User) Init(c *Client) {
 	u.c = c
 	u.ready = false
+	u.dirty = false
 }
 
 func (u *User) Logout() {
@@ -75,14 +103,36 @@ func (u *User) Login(userid string) error {
 		return errors.New("DBError")
 	}
 
-	// TODO: update login timestamp
+	log.Printf("user %s last login %v\n",
+		userid, time.Unix(int64(u.udb.LastLogin), 0))
 
+	// TODO: update login timestamp
+	u.udb.LastLogin = uint32(time.Now().Unix())
+//	err := u.fastStore(userid, &bson.M{"lastlogin": u.udb.LastLogin})
+//	if err != nil {
+//		log.Printf("Login err %v\n", err)
+//		return err
+//	}
 	if err := u.Store(); err != nil {
 		return errors.New("DBError")
 	}
 
 	u.ready = true
 	return nil
+}
+
+func (u *User) Notify() error {
+	pb := dogrun2cs.UserInfo {
+		Name: &u.udb.Name,
+		Attr: &dogrun2cs.UserAttr {
+			Gold: &u.udb.Attr.Money,
+			Heart: &u.udb.Attr.Heart,
+		},
+	}
+
+	msg := u.c.GetReplyMsg()
+	msg.H.Cmd = uint32(dogrun2cs.Command_kCmdUserInfoNtf)
+	return u.c.SendNotify(msg, &pb);
 }
 
 func (u *User) IsLogin() bool {

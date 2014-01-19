@@ -1,3 +1,4 @@
+//import "dogattr.proto";
 package dogrun2cs;
 
 enum Command {
@@ -12,6 +13,7 @@ enum Command {
      kCmdDogPlayReq = 9;
      kCmdDogPlayRsp = 10;
      kCmdSvrErrNtf = 11;
+     kCmdUserInfoNtf = 12;
 };
 
 message UserLoginReq {
@@ -19,6 +21,9 @@ message UserLoginReq {
 };
 
 message UserLoginRsp {
+};
+
+message UserInfoNtf {
 };
 
 message UserLogoutReq {
@@ -45,12 +50,6 @@ message DogPlayReq {
 };
 
 message DogPlayRsp {
-};
-
-message UserInfo {
-};
-
-message DogInfo {
 };
 
 message SvrErrNtf {

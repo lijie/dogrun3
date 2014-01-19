@@ -18,7 +18,7 @@ bool DogAttrPanelSprite::init() {
 
   char dog_character[32] = {0};
   snprintf(dog_character,sizeof(dog_character),"%s", "A等级");
-  CCLabelTTF* label_dog_character = CCLabelTTF::create( dog_character, "Arial", 20);
+  CCLabelTTF* label_dog_character = CCLabelTTF::create( dog_character, "WenQuanYi Zen Hei", 20);
   label_dog_character->setAnchorPoint(ccp(0, 0));
   label_dog_character->setPosition(ccp(98, 111));
   addChild(label_dog_character, 1);

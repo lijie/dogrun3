@@ -78,7 +78,7 @@ bool UserLayer::init() {
 
   char achievement_str[32] = {0};
   snprintf(achievement_str,sizeof(achievement_str),"%s", user_->title().c_str());
-  CCLabelTTF* achievement_desc = CCLabelTTF::create( achievement_str, "Arial", 20);
+  CCLabelTTF* achievement_desc = CCLabelTTF::create( achievement_str, "WenQuanYi Zen Hei", 20);
   achievement_desc->setAnchorPoint(ccp(0, 0));
   achievement_desc->setPosition(ccp(150, 62));
   plank_sprite->addChild(achievement_desc, 3);
