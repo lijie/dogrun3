@@ -1,6 +1,10 @@
 .PHONY:all go
 
+ifeq ($(OS),Windows_NT)
+PROTOC := ../tools/protoc.exe
+else
 PROTOC := ../obj/protobuf/bin/protoc
+endif
 
 SOURCE := cs.proto userinfo.proto
 TARGET := $(SOURCE:.proto=.pb.cc)

@@ -21,20 +21,11 @@ type User struct {
 	c *Client
 	// data struct saved in db
 	udb UserDb
+	// dogs in db
+	dogs DogDB
 	// whether of not user info is changed.
 	// true means should sync to db
 	dirty bool
-}
-
-// user in database
-type UserDbDog struct {
-	Id uint32
-	Name string
-	Level uint32
-	Exp uint32
-	Str uint32
-	Speed uint32
-	CD [3]uint32
 }
 
 type UserDbAttr struct {
@@ -47,11 +38,11 @@ type UserDb struct {
 	Name string
 	Title string
 	Attr UserDbAttr
-	Dogs UserDbDog
 	LastLogin uint32
 }
 
 func (u *User) Load(userid string) error {
+	// load user
 	c := SharedDBSession().DB("dogrun2").C("user")
 	err := c.Find(bson.M{"_id": userid}).One(&u.udb)
 	if err == mgo.ErrNotFound {
@@ -60,6 +51,13 @@ func (u *User) Load(userid string) error {
 		log.Println(err)
 		return err
 	}
+
+	// load dog
+	if err = u.dogs.Load(userid); err != nil {
+		log.Println(err)
+		return err
+	}
+
 	u.ready = true
 	return nil
 }
