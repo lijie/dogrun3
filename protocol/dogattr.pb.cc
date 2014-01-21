@@ -123,15 +123,14 @@ void protobuf_AssignDesc_dogattr_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(FoodConfigArray));
   TrainConfig_descriptor_ = file->message_type(4);
-  static const int TrainConfig_offsets_[8] = {
+  static const int TrainConfig_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, type_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, strong_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, speed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, exp_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, time_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, cd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_heart_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_gold_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, cd_),
   };
   TrainConfig_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -283,19 +282,18 @@ void protobuf_AddDesc_dogattr_2eproto() {
     "elConfig\"U\n\nFoodConfig\022\014\n\004type\030\001 \002(\005\022\013\n\003"
     "str\030\002 \002(\005\022\r\n\005speed\030\003 \002(\005\022\020\n\010intimacy\030\004 \002"
     "(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017FoodConfigArray\022 \n\003cf"
-    "g\030\001 \003(\0132\023.dogrun2.FoodConfig\"\216\001\n\013TrainCo"
+    "g\030\001 \003(\0132\023.dogrun2.FoodConfig\"\200\001\n\013TrainCo"
     "nfig\022\014\n\004type\030\001 \002(\005\022\016\n\006strong\030\002 \002(\005\022\r\n\005sp"
-    "eed\030\003 \002(\005\022\013\n\003exp\030\005 \002(\005\022\014\n\004time\030\006 \002(\005\022\025\n\r"
-    "consume_heart\030\007 \002(\005\022\024\n\014consume_gold\030\010 \002("
-    "\005\022\n\n\002cd\030\t \002(\005\"5\n\020TrainConfigArray\022!\n\003cfg"
-    "\030\001 \003(\0132\024.dogrun2.TrainConfig\"U\n\nPlayConf"
-    "ig\022\014\n\004type\030\001 \002(\005\022\013\n\003str\030\002 \002(\005\022\r\n\005speed\030\003"
-    " \002(\005\022\020\n\010intimacy\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017P"
-    "layConfigArray\022 \n\003cfg\030\001 \003(\0132\023.dogrun2.Pl"
-    "ayConfig\"{\n\007DogAttr\022\014\n\004name\030\001 \002(\t\022\r\n\002lv\030"
-    "\002 \002(\005:\0011\022\013\n\003exp\030\003 \002(\005\022\014\n\004star\030\004 \002(\005\022\013\n\003s"
-    "tr\030\005 \002(\005\022\r\n\005speed\030\006 \002(\005\022\020\n\010intimacy\030\007 \002("
-    "\005\022\n\n\002id\030\010 \002(\005", 733);
+    "eed\030\003 \002(\005\022\013\n\003exp\030\005 \002(\005\022\n\n\002cd\030\006 \002(\005\022\025\n\rco"
+    "nsume_heart\030\007 \002(\005\022\024\n\014consume_gold\030\010 \002(\005\""
+    "5\n\020TrainConfigArray\022!\n\003cfg\030\001 \003(\0132\024.dogru"
+    "n2.TrainConfig\"U\n\nPlayConfig\022\014\n\004type\030\001 \002"
+    "(\005\022\013\n\003str\030\002 \002(\005\022\r\n\005speed\030\003 \002(\005\022\020\n\010intima"
+    "cy\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017PlayConfigArray"
+    "\022 \n\003cfg\030\001 \003(\0132\023.dogrun2.PlayConfig\"{\n\007Do"
+    "gAttr\022\014\n\004name\030\001 \002(\t\022\r\n\002lv\030\002 \002(\005:\0011\022\013\n\003ex"
+    "p\030\003 \002(\005\022\014\n\004star\030\004 \002(\005\022\013\n\003str\030\005 \002(\005\022\r\n\005sp"
+    "eed\030\006 \002(\005\022\020\n\010intimacy\030\007 \002(\005\022\n\n\002id\030\010 \002(\005", 719);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dogattr.proto", &protobuf_RegisterTypes);
   DogLevelConfig::default_instance_ = new DogLevelConfig();
@@ -1363,10 +1361,9 @@ const int TrainConfig::kTypeFieldNumber;
 const int TrainConfig::kStrongFieldNumber;
 const int TrainConfig::kSpeedFieldNumber;
 const int TrainConfig::kExpFieldNumber;
-const int TrainConfig::kTimeFieldNumber;
+const int TrainConfig::kCdFieldNumber;
 const int TrainConfig::kConsumeHeartFieldNumber;
 const int TrainConfig::kConsumeGoldFieldNumber;
-const int TrainConfig::kCdFieldNumber;
 #endif  // !_MSC_VER
 
 TrainConfig::TrainConfig()
@@ -1389,10 +1386,9 @@ void TrainConfig::SharedCtor() {
   strong_ = 0;
   speed_ = 0;
   exp_ = 0;
-  time_ = 0;
+  cd_ = 0;
   consume_heart_ = 0;
   consume_gold_ = 0;
-  cd_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1432,10 +1428,9 @@ void TrainConfig::Clear() {
     strong_ = 0;
     speed_ = 0;
     exp_ = 0;
-    time_ = 0;
+    cd_ = 0;
     consume_heart_ = 0;
     consume_gold_ = 0;
-    cd_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1506,19 +1501,19 @@ bool TrainConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(48)) goto parse_time;
+        if (input->ExpectTag(48)) goto parse_cd;
         break;
       }
 
-      // required int32 time = 6;
+      // required int32 cd = 6;
       case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_time:
+         parse_cd:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &time_)));
-          set_has_time();
+                 input, &cd_)));
+          set_has_cd();
         } else {
           goto handle_uninterpreted;
         }
@@ -1551,22 +1546,6 @@ bool TrainConfig::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &consume_gold_)));
           set_has_consume_gold();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(72)) goto parse_cd;
-        break;
-      }
-
-      // required int32 cd = 9;
-      case 9: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_cd:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &cd_)));
-          set_has_cd();
         } else {
           goto handle_uninterpreted;
         }
@@ -1612,9 +1591,9 @@ void TrainConfig::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->exp(), output);
   }
 
-  // required int32 time = 6;
-  if (has_time()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->time(), output);
+  // required int32 cd = 6;
+  if (has_cd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->cd(), output);
   }
 
   // required int32 consume_heart = 7;
@@ -1625,11 +1604,6 @@ void TrainConfig::SerializeWithCachedSizes(
   // required int32 consume_gold = 8;
   if (has_consume_gold()) {
     ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->consume_gold(), output);
-  }
-
-  // required int32 cd = 9;
-  if (has_cd()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(9, this->cd(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1660,9 +1634,9 @@ void TrainConfig::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->exp(), target);
   }
 
-  // required int32 time = 6;
-  if (has_time()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->time(), target);
+  // required int32 cd = 6;
+  if (has_cd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->cd(), target);
   }
 
   // required int32 consume_heart = 7;
@@ -1673,11 +1647,6 @@ void TrainConfig::SerializeWithCachedSizes(
   // required int32 consume_gold = 8;
   if (has_consume_gold()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->consume_gold(), target);
-  }
-
-  // required int32 cd = 9;
-  if (has_cd()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(9, this->cd(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1719,11 +1688,11 @@ int TrainConfig::ByteSize() const {
           this->exp());
     }
 
-    // required int32 time = 6;
-    if (has_time()) {
+    // required int32 cd = 6;
+    if (has_cd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->time());
+          this->cd());
     }
 
     // required int32 consume_heart = 7;
@@ -1738,13 +1707,6 @@ int TrainConfig::ByteSize() const {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->consume_gold());
-    }
-
-    // required int32 cd = 9;
-    if (has_cd()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->cd());
     }
 
   }
@@ -1786,17 +1748,14 @@ void TrainConfig::MergeFrom(const TrainConfig& from) {
     if (from.has_exp()) {
       set_exp(from.exp());
     }
-    if (from.has_time()) {
-      set_time(from.time());
+    if (from.has_cd()) {
+      set_cd(from.cd());
     }
     if (from.has_consume_heart()) {
       set_consume_heart(from.consume_heart());
     }
     if (from.has_consume_gold()) {
       set_consume_gold(from.consume_gold());
-    }
-    if (from.has_cd()) {
-      set_cd(from.cd());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1815,7 +1774,7 @@ void TrainConfig::CopyFrom(const TrainConfig& from) {
 }
 
 bool TrainConfig::IsInitialized() const {
-  if ((_has_bits_[0] & 0x000000ff) != 0x000000ff) return false;
+  if ((_has_bits_[0] & 0x0000007f) != 0x0000007f) return false;
 
   return true;
 }
@@ -1826,10 +1785,9 @@ void TrainConfig::Swap(TrainConfig* other) {
     std::swap(strong_, other->strong_);
     std::swap(speed_, other->speed_);
     std::swap(exp_, other->exp_);
-    std::swap(time_, other->time_);
+    std::swap(cd_, other->cd_);
     std::swap(consume_heart_, other->consume_heart_);
     std::swap(consume_gold_, other->consume_gold_);
-    std::swap(cd_, other->cd_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

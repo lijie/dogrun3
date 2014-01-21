@@ -8,13 +8,14 @@ enum {
   kEventClickDogMenu = 1,
   kEventClickTrainItem = 2,
   kEventClickPlayItem = 3,
-  kEventClickBackItem = 4,
-  kEventDogAttrChange = 5,
-  kEventUserInfoChange = 6,
-  //kEventClickDog = 6,
-  //kEventClickDog = 7,
+  kEventClickFoodItem = 4,
+  kEventClickBackItem = 5,
+  kEventDogAttrChange = 6,
+  kEventUserInfoChange = 7,
+  kEventChangeToTrainingItem = 8,
+  kEventChangeToPlayingItem = 9,
+  kEventChangeToFeedingItem = 10,
 };
-
 
 class ResponserInfo {
 public:
@@ -95,5 +96,4 @@ protected:
 protected:
   MapResponser map_responser_;
 };
-
 

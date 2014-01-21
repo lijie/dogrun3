@@ -159,6 +159,18 @@ class UIElementFont : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 font_size() const;
   inline void set_font_size(::google::protobuf::int32 value);
 
+  // repeated int32 font_color = 6;
+  inline int font_color_size() const;
+  inline void clear_font_color();
+  static const int kFontColorFieldNumber = 6;
+  inline ::google::protobuf::int32 font_color(int index) const;
+  inline void set_font_color(int index, ::google::protobuf::int32 value);
+  inline void add_font_color(::google::protobuf::int32 value);
+  inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+      font_color() const;
+  inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+      mutable_font_color();
+
   // @@protoc_insertion_point(class_scope:dogrun2.UIElementFont)
  private:
   inline void set_has_desc();
@@ -178,10 +190,11 @@ class UIElementFont : public ::google::protobuf::Message {
   ::std::string* font_;
   ::google::protobuf::int32 pos_x_;
   ::google::protobuf::int32 pos_y_;
+  ::google::protobuf::RepeatedField< ::google::protobuf::int32 > font_color_;
   ::google::protobuf::int32 font_size_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_uiconfig_2eproto();
   friend void protobuf_AssignDesc_uiconfig_2eproto();
@@ -381,7 +394,7 @@ class UIItemConf : public ::google::protobuf::Message {
   inline ::dogrun2::UIElementFont* release_speed();
   inline void set_allocated_speed(::dogrun2::UIElementFont* speed);
 
-  // required .dogrun2.UIElementFont exp = 3;
+  // optional .dogrun2.UIElementFont exp = 3;
   inline bool has_exp() const;
   inline void clear_exp();
   static const int kExpFieldNumber = 3;
@@ -737,6 +750,31 @@ inline void UIElementFont::set_font_size(::google::protobuf::int32 value) {
   font_size_ = value;
 }
 
+// repeated int32 font_color = 6;
+inline int UIElementFont::font_color_size() const {
+  return font_color_.size();
+}
+inline void UIElementFont::clear_font_color() {
+  font_color_.Clear();
+}
+inline ::google::protobuf::int32 UIElementFont::font_color(int index) const {
+  return font_color_.Get(index);
+}
+inline void UIElementFont::set_font_color(int index, ::google::protobuf::int32 value) {
+  font_color_.Set(index, value);
+}
+inline void UIElementFont::add_font_color(::google::protobuf::int32 value) {
+  font_color_.Add(value);
+}
+inline const ::google::protobuf::RepeatedField< ::google::protobuf::int32 >&
+UIElementFont::font_color() const {
+  return font_color_;
+}
+inline ::google::protobuf::RepeatedField< ::google::protobuf::int32 >*
+UIElementFont::mutable_font_color() {
+  return &font_color_;
+}
+
 // -------------------------------------------------------------------
 
 // UIElementIcon
@@ -957,7 +995,7 @@ inline void UIItemConf::set_allocated_speed(::dogrun2::UIElementFont* speed) {
   }
 }
 
-// required .dogrun2.UIElementFont exp = 3;
+// optional .dogrun2.UIElementFont exp = 3;
 inline bool UIItemConf::has_exp() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }

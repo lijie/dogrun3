@@ -14,12 +14,14 @@ dogrun2::UIItemConfArray* GetUIPlayCfg() {
 }
 
 
+#include "cocos2d.h"
 int UIConfigInit() {
   printf("%s\n", __FUNCTION__);
   if (!UITrainCfg) {
     UITrainCfg = new dogrun2::UIItemConfArray;
     assert(UITrainCfg != NULL);
     ParseFromFile("etc/uitrain.cfg", UITrainCfg);
+
     assert(UITrainCfg != NULL);
   }
   if (!UIPlayCfg) {

@@ -24,10 +24,6 @@ class DogMenuLayer : public CCLayer {
 public:
   virtual bool init();
   CREATE_FUNC(DogMenuLayer);
-
-  void FoodItemClickCallback(CCObject* sender);
-  void TrainItemClickCallback(CCObject* sender);
-  void PlayItemClickCallback(CCObject* sender);
   void GameItemClickCallback(CCObject* sender);
 
 protected:
@@ -57,10 +53,7 @@ public:
   CREATE_FUNC(TrainMenuLayer);
 
   void BackItemClickCallback(CCObject* sender);
-  void Train1ItemClickCallback(CCObject* sender);
-  void Train2ItemClickCallback(CCObject* sender);
-  void Train3ItemClickCallback(CCObject* sender);
-  void Train4ItemClickCallback(CCObject* sender);
+  void ItemClickCallback(CCObject* sender);
 
 protected:
   void InitMenuItem();
