@@ -11,7 +11,7 @@ message UIElementFont {
     required int32 pos_x = 3;
     required int32 pos_y = 4;
     required int32 font_size = 5;
-    
+    repeated int32 font_color = 6;
 };
 
 message UIElementIcon {
@@ -25,7 +25,7 @@ message UIElementIcon {
 message UIItemConf {
     required UIElementFont title = 1;
     required UIElementFont speed = 2;
-    required UIElementFont exp = 3;
+    optional UIElementFont exp = 3;
     required UIElementIcon icon = 4;
     required UIElementFont icon_num = 5;
 };

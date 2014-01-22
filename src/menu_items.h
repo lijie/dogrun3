@@ -1,26 +1,40 @@
 #pragma once
 #include "cocos2d.h"
-
+#include <string>
 USING_NS_CC;
 
-class ClockMenuItem : public CCMenuItemSprite {
+class MultiSpriteMenuItem : public CCMenuItemSprite {
 public:
-  ClockMenuItem()
-    :clock_time_(0){}
+  MultiSpriteMenuItem(){}
+  virtual void onEnter()
+  {
+    int a = 0;
+    a++;
+  }
+  virtual ~MultiSpriteMenuItem(){}
 
-  virtual ~ClockMenuItem(){}
+  static MultiSpriteMenuItem * create(std::string item_type, CCPoint& pos);
 
-  virtual bool init();
+  void ClickItemCallback(CCObject* sender);
+  void ClickDoingItemCallback(CCObject* sender);
+  void ClickDoneItemCallback(CCObject* sender);
+  void ChangeDoingItemCallback(CCObject* sender);
 
-  CREATE_FUNC(ClockMenuItem);
+  int GetItemWidth();
+  void AddToArray(CCArray* array);
+  void OnTime(float f);
 protected:
-  void OnTime();
-  void StartClock();
-public:
-  uint32_t clock_time(){return clock_time_;}
-  void set_clock_time(uint32_t clock_time){clock_time_ = clock_time;}
+  void InitItem();
+  void InitItemPos();
+
 protected:
-  unsigned int clock_time_;
+  CCMenuItemSprite* normal_item_;
+  CCMenuItemSprite* doing_item_;
+  CCMenuItemSprite* done_item_;
+  std::string item_type_;
+  CCPoint item_pos_;
+  int cd_time_;
+  CCLabelTTF *label_cd_;
 };
 
 class FSMenuItem : public CCMenuItemSprite {
@@ -29,18 +43,17 @@ public:
 
   virtual ~FSMenuItem(){}
 
+  static FSMenuItem * create(int item_type, int data_index);
+
   static FSMenuItem * create(CCNode *normalSprite, 
                              CCNode *selectedSprite, 
                              CCNode *disabledSprite, 
                              CCObject *target, 
                              SEL_MenuHandler selector);
-  void ItemClickCallback();
-  void OnTime(float cd_time);
+  void ItemClickCallback(CCObject* sender);
   void InitData(int item_type, int data_index);
 protected:
   int item_type_;
   int data_index_;
-  float cd_time_;
-  CCLabelTTF *label_cd_time_;
 };
 

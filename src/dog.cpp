@@ -14,6 +14,13 @@ Dog::Dog() {
   memset(cd_, 0, sizeof(cd_));
 }
 
+time_t Dog::RemainTime(int type) {
+  if(type < 0 || type >= kOperationCDNR) {
+    return -1;
+  }
+  return cd_[type] - time(NULL);
+}
+
 int Dog::Feed(int feedtype) {
   time_t now = time(NULL);
   if (cd_[kFeedCD] > now) {

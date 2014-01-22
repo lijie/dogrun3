@@ -78,7 +78,10 @@ public:
   User *owner();
 
   void set_owner(User *owner) {owner_ = owner;}
-  time_t remain_time(int type){return cd_[kTrainCD] - time(NULL);};
+  time_t RemainTime(int type);
+  time_t TrainRemainTime(){return cd_[kTrainCD] - time(NULL);};
+  time_t FeedRemainTime(){return cd_[kFeedCD] - time(NULL);};
+  time_t PlayRemainTime(){return cd_[kPlayCD] - time(NULL);};
 protected:
   DogAttr attr_;
   time_t cd_[kOperationCDNR];

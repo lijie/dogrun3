@@ -44,12 +44,13 @@ void protobuf_AssignDesc_uiconfig_2eproto() {
       "uiconfig.proto");
   GOOGLE_CHECK(file != NULL);
   UIElementFont_descriptor_ = file->message_type(0);
-  static const int UIElementFont_offsets_[5] = {
+  static const int UIElementFont_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIElementFont, desc_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIElementFont, font_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIElementFont, pos_x_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIElementFont, pos_y_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIElementFont, font_size_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIElementFont, font_color_),
   };
   UIElementFont_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -157,19 +158,20 @@ void protobuf_AddDesc_uiconfig_2eproto() {
   GOOGLE_PROTOBUF_VERIFY_VERSION;
 
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-    "\n\016uiconfig.proto\022\007dogrun2\"\\\n\rUIElementFo"
+    "\n\016uiconfig.proto\022\007dogrun2\"p\n\rUIElementFo"
     "nt\022\014\n\004desc\030\001 \002(\t\022\014\n\004font\030\002 \002(\t\022\r\n\005pos_x\030"
-    "\003 \002(\005\022\r\n\005pos_y\030\004 \002(\005\022\021\n\tfont_size\030\005 \002(\005\""
-    "J\n\rUIElementIcon\022\014\n\004icon\030\001 \002(\t\022\r\n\005pos_x\030"
-    "\002 \002(\005\022\r\n\005pos_y\030\003 \002(\005\022\r\n\005scale\030\004 \002(\005\"\317\001\n\n"
-    "UIItemConf\022%\n\005title\030\001 \002(\0132\026.dogrun2.UIEl"
-    "ementFont\022%\n\005speed\030\002 \002(\0132\026.dogrun2.UIEle"
-    "mentFont\022#\n\003exp\030\003 \002(\0132\026.dogrun2.UIElemen"
-    "tFont\022$\n\004icon\030\004 \002(\0132\026.dogrun2.UIElementI"
-    "con\022(\n\010icon_num\030\005 \002(\0132\026.dogrun2.UIElemen"
-    "tFont\"4\n\017UIItemConfArray\022!\n\004conf\030\001 \003(\0132\023"
-    ".dogrun2.UIItemConf**\n\tkItemType\022\016\n\nkIte"
-    "mTrain\020\000\022\r\n\tkItemPlay\020\001", 503);
+    "\003 \002(\005\022\r\n\005pos_y\030\004 \002(\005\022\021\n\tfont_size\030\005 \002(\005\022"
+    "\022\n\nfont_color\030\006 \003(\005\"J\n\rUIElementIcon\022\014\n\004"
+    "icon\030\001 \002(\t\022\r\n\005pos_x\030\002 \002(\005\022\r\n\005pos_y\030\003 \002(\005"
+    "\022\r\n\005scale\030\004 \002(\005\"\317\001\n\nUIItemConf\022%\n\005title\030"
+    "\001 \002(\0132\026.dogrun2.UIElementFont\022%\n\005speed\030\002"
+    " \002(\0132\026.dogrun2.UIElementFont\022#\n\003exp\030\003 \001("
+    "\0132\026.dogrun2.UIElementFont\022$\n\004icon\030\004 \002(\0132"
+    "\026.dogrun2.UIElementIcon\022(\n\010icon_num\030\005 \002("
+    "\0132\026.dogrun2.UIElementFont\"4\n\017UIItemConfA"
+    "rray\022!\n\004conf\030\001 \003(\0132\023.dogrun2.UIItemConf*"
+    "*\n\tkItemType\022\016\n\nkItemTrain\020\000\022\r\n\tkItemPla"
+    "y\020\001", 523);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "uiconfig.proto", &protobuf_RegisterTypes);
   UIElementFont::default_instance_ = new UIElementFont();
@@ -212,6 +214,7 @@ const int UIElementFont::kFontFieldNumber;
 const int UIElementFont::kPosXFieldNumber;
 const int UIElementFont::kPosYFieldNumber;
 const int UIElementFont::kFontSizeFieldNumber;
+const int UIElementFont::kFontColorFieldNumber;
 #endif  // !_MSC_VER
 
 UIElementFont::UIElementFont()
@@ -290,6 +293,7 @@ void UIElementFont::Clear() {
     pos_y_ = 0;
     font_size_ = 0;
   }
+  font_color_.Clear();
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
 }
@@ -377,6 +381,28 @@ bool UIElementFont::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(48)) goto parse_font_color;
+        break;
+      }
+
+      // repeated int32 font_color = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_font_color:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadRepeatedPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 1, 48, input, this->mutable_font_color())));
+        } else if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag)
+                   == ::google::protobuf::internal::WireFormatLite::
+                      WIRETYPE_LENGTH_DELIMITED) {
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPackedPrimitiveNoInline<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, this->mutable_font_color())));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_font_color;
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -432,6 +458,12 @@ void UIElementFont::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->font_size(), output);
   }
 
+  // repeated int32 font_color = 6;
+  for (int i = 0; i < this->font_color_size(); i++) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(
+      6, this->font_color(i), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -473,6 +505,12 @@ void UIElementFont::SerializeWithCachedSizes(
   // required int32 font_size = 5;
   if (has_font_size()) {
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->font_size(), target);
+  }
+
+  // repeated int32 font_color = 6;
+  for (int i = 0; i < this->font_color_size(); i++) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteInt32ToArray(6, this->font_color(i), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -522,6 +560,16 @@ int UIElementFont::ByteSize() const {
     }
 
   }
+  // repeated int32 font_color = 6;
+  {
+    int data_size = 0;
+    for (int i = 0; i < this->font_color_size(); i++) {
+      data_size += ::google::protobuf::internal::WireFormatLite::
+        Int32Size(this->font_color(i));
+    }
+    total_size += 1 * this->font_color_size() + data_size;
+  }
+
   if (!unknown_fields().empty()) {
     total_size +=
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
@@ -547,6 +595,7 @@ void UIElementFont::MergeFrom(const ::google::protobuf::Message& from) {
 
 void UIElementFont::MergeFrom(const UIElementFont& from) {
   GOOGLE_CHECK_NE(&from, this);
+  font_color_.MergeFrom(from.font_color_);
   if (from._has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     if (from.has_desc()) {
       set_desc(from.desc());
@@ -592,6 +641,7 @@ void UIElementFont::Swap(UIElementFont* other) {
     std::swap(pos_x_, other->pos_x_);
     std::swap(pos_y_, other->pos_y_);
     std::swap(font_size_, other->font_size_);
+    font_color_.Swap(&other->font_color_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1082,7 +1132,7 @@ bool UIItemConf::MergePartialFromCodedStream(
         break;
       }
 
-      // required .dogrun2.UIElementFont exp = 3;
+      // optional .dogrun2.UIElementFont exp = 3;
       case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
@@ -1154,7 +1204,7 @@ void UIItemConf::SerializeWithCachedSizes(
       2, this->speed(), output);
   }
 
-  // required .dogrun2.UIElementFont exp = 3;
+  // optional .dogrun2.UIElementFont exp = 3;
   if (has_exp()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
       3, this->exp(), output);
@@ -1194,7 +1244,7 @@ void UIItemConf::SerializeWithCachedSizes(
         2, this->speed(), target);
   }
 
-  // required .dogrun2.UIElementFont exp = 3;
+  // optional .dogrun2.UIElementFont exp = 3;
   if (has_exp()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
@@ -1240,7 +1290,7 @@ int UIItemConf::ByteSize() const {
           this->speed());
     }
 
-    // required .dogrun2.UIElementFont exp = 3;
+    // optional .dogrun2.UIElementFont exp = 3;
     if (has_exp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
@@ -1320,7 +1370,7 @@ void UIItemConf::CopyFrom(const UIItemConf& from) {
 }
 
 bool UIItemConf::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x0000001b) != 0x0000001b) return false;
 
   if (has_title()) {
     if (!this->title().IsInitialized()) return false;

@@ -511,12 +511,12 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
 
-  // required int32 time = 6;
-  inline bool has_time() const;
-  inline void clear_time();
-  static const int kTimeFieldNumber = 6;
-  inline ::google::protobuf::int32 time() const;
-  inline void set_time(::google::protobuf::int32 value);
+  // required int32 cd = 6;
+  inline bool has_cd() const;
+  inline void clear_cd();
+  static const int kCdFieldNumber = 6;
+  inline ::google::protobuf::int32 cd() const;
+  inline void set_cd(::google::protobuf::int32 value);
 
   // required int32 consume_heart = 7;
   inline bool has_consume_heart() const;
@@ -532,13 +532,6 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 consume_gold() const;
   inline void set_consume_gold(::google::protobuf::int32 value);
 
-  // required int32 cd = 9;
-  inline bool has_cd() const;
-  inline void clear_cd();
-  static const int kCdFieldNumber = 9;
-  inline ::google::protobuf::int32 cd() const;
-  inline void set_cd(::google::protobuf::int32 value);
-
   // @@protoc_insertion_point(class_scope:dogrun2.TrainConfig)
  private:
   inline void set_has_type();
@@ -549,14 +542,12 @@ class TrainConfig : public ::google::protobuf::Message {
   inline void clear_has_speed();
   inline void set_has_exp();
   inline void clear_has_exp();
-  inline void set_has_time();
-  inline void clear_has_time();
+  inline void set_has_cd();
+  inline void clear_has_cd();
   inline void set_has_consume_heart();
   inline void clear_has_consume_heart();
   inline void set_has_consume_gold();
   inline void clear_has_consume_gold();
-  inline void set_has_cd();
-  inline void clear_has_cd();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -564,13 +555,12 @@ class TrainConfig : public ::google::protobuf::Message {
   ::google::protobuf::int32 strong_;
   ::google::protobuf::int32 speed_;
   ::google::protobuf::int32 exp_;
-  ::google::protobuf::int32 time_;
+  ::google::protobuf::int32 cd_;
   ::google::protobuf::int32 consume_heart_;
   ::google::protobuf::int32 consume_gold_;
-  ::google::protobuf::int32 cd_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_dogattr_2eproto();
   friend void protobuf_AssignDesc_dogattr_2eproto();
@@ -1343,26 +1333,26 @@ inline void TrainConfig::set_exp(::google::protobuf::int32 value) {
   exp_ = value;
 }
 
-// required int32 time = 6;
-inline bool TrainConfig::has_time() const {
+// required int32 cd = 6;
+inline bool TrainConfig::has_cd() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void TrainConfig::set_has_time() {
+inline void TrainConfig::set_has_cd() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void TrainConfig::clear_has_time() {
+inline void TrainConfig::clear_has_cd() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void TrainConfig::clear_time() {
-  time_ = 0;
-  clear_has_time();
+inline void TrainConfig::clear_cd() {
+  cd_ = 0;
+  clear_has_cd();
 }
-inline ::google::protobuf::int32 TrainConfig::time() const {
-  return time_;
+inline ::google::protobuf::int32 TrainConfig::cd() const {
+  return cd_;
 }
-inline void TrainConfig::set_time(::google::protobuf::int32 value) {
-  set_has_time();
-  time_ = value;
+inline void TrainConfig::set_cd(::google::protobuf::int32 value) {
+  set_has_cd();
+  cd_ = value;
 }
 
 // required int32 consume_heart = 7;
@@ -1407,28 +1397,6 @@ inline ::google::protobuf::int32 TrainConfig::consume_gold() const {
 inline void TrainConfig::set_consume_gold(::google::protobuf::int32 value) {
   set_has_consume_gold();
   consume_gold_ = value;
-}
-
-// required int32 cd = 9;
-inline bool TrainConfig::has_cd() const {
-  return (_has_bits_[0] & 0x00000080u) != 0;
-}
-inline void TrainConfig::set_has_cd() {
-  _has_bits_[0] |= 0x00000080u;
-}
-inline void TrainConfig::clear_has_cd() {
-  _has_bits_[0] &= ~0x00000080u;
-}
-inline void TrainConfig::clear_cd() {
-  cd_ = 0;
-  clear_has_cd();
-}
-inline ::google::protobuf::int32 TrainConfig::cd() const {
-  return cd_;
-}
-inline void TrainConfig::set_cd(::google::protobuf::int32 value) {
-  set_has_cd();
-  cd_ = value;
 }
 
 // -------------------------------------------------------------------

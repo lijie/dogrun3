@@ -29,8 +29,7 @@ public:
   void TrainItemClickCallback(CCObject* sender);
   void PlayItemClickCallback(CCObject* sender);
   void BackItemClickCallback(CCObject* sender);
-  
-  
+
   CREATE_FUNC(GameScene);
 
 protected:

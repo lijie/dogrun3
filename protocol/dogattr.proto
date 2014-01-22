@@ -26,10 +26,9 @@ message TrainConfig {
 	required int32 strong = 2;
 	required int32 speed = 3;
 	required int32 exp = 5;
-	required int32 time = 6;
+	required int32 cd = 6;
 	required int32 consume_heart = 7;
 	required int32 consume_gold = 8;
-	required int32 cd = 9;
 };
 
 message TrainConfigArray {

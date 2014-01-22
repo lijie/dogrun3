@@ -1,6 +1,7 @@
 #include "layers.h"
 #include "event_mgr.h"
 #include "protocol/uiconfig.pb.h"
+#include "ui_config_init.h"
 
 void DogLayer::MenuClickCallback(CCObject* sender) {
 }
@@ -188,17 +189,6 @@ void MainMenuLayer::InitMenuItem() {
   addChild(menu_);
 }
 
-void DogMenuLayer::FoodItemClickCallback(CCObject* sender) {
-}
-
-void DogMenuLayer::TrainItemClickCallback(CCObject* sender) {
-  EventMgr::Instance().Response(kEventClickTrainItem);
-}
-
-void DogMenuLayer::PlayItemClickCallback(CCObject* sender) {
-  EventMgr::Instance().Response(kEventClickPlayItem);
-}
-
 void DogMenuLayer::GameItemClickCallback(CCObject* sender) {
 }
 
@@ -211,82 +201,44 @@ bool DogMenuLayer::init() {
 }
 
 void DogMenuLayer::InitMenuItem() {
-  CCSprite* food_sprite = CCSprite::create();
-  food_sprite->initWithSpriteFrameName("food.png");
-
-  CCSprite* train_sprite = CCSprite::create();
-  train_sprite->initWithSpriteFrameName("train.png");
-
-  CCSprite* play_sprite = CCSprite::create();
-  play_sprite->initWithSpriteFrameName("play.png");
-
   CCSprite* game_sprite = CCSprite::create();
   game_sprite->initWithSpriteFrameName("game.png");
-
-  CCMenuItemSprite* food_item = CCMenuItemSprite::create(
-    food_sprite, food_sprite, food_sprite, this, menu_selector(DogMenuLayer::FoodItemClickCallback));
-  
-  CCMenuItemSprite* train_item = CCMenuItemSprite::create(
-    train_sprite, train_sprite, train_sprite, this, menu_selector(DogMenuLayer::TrainItemClickCallback));
-
-  CCMenuItemSprite* play_item = CCMenuItemSprite::create(
-    play_sprite, play_sprite, play_sprite, this, menu_selector(DogMenuLayer::PlayItemClickCallback));
 
   CCMenuItemSprite* game_item = CCMenuItemSprite::create(
     game_sprite, game_sprite, game_sprite, this, menu_selector(DogMenuLayer::GameItemClickCallback));
 
-  menu_ = CCMenu::create(food_item, train_item, play_item, game_item, NULL);
-  menu_->setAnchorPoint(ccp(0, 0));
-  menu_->setPosition(ccp(0, 0));
-
   int base_x = 8; int base_y = 10; int delt = 18; int last_item_x = 0;
+  MultiSpriteMenuItem* food_items = MultiSpriteMenuItem::create("food", ccp(base_x, base_y));
 
-  food_item->setAnchorPoint(ccp(0, 0));
-  food_item->setPosition ( ccp(base_x, base_y));
+  last_item_x += food_items->GetItemWidth() + delt;
+  MultiSpriteMenuItem* train_items = MultiSpriteMenuItem::create("train", ccp(base_x + last_item_x, base_y));
 
-  last_item_x = (int)food_item->getContentSize().width + delt;
-  train_item->setAnchorPoint(ccp(0, 0));
-  train_item->setPosition( ccp(base_x + last_item_x, base_y));
+  last_item_x += train_items->GetItemWidth() + delt;
+  MultiSpriteMenuItem* play_items = MultiSpriteMenuItem::create("play", ccp(base_x + last_item_x, base_y));
 
-  last_item_x += (int)train_item->getContentSize().width + delt;
-  play_item->setAnchorPoint(ccp(0, 0));
-  play_item->setPosition ( ccp(base_x + last_item_x, base_y));
-
-  last_item_x += (int)play_item->getContentSize().width + delt;
+  last_item_x += play_items->GetItemWidth() + delt;
   game_item->setAnchorPoint(ccp(0, 0));
   game_item->setPosition ( ccp(base_x + last_item_x, base_y));
 
+  CCArray* array = CCArray::create();
+  food_items->AddToArray(array);
+  train_items->AddToArray(array);
+  play_items->AddToArray(array);
+  array->addObject(game_item);
+
+  menu_ = CCMenu::createWithArray(array);
+  menu_->setAnchorPoint(ccp(0, 0));
+  menu_->setPosition(ccp(0, 0));
+
   addChild(menu_);
-}
-
-void TrainMenuLayer::CreateTraining() {
-  training_sprite_ = CCSprite::create();
-  training_sprite_->initWithSpriteFrameName("training.png");
-}
-
-void TrainMenuLayer::CreateTrainDone() {
-  traindone_sprite_ = CCSprite::create();
-  traindone_sprite_->initWithSpriteFrameName("train_done.png");
 }
 
 void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
   EventMgr::Instance().Response(kEventClickBackItem);
 }
 
-void TrainMenuLayer::Train1ItemClickCallback(CCObject* sender) {
-  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(1)))->ItemClickCallback();
-}
-
-void TrainMenuLayer::Train2ItemClickCallback(CCObject* sender) {
-  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(2)))->ItemClickCallback();
-}
-
-void TrainMenuLayer::Train3ItemClickCallback(CCObject* sender) {
-  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(3)))->ItemClickCallback();
-}
-
-void TrainMenuLayer::Train4ItemClickCallback(CCObject* sender) {
-  ((FSMenuItem*)(menu_->getChildren()->objectAtIndex(4)))->ItemClickCallback();
+void TrainMenuLayer::ItemClickCallback(CCObject* sender) {
+  
 }
 
 bool TrainMenuLayer::init() {
@@ -298,66 +250,40 @@ bool TrainMenuLayer::init() {
 }
 
 void TrainMenuLayer::InitMenuItem() {
-  
   CCSprite* back_sprite = CCSprite::create();
   back_sprite->initWithSpriteFrameName("back.png");
-
-  CCSprite* train1_sprite = CCSprite::create();
-  train1_sprite->initWithSpriteFrameName("white.png");
-
-  CCSprite* train2_sprite = CCSprite::create();
-  train2_sprite->initWithSpriteFrameName("white.png");
-
-  CCSprite* train3_sprite = CCSprite::create();
-  train3_sprite->initWithSpriteFrameName("white.png");
-
-  CCSprite* train4_sprite = CCSprite::create();
-  train4_sprite->initWithSpriteFrameName("white.png");
 
   CCMenuItemSprite* back_item = CCMenuItemSprite::create(
     back_sprite, back_sprite, back_sprite, this, menu_selector(TrainMenuLayer::BackItemClickCallback));
   
-  FSMenuItem* train1_item = FSMenuItem::create(
-    train1_sprite, train1_sprite, train1_sprite, this, menu_selector(TrainMenuLayer::Train1ItemClickCallback));
-  train1_item->InitData(dogrun2::kItemTrain, 0);
-
-  FSMenuItem* train2_item = FSMenuItem::create(
-    train2_sprite, train2_sprite, train2_sprite, this, menu_selector(TrainMenuLayer::Train2ItemClickCallback));
-  train2_item->InitData(dogrun2::kItemTrain, 1);
-
-  FSMenuItem* train3_item = FSMenuItem::create(
-    train3_sprite, train3_sprite, train3_sprite, this, menu_selector(TrainMenuLayer::Train3ItemClickCallback));
-  train3_item->InitData(dogrun2::kItemTrain, 2);
-
-  FSMenuItem* train4_item = FSMenuItem::create(
-    train4_sprite, train4_sprite, train4_sprite, this, menu_selector(TrainMenuLayer::Train4ItemClickCallback));
-  train4_item->InitData(dogrun2::kItemTrain, 3);
-
-  menu_ = CCMenu::create(back_item, train1_item, train2_item, train3_item, train4_item, NULL);
+  CCArray* item_arry = CCArray::create();
+  item_arry->addObject(back_item);
+  FSMenuItem* item = NULL;
+  for(int i = 0; i < GetUITrainCfg()->conf_size(); ++i)
+  {
+    item = FSMenuItem::create(dogrun2::kItemTrain, i);
+    item_arry->addObject(item);
+  }
+  menu_ = CCMenu::createWithArray(item_arry);
   menu_->setAnchorPoint(ccp(0, 0));
   menu_->setPosition(ccp(0, 0));
 
-  int base_x = 15; int base_y = 10; int delt = 35; int last_item_x = 0;
+  int base_x = 15; int base_y = 10; int delt = 10;
+  int last_item_x = back_item->getContentSize().width + delt;
 
   back_item->setAnchorPoint(ccp(0, 0));
   back_item->setPosition(ccp(base_x, base_y));
 
-  last_item_x += (int)back_item->getContentSize().width + delt;
-  train1_item->setAnchorPoint(ccp(0, 0));
-  train1_item->setPosition(ccp(base_x + last_item_x, base_y));
+  int menu_item_size = menu_->getChildrenCount();
+  for(int i = 0; i < menu_item_size; ++i)
+  {
+    if(i == 0) continue;
 
-  last_item_x += (int)train1_item->getContentSize().width + delt;
-  train2_item->setAnchorPoint(ccp(0, 0));
-  train2_item->setPosition(ccp(base_x + last_item_x, base_y));
-
-  last_item_x += (int)train2_item->getContentSize().width + delt;
-  train3_item->setAnchorPoint(ccp(0, 0));
-  train3_item->setPosition(ccp(base_x + last_item_x, base_y));
-
-  last_item_x += (int)train3_item->getContentSize().width + delt;
-  train4_item->setAnchorPoint(ccp(0, 0));
-  train4_item->setPosition(ccp(base_x + last_item_x, base_y));
-
+    item = (FSMenuItem*)(menu_->getChildren()->objectAtIndex(i));
+    item->setAnchorPoint(ccp(0, 0));
+    item->setPosition(ccp(base_x + last_item_x, base_y));
+    last_item_x += (int)item->getContentSize().width + delt;
+  }
   addChild(menu_);
 }
 
