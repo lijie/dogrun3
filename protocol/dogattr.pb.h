@@ -283,57 +283,87 @@ class FoodConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // required int32 str = 2;
-  inline bool has_str() const;
-  inline void clear_str();
-  static const int kStrFieldNumber = 2;
-  inline ::google::protobuf::int32 str() const;
-  inline void set_str(::google::protobuf::int32 value);
+  // required int32 cd = 2;
+  inline bool has_cd() const;
+  inline void clear_cd();
+  static const int kCdFieldNumber = 2;
+  inline ::google::protobuf::int32 cd() const;
+  inline void set_cd(::google::protobuf::int32 value);
 
-  // required int32 speed = 3;
+  // required int32 consume_heart = 3;
+  inline bool has_consume_heart() const;
+  inline void clear_consume_heart();
+  static const int kConsumeHeartFieldNumber = 3;
+  inline ::google::protobuf::int32 consume_heart() const;
+  inline void set_consume_heart(::google::protobuf::int32 value);
+
+  // required int32 consume_gold = 4;
+  inline bool has_consume_gold() const;
+  inline void clear_consume_gold();
+  static const int kConsumeGoldFieldNumber = 4;
+  inline ::google::protobuf::int32 consume_gold() const;
+  inline void set_consume_gold(::google::protobuf::int32 value);
+
+  // optional int32 strong = 5;
+  inline bool has_strong() const;
+  inline void clear_strong();
+  static const int kStrongFieldNumber = 5;
+  inline ::google::protobuf::int32 strong() const;
+  inline void set_strong(::google::protobuf::int32 value);
+
+  // optional int32 speed = 6;
   inline bool has_speed() const;
   inline void clear_speed();
-  static const int kSpeedFieldNumber = 3;
+  static const int kSpeedFieldNumber = 6;
   inline ::google::protobuf::int32 speed() const;
   inline void set_speed(::google::protobuf::int32 value);
 
-  // required int32 intimacy = 4;
-  inline bool has_intimacy() const;
-  inline void clear_intimacy();
-  static const int kIntimacyFieldNumber = 4;
-  inline ::google::protobuf::int32 intimacy() const;
-  inline void set_intimacy(::google::protobuf::int32 value);
-
-  // required int32 exp = 5;
+  // optional int32 exp = 7;
   inline bool has_exp() const;
   inline void clear_exp();
-  static const int kExpFieldNumber = 5;
+  static const int kExpFieldNumber = 7;
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
+
+  // optional int32 intimacy = 8;
+  inline bool has_intimacy() const;
+  inline void clear_intimacy();
+  static const int kIntimacyFieldNumber = 8;
+  inline ::google::protobuf::int32 intimacy() const;
+  inline void set_intimacy(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:dogrun2.FoodConfig)
  private:
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_str();
-  inline void clear_has_str();
+  inline void set_has_cd();
+  inline void clear_has_cd();
+  inline void set_has_consume_heart();
+  inline void clear_has_consume_heart();
+  inline void set_has_consume_gold();
+  inline void clear_has_consume_gold();
+  inline void set_has_strong();
+  inline void clear_has_strong();
   inline void set_has_speed();
   inline void clear_has_speed();
-  inline void set_has_intimacy();
-  inline void clear_has_intimacy();
   inline void set_has_exp();
   inline void clear_has_exp();
+  inline void set_has_intimacy();
+  inline void clear_has_intimacy();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 type_;
-  ::google::protobuf::int32 str_;
+  ::google::protobuf::int32 cd_;
+  ::google::protobuf::int32 consume_heart_;
+  ::google::protobuf::int32 consume_gold_;
+  ::google::protobuf::int32 strong_;
   ::google::protobuf::int32 speed_;
-  ::google::protobuf::int32 intimacy_;
   ::google::protobuf::int32 exp_;
+  ::google::protobuf::int32 intimacy_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_dogattr_2eproto();
   friend void protobuf_AssignDesc_dogattr_2eproto();
@@ -490,77 +520,87 @@ class TrainConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // required int32 strong = 2;
-  inline bool has_strong() const;
-  inline void clear_strong();
-  static const int kStrongFieldNumber = 2;
-  inline ::google::protobuf::int32 strong() const;
-  inline void set_strong(::google::protobuf::int32 value);
-
-  // required int32 speed = 3;
-  inline bool has_speed() const;
-  inline void clear_speed();
-  static const int kSpeedFieldNumber = 3;
-  inline ::google::protobuf::int32 speed() const;
-  inline void set_speed(::google::protobuf::int32 value);
-
-  // required int32 exp = 5;
-  inline bool has_exp() const;
-  inline void clear_exp();
-  static const int kExpFieldNumber = 5;
-  inline ::google::protobuf::int32 exp() const;
-  inline void set_exp(::google::protobuf::int32 value);
-
-  // required int32 cd = 6;
+  // required int32 cd = 2;
   inline bool has_cd() const;
   inline void clear_cd();
-  static const int kCdFieldNumber = 6;
+  static const int kCdFieldNumber = 2;
   inline ::google::protobuf::int32 cd() const;
   inline void set_cd(::google::protobuf::int32 value);
 
-  // required int32 consume_heart = 7;
+  // required int32 consume_heart = 3;
   inline bool has_consume_heart() const;
   inline void clear_consume_heart();
-  static const int kConsumeHeartFieldNumber = 7;
+  static const int kConsumeHeartFieldNumber = 3;
   inline ::google::protobuf::int32 consume_heart() const;
   inline void set_consume_heart(::google::protobuf::int32 value);
 
-  // required int32 consume_gold = 8;
+  // required int32 consume_gold = 4;
   inline bool has_consume_gold() const;
   inline void clear_consume_gold();
-  static const int kConsumeGoldFieldNumber = 8;
+  static const int kConsumeGoldFieldNumber = 4;
   inline ::google::protobuf::int32 consume_gold() const;
   inline void set_consume_gold(::google::protobuf::int32 value);
+
+  // optional int32 strong = 5;
+  inline bool has_strong() const;
+  inline void clear_strong();
+  static const int kStrongFieldNumber = 5;
+  inline ::google::protobuf::int32 strong() const;
+  inline void set_strong(::google::protobuf::int32 value);
+
+  // optional int32 speed = 6;
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 6;
+  inline ::google::protobuf::int32 speed() const;
+  inline void set_speed(::google::protobuf::int32 value);
+
+  // optional int32 exp = 7;
+  inline bool has_exp() const;
+  inline void clear_exp();
+  static const int kExpFieldNumber = 7;
+  inline ::google::protobuf::int32 exp() const;
+  inline void set_exp(::google::protobuf::int32 value);
+
+  // optional int32 intimacy = 8;
+  inline bool has_intimacy() const;
+  inline void clear_intimacy();
+  static const int kIntimacyFieldNumber = 8;
+  inline ::google::protobuf::int32 intimacy() const;
+  inline void set_intimacy(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:dogrun2.TrainConfig)
  private:
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_strong();
-  inline void clear_has_strong();
-  inline void set_has_speed();
-  inline void clear_has_speed();
-  inline void set_has_exp();
-  inline void clear_has_exp();
   inline void set_has_cd();
   inline void clear_has_cd();
   inline void set_has_consume_heart();
   inline void clear_has_consume_heart();
   inline void set_has_consume_gold();
   inline void clear_has_consume_gold();
+  inline void set_has_strong();
+  inline void clear_has_strong();
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_exp();
+  inline void clear_has_exp();
+  inline void set_has_intimacy();
+  inline void clear_has_intimacy();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 type_;
-  ::google::protobuf::int32 strong_;
-  ::google::protobuf::int32 speed_;
-  ::google::protobuf::int32 exp_;
   ::google::protobuf::int32 cd_;
   ::google::protobuf::int32 consume_heart_;
   ::google::protobuf::int32 consume_gold_;
+  ::google::protobuf::int32 strong_;
+  ::google::protobuf::int32 speed_;
+  ::google::protobuf::int32 exp_;
+  ::google::protobuf::int32 intimacy_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_dogattr_2eproto();
   friend void protobuf_AssignDesc_dogattr_2eproto();
@@ -717,57 +757,87 @@ class PlayConfig : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 type() const;
   inline void set_type(::google::protobuf::int32 value);
 
-  // required int32 str = 2;
-  inline bool has_str() const;
-  inline void clear_str();
-  static const int kStrFieldNumber = 2;
-  inline ::google::protobuf::int32 str() const;
-  inline void set_str(::google::protobuf::int32 value);
+  // required int32 cd = 2;
+  inline bool has_cd() const;
+  inline void clear_cd();
+  static const int kCdFieldNumber = 2;
+  inline ::google::protobuf::int32 cd() const;
+  inline void set_cd(::google::protobuf::int32 value);
 
-  // required int32 speed = 3;
+  // required int32 consume_heart = 3;
+  inline bool has_consume_heart() const;
+  inline void clear_consume_heart();
+  static const int kConsumeHeartFieldNumber = 3;
+  inline ::google::protobuf::int32 consume_heart() const;
+  inline void set_consume_heart(::google::protobuf::int32 value);
+
+  // required int32 consume_gold = 4;
+  inline bool has_consume_gold() const;
+  inline void clear_consume_gold();
+  static const int kConsumeGoldFieldNumber = 4;
+  inline ::google::protobuf::int32 consume_gold() const;
+  inline void set_consume_gold(::google::protobuf::int32 value);
+
+  // optional int32 strong = 5;
+  inline bool has_strong() const;
+  inline void clear_strong();
+  static const int kStrongFieldNumber = 5;
+  inline ::google::protobuf::int32 strong() const;
+  inline void set_strong(::google::protobuf::int32 value);
+
+  // optional int32 speed = 6;
   inline bool has_speed() const;
   inline void clear_speed();
-  static const int kSpeedFieldNumber = 3;
+  static const int kSpeedFieldNumber = 6;
   inline ::google::protobuf::int32 speed() const;
   inline void set_speed(::google::protobuf::int32 value);
 
-  // required int32 intimacy = 4;
-  inline bool has_intimacy() const;
-  inline void clear_intimacy();
-  static const int kIntimacyFieldNumber = 4;
-  inline ::google::protobuf::int32 intimacy() const;
-  inline void set_intimacy(::google::protobuf::int32 value);
-
-  // required int32 exp = 5;
+  // optional int32 exp = 7;
   inline bool has_exp() const;
   inline void clear_exp();
-  static const int kExpFieldNumber = 5;
+  static const int kExpFieldNumber = 7;
   inline ::google::protobuf::int32 exp() const;
   inline void set_exp(::google::protobuf::int32 value);
+
+  // optional int32 intimacy = 8;
+  inline bool has_intimacy() const;
+  inline void clear_intimacy();
+  static const int kIntimacyFieldNumber = 8;
+  inline ::google::protobuf::int32 intimacy() const;
+  inline void set_intimacy(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:dogrun2.PlayConfig)
  private:
   inline void set_has_type();
   inline void clear_has_type();
-  inline void set_has_str();
-  inline void clear_has_str();
+  inline void set_has_cd();
+  inline void clear_has_cd();
+  inline void set_has_consume_heart();
+  inline void clear_has_consume_heart();
+  inline void set_has_consume_gold();
+  inline void clear_has_consume_gold();
+  inline void set_has_strong();
+  inline void clear_has_strong();
   inline void set_has_speed();
   inline void clear_has_speed();
-  inline void set_has_intimacy();
-  inline void clear_has_intimacy();
   inline void set_has_exp();
   inline void clear_has_exp();
+  inline void set_has_intimacy();
+  inline void clear_has_intimacy();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::google::protobuf::int32 type_;
-  ::google::protobuf::int32 str_;
+  ::google::protobuf::int32 cd_;
+  ::google::protobuf::int32 consume_heart_;
+  ::google::protobuf::int32 consume_gold_;
+  ::google::protobuf::int32 strong_;
   ::google::protobuf::int32 speed_;
-  ::google::protobuf::int32 intimacy_;
   ::google::protobuf::int32 exp_;
+  ::google::protobuf::int32 intimacy_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(8 + 31) / 32];
 
   friend void  protobuf_AddDesc_dogattr_2eproto();
   friend void protobuf_AssignDesc_dogattr_2eproto();
@@ -950,12 +1020,12 @@ class DogAttr : public ::google::protobuf::Message {
   inline ::google::protobuf::int32 star() const;
   inline void set_star(::google::protobuf::int32 value);
 
-  // required int32 str = 5;
-  inline bool has_str() const;
-  inline void clear_str();
-  static const int kStrFieldNumber = 5;
-  inline ::google::protobuf::int32 str() const;
-  inline void set_str(::google::protobuf::int32 value);
+  // required int32 strong = 5;
+  inline bool has_strong() const;
+  inline void clear_strong();
+  static const int kStrongFieldNumber = 5;
+  inline ::google::protobuf::int32 strong() const;
+  inline void set_strong(::google::protobuf::int32 value);
 
   // required int32 speed = 6;
   inline bool has_speed() const;
@@ -988,8 +1058,8 @@ class DogAttr : public ::google::protobuf::Message {
   inline void clear_has_exp();
   inline void set_has_star();
   inline void clear_has_star();
-  inline void set_has_str();
-  inline void clear_has_str();
+  inline void set_has_strong();
+  inline void clear_has_strong();
   inline void set_has_speed();
   inline void clear_has_speed();
   inline void set_has_intimacy();
@@ -1003,7 +1073,7 @@ class DogAttr : public ::google::protobuf::Message {
   ::google::protobuf::int32 lv_;
   ::google::protobuf::int32 exp_;
   ::google::protobuf::int32 star_;
-  ::google::protobuf::int32 str_;
+  ::google::protobuf::int32 strong_;
   ::google::protobuf::int32 speed_;
   ::google::protobuf::int32 intimacy_;
   ::google::protobuf::int32 id_;
@@ -1124,37 +1194,103 @@ inline void FoodConfig::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// required int32 str = 2;
-inline bool FoodConfig::has_str() const {
+// required int32 cd = 2;
+inline bool FoodConfig::has_cd() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void FoodConfig::set_has_str() {
+inline void FoodConfig::set_has_cd() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void FoodConfig::clear_has_str() {
+inline void FoodConfig::clear_has_cd() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void FoodConfig::clear_str() {
-  str_ = 0;
-  clear_has_str();
+inline void FoodConfig::clear_cd() {
+  cd_ = 0;
+  clear_has_cd();
 }
-inline ::google::protobuf::int32 FoodConfig::str() const {
-  return str_;
+inline ::google::protobuf::int32 FoodConfig::cd() const {
+  return cd_;
 }
-inline void FoodConfig::set_str(::google::protobuf::int32 value) {
-  set_has_str();
-  str_ = value;
+inline void FoodConfig::set_cd(::google::protobuf::int32 value) {
+  set_has_cd();
+  cd_ = value;
 }
 
-// required int32 speed = 3;
-inline bool FoodConfig::has_speed() const {
+// required int32 consume_heart = 3;
+inline bool FoodConfig::has_consume_heart() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void FoodConfig::set_has_speed() {
+inline void FoodConfig::set_has_consume_heart() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void FoodConfig::clear_has_speed() {
+inline void FoodConfig::clear_has_consume_heart() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void FoodConfig::clear_consume_heart() {
+  consume_heart_ = 0;
+  clear_has_consume_heart();
+}
+inline ::google::protobuf::int32 FoodConfig::consume_heart() const {
+  return consume_heart_;
+}
+inline void FoodConfig::set_consume_heart(::google::protobuf::int32 value) {
+  set_has_consume_heart();
+  consume_heart_ = value;
+}
+
+// required int32 consume_gold = 4;
+inline bool FoodConfig::has_consume_gold() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void FoodConfig::set_has_consume_gold() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void FoodConfig::clear_has_consume_gold() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void FoodConfig::clear_consume_gold() {
+  consume_gold_ = 0;
+  clear_has_consume_gold();
+}
+inline ::google::protobuf::int32 FoodConfig::consume_gold() const {
+  return consume_gold_;
+}
+inline void FoodConfig::set_consume_gold(::google::protobuf::int32 value) {
+  set_has_consume_gold();
+  consume_gold_ = value;
+}
+
+// optional int32 strong = 5;
+inline bool FoodConfig::has_strong() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void FoodConfig::set_has_strong() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void FoodConfig::clear_has_strong() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void FoodConfig::clear_strong() {
+  strong_ = 0;
+  clear_has_strong();
+}
+inline ::google::protobuf::int32 FoodConfig::strong() const {
+  return strong_;
+}
+inline void FoodConfig::set_strong(::google::protobuf::int32 value) {
+  set_has_strong();
+  strong_ = value;
+}
+
+// optional int32 speed = 6;
+inline bool FoodConfig::has_speed() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void FoodConfig::set_has_speed() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void FoodConfig::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void FoodConfig::clear_speed() {
   speed_ = 0;
@@ -1168,37 +1304,15 @@ inline void FoodConfig::set_speed(::google::protobuf::int32 value) {
   speed_ = value;
 }
 
-// required int32 intimacy = 4;
-inline bool FoodConfig::has_intimacy() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void FoodConfig::set_has_intimacy() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void FoodConfig::clear_has_intimacy() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void FoodConfig::clear_intimacy() {
-  intimacy_ = 0;
-  clear_has_intimacy();
-}
-inline ::google::protobuf::int32 FoodConfig::intimacy() const {
-  return intimacy_;
-}
-inline void FoodConfig::set_intimacy(::google::protobuf::int32 value) {
-  set_has_intimacy();
-  intimacy_ = value;
-}
-
-// required int32 exp = 5;
+// optional int32 exp = 7;
 inline bool FoodConfig::has_exp() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void FoodConfig::set_has_exp() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void FoodConfig::clear_has_exp() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void FoodConfig::clear_exp() {
   exp_ = 0;
@@ -1210,6 +1324,28 @@ inline ::google::protobuf::int32 FoodConfig::exp() const {
 inline void FoodConfig::set_exp(::google::protobuf::int32 value) {
   set_has_exp();
   exp_ = value;
+}
+
+// optional int32 intimacy = 8;
+inline bool FoodConfig::has_intimacy() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void FoodConfig::set_has_intimacy() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void FoodConfig::clear_has_intimacy() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void FoodConfig::clear_intimacy() {
+  intimacy_ = 0;
+  clear_has_intimacy();
+}
+inline ::google::protobuf::int32 FoodConfig::intimacy() const {
+  return intimacy_;
+}
+inline void FoodConfig::set_intimacy(::google::protobuf::int32 value) {
+  set_has_intimacy();
+  intimacy_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1267,81 +1403,15 @@ inline void TrainConfig::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// required int32 strong = 2;
-inline bool TrainConfig::has_strong() const {
+// required int32 cd = 2;
+inline bool TrainConfig::has_cd() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void TrainConfig::set_has_strong() {
+inline void TrainConfig::set_has_cd() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void TrainConfig::clear_has_strong() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void TrainConfig::clear_strong() {
-  strong_ = 0;
-  clear_has_strong();
-}
-inline ::google::protobuf::int32 TrainConfig::strong() const {
-  return strong_;
-}
-inline void TrainConfig::set_strong(::google::protobuf::int32 value) {
-  set_has_strong();
-  strong_ = value;
-}
-
-// required int32 speed = 3;
-inline bool TrainConfig::has_speed() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void TrainConfig::set_has_speed() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void TrainConfig::clear_has_speed() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void TrainConfig::clear_speed() {
-  speed_ = 0;
-  clear_has_speed();
-}
-inline ::google::protobuf::int32 TrainConfig::speed() const {
-  return speed_;
-}
-inline void TrainConfig::set_speed(::google::protobuf::int32 value) {
-  set_has_speed();
-  speed_ = value;
-}
-
-// required int32 exp = 5;
-inline bool TrainConfig::has_exp() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void TrainConfig::set_has_exp() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void TrainConfig::clear_has_exp() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void TrainConfig::clear_exp() {
-  exp_ = 0;
-  clear_has_exp();
-}
-inline ::google::protobuf::int32 TrainConfig::exp() const {
-  return exp_;
-}
-inline void TrainConfig::set_exp(::google::protobuf::int32 value) {
-  set_has_exp();
-  exp_ = value;
-}
-
-// required int32 cd = 6;
-inline bool TrainConfig::has_cd() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
-}
-inline void TrainConfig::set_has_cd() {
-  _has_bits_[0] |= 0x00000010u;
-}
 inline void TrainConfig::clear_has_cd() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void TrainConfig::clear_cd() {
   cd_ = 0;
@@ -1355,15 +1425,15 @@ inline void TrainConfig::set_cd(::google::protobuf::int32 value) {
   cd_ = value;
 }
 
-// required int32 consume_heart = 7;
+// required int32 consume_heart = 3;
 inline bool TrainConfig::has_consume_heart() const {
-  return (_has_bits_[0] & 0x00000020u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void TrainConfig::set_has_consume_heart() {
-  _has_bits_[0] |= 0x00000020u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void TrainConfig::clear_has_consume_heart() {
-  _has_bits_[0] &= ~0x00000020u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void TrainConfig::clear_consume_heart() {
   consume_heart_ = 0;
@@ -1377,15 +1447,15 @@ inline void TrainConfig::set_consume_heart(::google::protobuf::int32 value) {
   consume_heart_ = value;
 }
 
-// required int32 consume_gold = 8;
+// required int32 consume_gold = 4;
 inline bool TrainConfig::has_consume_gold() const {
-  return (_has_bits_[0] & 0x00000040u) != 0;
+  return (_has_bits_[0] & 0x00000008u) != 0;
 }
 inline void TrainConfig::set_has_consume_gold() {
-  _has_bits_[0] |= 0x00000040u;
+  _has_bits_[0] |= 0x00000008u;
 }
 inline void TrainConfig::clear_has_consume_gold() {
-  _has_bits_[0] &= ~0x00000040u;
+  _has_bits_[0] &= ~0x00000008u;
 }
 inline void TrainConfig::clear_consume_gold() {
   consume_gold_ = 0;
@@ -1397,6 +1467,94 @@ inline ::google::protobuf::int32 TrainConfig::consume_gold() const {
 inline void TrainConfig::set_consume_gold(::google::protobuf::int32 value) {
   set_has_consume_gold();
   consume_gold_ = value;
+}
+
+// optional int32 strong = 5;
+inline bool TrainConfig::has_strong() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void TrainConfig::set_has_strong() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void TrainConfig::clear_has_strong() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void TrainConfig::clear_strong() {
+  strong_ = 0;
+  clear_has_strong();
+}
+inline ::google::protobuf::int32 TrainConfig::strong() const {
+  return strong_;
+}
+inline void TrainConfig::set_strong(::google::protobuf::int32 value) {
+  set_has_strong();
+  strong_ = value;
+}
+
+// optional int32 speed = 6;
+inline bool TrainConfig::has_speed() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void TrainConfig::set_has_speed() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void TrainConfig::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void TrainConfig::clear_speed() {
+  speed_ = 0;
+  clear_has_speed();
+}
+inline ::google::protobuf::int32 TrainConfig::speed() const {
+  return speed_;
+}
+inline void TrainConfig::set_speed(::google::protobuf::int32 value) {
+  set_has_speed();
+  speed_ = value;
+}
+
+// optional int32 exp = 7;
+inline bool TrainConfig::has_exp() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void TrainConfig::set_has_exp() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void TrainConfig::clear_has_exp() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void TrainConfig::clear_exp() {
+  exp_ = 0;
+  clear_has_exp();
+}
+inline ::google::protobuf::int32 TrainConfig::exp() const {
+  return exp_;
+}
+inline void TrainConfig::set_exp(::google::protobuf::int32 value) {
+  set_has_exp();
+  exp_ = value;
+}
+
+// optional int32 intimacy = 8;
+inline bool TrainConfig::has_intimacy() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void TrainConfig::set_has_intimacy() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void TrainConfig::clear_has_intimacy() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void TrainConfig::clear_intimacy() {
+  intimacy_ = 0;
+  clear_has_intimacy();
+}
+inline ::google::protobuf::int32 TrainConfig::intimacy() const {
+  return intimacy_;
+}
+inline void TrainConfig::set_intimacy(::google::protobuf::int32 value) {
+  set_has_intimacy();
+  intimacy_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1454,37 +1612,103 @@ inline void PlayConfig::set_type(::google::protobuf::int32 value) {
   type_ = value;
 }
 
-// required int32 str = 2;
-inline bool PlayConfig::has_str() const {
+// required int32 cd = 2;
+inline bool PlayConfig::has_cd() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void PlayConfig::set_has_str() {
+inline void PlayConfig::set_has_cd() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void PlayConfig::clear_has_str() {
+inline void PlayConfig::clear_has_cd() {
   _has_bits_[0] &= ~0x00000002u;
 }
-inline void PlayConfig::clear_str() {
-  str_ = 0;
-  clear_has_str();
+inline void PlayConfig::clear_cd() {
+  cd_ = 0;
+  clear_has_cd();
 }
-inline ::google::protobuf::int32 PlayConfig::str() const {
-  return str_;
+inline ::google::protobuf::int32 PlayConfig::cd() const {
+  return cd_;
 }
-inline void PlayConfig::set_str(::google::protobuf::int32 value) {
-  set_has_str();
-  str_ = value;
+inline void PlayConfig::set_cd(::google::protobuf::int32 value) {
+  set_has_cd();
+  cd_ = value;
 }
 
-// required int32 speed = 3;
-inline bool PlayConfig::has_speed() const {
+// required int32 consume_heart = 3;
+inline bool PlayConfig::has_consume_heart() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void PlayConfig::set_has_speed() {
+inline void PlayConfig::set_has_consume_heart() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void PlayConfig::clear_has_speed() {
+inline void PlayConfig::clear_has_consume_heart() {
   _has_bits_[0] &= ~0x00000004u;
+}
+inline void PlayConfig::clear_consume_heart() {
+  consume_heart_ = 0;
+  clear_has_consume_heart();
+}
+inline ::google::protobuf::int32 PlayConfig::consume_heart() const {
+  return consume_heart_;
+}
+inline void PlayConfig::set_consume_heart(::google::protobuf::int32 value) {
+  set_has_consume_heart();
+  consume_heart_ = value;
+}
+
+// required int32 consume_gold = 4;
+inline bool PlayConfig::has_consume_gold() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void PlayConfig::set_has_consume_gold() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void PlayConfig::clear_has_consume_gold() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void PlayConfig::clear_consume_gold() {
+  consume_gold_ = 0;
+  clear_has_consume_gold();
+}
+inline ::google::protobuf::int32 PlayConfig::consume_gold() const {
+  return consume_gold_;
+}
+inline void PlayConfig::set_consume_gold(::google::protobuf::int32 value) {
+  set_has_consume_gold();
+  consume_gold_ = value;
+}
+
+// optional int32 strong = 5;
+inline bool PlayConfig::has_strong() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void PlayConfig::set_has_strong() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void PlayConfig::clear_has_strong() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void PlayConfig::clear_strong() {
+  strong_ = 0;
+  clear_has_strong();
+}
+inline ::google::protobuf::int32 PlayConfig::strong() const {
+  return strong_;
+}
+inline void PlayConfig::set_strong(::google::protobuf::int32 value) {
+  set_has_strong();
+  strong_ = value;
+}
+
+// optional int32 speed = 6;
+inline bool PlayConfig::has_speed() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void PlayConfig::set_has_speed() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void PlayConfig::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000020u;
 }
 inline void PlayConfig::clear_speed() {
   speed_ = 0;
@@ -1498,37 +1722,15 @@ inline void PlayConfig::set_speed(::google::protobuf::int32 value) {
   speed_ = value;
 }
 
-// required int32 intimacy = 4;
-inline bool PlayConfig::has_intimacy() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void PlayConfig::set_has_intimacy() {
-  _has_bits_[0] |= 0x00000008u;
-}
-inline void PlayConfig::clear_has_intimacy() {
-  _has_bits_[0] &= ~0x00000008u;
-}
-inline void PlayConfig::clear_intimacy() {
-  intimacy_ = 0;
-  clear_has_intimacy();
-}
-inline ::google::protobuf::int32 PlayConfig::intimacy() const {
-  return intimacy_;
-}
-inline void PlayConfig::set_intimacy(::google::protobuf::int32 value) {
-  set_has_intimacy();
-  intimacy_ = value;
-}
-
-// required int32 exp = 5;
+// optional int32 exp = 7;
 inline bool PlayConfig::has_exp() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000040u) != 0;
 }
 inline void PlayConfig::set_has_exp() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000040u;
 }
 inline void PlayConfig::clear_has_exp() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000040u;
 }
 inline void PlayConfig::clear_exp() {
   exp_ = 0;
@@ -1540,6 +1742,28 @@ inline ::google::protobuf::int32 PlayConfig::exp() const {
 inline void PlayConfig::set_exp(::google::protobuf::int32 value) {
   set_has_exp();
   exp_ = value;
+}
+
+// optional int32 intimacy = 8;
+inline bool PlayConfig::has_intimacy() const {
+  return (_has_bits_[0] & 0x00000080u) != 0;
+}
+inline void PlayConfig::set_has_intimacy() {
+  _has_bits_[0] |= 0x00000080u;
+}
+inline void PlayConfig::clear_has_intimacy() {
+  _has_bits_[0] &= ~0x00000080u;
+}
+inline void PlayConfig::clear_intimacy() {
+  intimacy_ = 0;
+  clear_has_intimacy();
+}
+inline ::google::protobuf::int32 PlayConfig::intimacy() const {
+  return intimacy_;
+}
+inline void PlayConfig::set_intimacy(::google::protobuf::int32 value) {
+  set_has_intimacy();
+  intimacy_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -1711,26 +1935,26 @@ inline void DogAttr::set_star(::google::protobuf::int32 value) {
   star_ = value;
 }
 
-// required int32 str = 5;
-inline bool DogAttr::has_str() const {
+// required int32 strong = 5;
+inline bool DogAttr::has_strong() const {
   return (_has_bits_[0] & 0x00000010u) != 0;
 }
-inline void DogAttr::set_has_str() {
+inline void DogAttr::set_has_strong() {
   _has_bits_[0] |= 0x00000010u;
 }
-inline void DogAttr::clear_has_str() {
+inline void DogAttr::clear_has_strong() {
   _has_bits_[0] &= ~0x00000010u;
 }
-inline void DogAttr::clear_str() {
-  str_ = 0;
-  clear_has_str();
+inline void DogAttr::clear_strong() {
+  strong_ = 0;
+  clear_has_strong();
 }
-inline ::google::protobuf::int32 DogAttr::str() const {
-  return str_;
+inline ::google::protobuf::int32 DogAttr::strong() const {
+  return strong_;
 }
-inline void DogAttr::set_str(::google::protobuf::int32 value) {
-  set_has_str();
-  str_ = value;
+inline void DogAttr::set_strong(::google::protobuf::int32 value) {
+  set_has_strong();
+  strong_ = value;
 }
 
 // required int32 speed = 6;

@@ -29,7 +29,7 @@ int Dog::Feed(int feedtype) {
   }
 
   const dogrun2::FoodConfig& cfg = FoodCfg->cfg(feedtype);
-  attr_.set_str(attr_.str() + cfg.str());
+  attr_.set_strong(attr_.strong() + cfg.strong());
   attr_.set_exp(attr_.exp() + cfg.exp());
   cd_[kFeedCD] = now + kDefalutFeedCD;
   return 0;

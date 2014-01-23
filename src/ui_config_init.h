@@ -7,6 +7,7 @@ namespace dogrun2 {
 
 dogrun2::UIItemConfArray* GetUITrainCfg();
 dogrun2::UIItemConfArray* GetUIPlayCfg();
+dogrun2::UIItemConfArray* GetUIFeedCfg();
 int UIConfigInit();
 
 #endif

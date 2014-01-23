@@ -1,8 +1,9 @@
 package dogrun2;
 
 enum kItemType{
-    kItemTrain = 0;
-    kItemPlay = 1;
+    kItemFeed = 0;
+    kItemTrain = 1;
+    kItemPlay = 2;
 };
 
 message UIElementFont {
@@ -24,10 +25,11 @@ message UIElementIcon {
 
 message UIItemConf {
     required UIElementFont title = 1;
-    required UIElementFont speed = 2;
-    optional UIElementFont exp = 3;
-    required UIElementIcon icon = 4;
-    required UIElementFont icon_num = 5;
+    required UIElementIcon icon = 2;
+    required UIElementFont icon_num = 3;
+    optional UIElementFont speed = 4;
+    optional UIElementFont exp = 5;
+    optional UIElementFont strong = 6;
 };
 
 message UIItemConfArray {

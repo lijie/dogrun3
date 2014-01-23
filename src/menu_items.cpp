@@ -68,7 +68,7 @@ void MultiSpriteMenuItem::InitItem() {
   label_cd_ = CCLabelTTF::create("", "Arial", 17);
   doing_item_->addChild(label_cd_, 1);
   label_cd_->setAnchorPoint(ccp(0,0));
-  label_cd_->setPosition(ccp(0, 0));
+  label_cd_->setPosition(ccp(100, 35));
 
 
   CCSprite* done_sprite = CCSprite::create();
@@ -114,14 +114,13 @@ void MultiSpriteMenuItem::ClickDoingItemCallback(CCObject* sender) {
 }
 
 void MultiSpriteMenuItem::ClickDoneItemCallback(CCObject* sender) {
+  EventMgr::Instance().Response(kEventDogAttrChange);
+  ChangeShowItem("normal");
 }
 
 void MultiSpriteMenuItem::ChangeDoingItemCallback(CCObject* sender) {
-  normal_item_->setEnabled(false);
-  normal_item_->setVisible(false);
-  doing_item_->setEnabled(false);
-  doing_item_->setVisible(true);
-  
+  ChangeShowItem("doing");
+
   if(item_type_ == "train") {
     cd_time_ = User::current()->dogs(0)->RemainTime(kTrainCD);
   }
@@ -134,18 +133,51 @@ void MultiSpriteMenuItem::ChangeDoingItemCallback(CCObject* sender) {
     cd_time_ = User::current()->dogs(0)->RemainTime(kFeedCD);
   }
   if(cd_time_ > 1) {
-    this->schedule(schedule_selector(MultiSpriteMenuItem::OnTime), 1.0f, (unsigned int)cd_time_, 1.0f);
+    this->schedule(schedule_selector(MultiSpriteMenuItem::OnTime), 1.0f, (unsigned int)cd_time_, 0.0f);
   }
 }
 
 void MultiSpriteMenuItem::OnTime(float f) {
   char str[32] = {};
-  snprintf(str, sizeof(str), "%d", cd_time_);
-  label_cd_->setString(str);
+  snprintf(str, sizeof(str), "%d%d:%d%d", cd_time_/60/10, cd_time_/60%10, cd_time_%60/10, cd_time_%60%10);
+  cd_time_--;
+  if(cd_time_ > 0) {
+    label_cd_->setString(str);
+  } else {
+    label_cd_->setString("");
+    ChangeShowItem("done");
+  }
+}
+
+void MultiSpriteMenuItem::ChangeShowItem(std::string item) {
+  if(item == "normal") {
+    normal_item_->setEnabled(true);
+    normal_item_->setVisible(true);
+    doing_item_->setEnabled(false);
+    doing_item_->setVisible(false);
+    done_item_->setEnabled(false);
+    done_item_->setVisible(false);
+  }
+  else if(item == "doing") {
+    normal_item_->setEnabled(false);
+    normal_item_->setVisible(false);
+    doing_item_->setEnabled(true);
+    doing_item_->setVisible(true);
+    done_item_->setEnabled(false);
+    done_item_->setVisible(false);
+  }
+  else if(item == "done") {
+    normal_item_->setEnabled(false);
+    normal_item_->setVisible(false);
+    doing_item_->setEnabled(false);
+    doing_item_->setVisible(false);
+    done_item_->setEnabled(true);
+    done_item_->setVisible(true);
+  }
 }
 
 
-
+//FSMenuItem
 FSMenuItem* FSMenuItem::create(CCNode *normalSprite, 
                                CCNode *selectedSprite, 
                                CCNode *disabledSprite, 
@@ -163,9 +195,9 @@ FSMenuItem* FSMenuItem::create(CCNode *normalSprite,
   return ret;
 }
 
-FSMenuItem * FSMenuItem::create(int item_type, int data_index) {
+FSMenuItem * FSMenuItem::create(std::string sprite_name, int item_type, int data_index) {
   CCSprite* sprite = CCSprite::create();
-  sprite->initWithSpriteFrameName("white_mid.png");
+  sprite->initWithSpriteFrameName(sprite_name.c_str());
   FSMenuItem *ret = new FSMenuItem();
   if (ret) {
     ret->autorelease();
@@ -182,6 +214,11 @@ FSMenuItem * FSMenuItem::create(int item_type, int data_index) {
 void FSMenuItem::InitData(int item_type, int data_index) {
   const dogrun2::UIItemConf* cfg = NULL;
   switch(item_type) {
+  case dogrun2::kItemFeed:
+    {
+      cfg = &(GetUITrainCfg()->conf(data_index));
+      break;
+    }
   case dogrun2::kItemTrain:
     {
       cfg = &(GetUITrainCfg()->conf(data_index));
@@ -215,7 +252,6 @@ void FSMenuItem::InitData(int item_type, int data_index) {
         cfg->title().font_color().Get(2)));
     }
   }
-
 
   if(cfg->has_speed()) {
     CCLabelTTF *label_speed_desc = CCLabelTTF::create(
@@ -282,7 +318,6 @@ void FSMenuItem::ItemClickCallback(CCObject* sender) {
     {
       ret = User::current()->dogs(0)->Train(data_index_);
       if(ret >= 0) {
-        EventMgr::Instance().Response(kEventDogAttrChange);
         EventMgr::Instance().Response(kEventUserInfoChange);
         EventMgr::Instance().Response(kEventClickBackItem);
         EventMgr::Instance().Response(kEventChangeToTrainingItem);
@@ -291,13 +326,17 @@ void FSMenuItem::ItemClickCallback(CCObject* sender) {
     }
   case dogrun2::kItemPlay:
     {
-      
+      ret = User::current()->dogs(0)->Feed(data_index_);
+      if(ret >= 0) {
+        EventMgr::Instance().Response(kEventUserInfoChange);
+        EventMgr::Instance().Response(kEventClickBackItem);
+        EventMgr::Instance().Response(kEventChangeToPlayingItem);
+      }
       break;
     }
   default:
     return;
   }
 
- 
 }
 

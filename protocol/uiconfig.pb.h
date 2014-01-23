@@ -40,11 +40,12 @@ class UIItemConf;
 class UIItemConfArray;
 
 enum kItemType {
-  kItemTrain = 0,
-  kItemPlay = 1
+  kItemFeed = 0,
+  kItemTrain = 1,
+  kItemPlay = 2
 };
 bool kItemType_IsValid(int value);
-const kItemType kItemType_MIN = kItemTrain;
+const kItemType kItemType_MIN = kItemFeed;
 const kItemType kItemType_MAX = kItemPlay;
 const int kItemType_ARRAYSIZE = kItemType_MAX + 1;
 
@@ -385,65 +386,77 @@ class UIItemConf : public ::google::protobuf::Message {
   inline ::dogrun2::UIElementFont* release_title();
   inline void set_allocated_title(::dogrun2::UIElementFont* title);
 
-  // required .dogrun2.UIElementFont speed = 2;
-  inline bool has_speed() const;
-  inline void clear_speed();
-  static const int kSpeedFieldNumber = 2;
-  inline const ::dogrun2::UIElementFont& speed() const;
-  inline ::dogrun2::UIElementFont* mutable_speed();
-  inline ::dogrun2::UIElementFont* release_speed();
-  inline void set_allocated_speed(::dogrun2::UIElementFont* speed);
-
-  // optional .dogrun2.UIElementFont exp = 3;
-  inline bool has_exp() const;
-  inline void clear_exp();
-  static const int kExpFieldNumber = 3;
-  inline const ::dogrun2::UIElementFont& exp() const;
-  inline ::dogrun2::UIElementFont* mutable_exp();
-  inline ::dogrun2::UIElementFont* release_exp();
-  inline void set_allocated_exp(::dogrun2::UIElementFont* exp);
-
-  // required .dogrun2.UIElementIcon icon = 4;
+  // required .dogrun2.UIElementIcon icon = 2;
   inline bool has_icon() const;
   inline void clear_icon();
-  static const int kIconFieldNumber = 4;
+  static const int kIconFieldNumber = 2;
   inline const ::dogrun2::UIElementIcon& icon() const;
   inline ::dogrun2::UIElementIcon* mutable_icon();
   inline ::dogrun2::UIElementIcon* release_icon();
   inline void set_allocated_icon(::dogrun2::UIElementIcon* icon);
 
-  // required .dogrun2.UIElementFont icon_num = 5;
+  // required .dogrun2.UIElementFont icon_num = 3;
   inline bool has_icon_num() const;
   inline void clear_icon_num();
-  static const int kIconNumFieldNumber = 5;
+  static const int kIconNumFieldNumber = 3;
   inline const ::dogrun2::UIElementFont& icon_num() const;
   inline ::dogrun2::UIElementFont* mutable_icon_num();
   inline ::dogrun2::UIElementFont* release_icon_num();
   inline void set_allocated_icon_num(::dogrun2::UIElementFont* icon_num);
 
+  // optional .dogrun2.UIElementFont speed = 4;
+  inline bool has_speed() const;
+  inline void clear_speed();
+  static const int kSpeedFieldNumber = 4;
+  inline const ::dogrun2::UIElementFont& speed() const;
+  inline ::dogrun2::UIElementFont* mutable_speed();
+  inline ::dogrun2::UIElementFont* release_speed();
+  inline void set_allocated_speed(::dogrun2::UIElementFont* speed);
+
+  // optional .dogrun2.UIElementFont exp = 5;
+  inline bool has_exp() const;
+  inline void clear_exp();
+  static const int kExpFieldNumber = 5;
+  inline const ::dogrun2::UIElementFont& exp() const;
+  inline ::dogrun2::UIElementFont* mutable_exp();
+  inline ::dogrun2::UIElementFont* release_exp();
+  inline void set_allocated_exp(::dogrun2::UIElementFont* exp);
+
+  // optional .dogrun2.UIElementFont strong = 6;
+  inline bool has_strong() const;
+  inline void clear_strong();
+  static const int kStrongFieldNumber = 6;
+  inline const ::dogrun2::UIElementFont& strong() const;
+  inline ::dogrun2::UIElementFont* mutable_strong();
+  inline ::dogrun2::UIElementFont* release_strong();
+  inline void set_allocated_strong(::dogrun2::UIElementFont* strong);
+
   // @@protoc_insertion_point(class_scope:dogrun2.UIItemConf)
  private:
   inline void set_has_title();
   inline void clear_has_title();
-  inline void set_has_speed();
-  inline void clear_has_speed();
-  inline void set_has_exp();
-  inline void clear_has_exp();
   inline void set_has_icon();
   inline void clear_has_icon();
   inline void set_has_icon_num();
   inline void clear_has_icon_num();
+  inline void set_has_speed();
+  inline void clear_has_speed();
+  inline void set_has_exp();
+  inline void clear_has_exp();
+  inline void set_has_strong();
+  inline void clear_has_strong();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
   ::dogrun2::UIElementFont* title_;
-  ::dogrun2::UIElementFont* speed_;
-  ::dogrun2::UIElementFont* exp_;
   ::dogrun2::UIElementIcon* icon_;
   ::dogrun2::UIElementFont* icon_num_;
+  ::dogrun2::UIElementFont* speed_;
+  ::dogrun2::UIElementFont* exp_;
+  ::dogrun2::UIElementFont* strong_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(5 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
 
   friend void  protobuf_AddDesc_uiconfig_2eproto();
   friend void protobuf_AssignDesc_uiconfig_2eproto();
@@ -957,91 +970,15 @@ inline void UIItemConf::set_allocated_title(::dogrun2::UIElementFont* title) {
   }
 }
 
-// required .dogrun2.UIElementFont speed = 2;
-inline bool UIItemConf::has_speed() const {
+// required .dogrun2.UIElementIcon icon = 2;
+inline bool UIItemConf::has_icon() const {
   return (_has_bits_[0] & 0x00000002u) != 0;
 }
-inline void UIItemConf::set_has_speed() {
+inline void UIItemConf::set_has_icon() {
   _has_bits_[0] |= 0x00000002u;
 }
-inline void UIItemConf::clear_has_speed() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void UIItemConf::clear_speed() {
-  if (speed_ != NULL) speed_->::dogrun2::UIElementFont::Clear();
-  clear_has_speed();
-}
-inline const ::dogrun2::UIElementFont& UIItemConf::speed() const {
-  return speed_ != NULL ? *speed_ : *default_instance_->speed_;
-}
-inline ::dogrun2::UIElementFont* UIItemConf::mutable_speed() {
-  set_has_speed();
-  if (speed_ == NULL) speed_ = new ::dogrun2::UIElementFont;
-  return speed_;
-}
-inline ::dogrun2::UIElementFont* UIItemConf::release_speed() {
-  clear_has_speed();
-  ::dogrun2::UIElementFont* temp = speed_;
-  speed_ = NULL;
-  return temp;
-}
-inline void UIItemConf::set_allocated_speed(::dogrun2::UIElementFont* speed) {
-  delete speed_;
-  speed_ = speed;
-  if (speed) {
-    set_has_speed();
-  } else {
-    clear_has_speed();
-  }
-}
-
-// optional .dogrun2.UIElementFont exp = 3;
-inline bool UIItemConf::has_exp() const {
-  return (_has_bits_[0] & 0x00000004u) != 0;
-}
-inline void UIItemConf::set_has_exp() {
-  _has_bits_[0] |= 0x00000004u;
-}
-inline void UIItemConf::clear_has_exp() {
-  _has_bits_[0] &= ~0x00000004u;
-}
-inline void UIItemConf::clear_exp() {
-  if (exp_ != NULL) exp_->::dogrun2::UIElementFont::Clear();
-  clear_has_exp();
-}
-inline const ::dogrun2::UIElementFont& UIItemConf::exp() const {
-  return exp_ != NULL ? *exp_ : *default_instance_->exp_;
-}
-inline ::dogrun2::UIElementFont* UIItemConf::mutable_exp() {
-  set_has_exp();
-  if (exp_ == NULL) exp_ = new ::dogrun2::UIElementFont;
-  return exp_;
-}
-inline ::dogrun2::UIElementFont* UIItemConf::release_exp() {
-  clear_has_exp();
-  ::dogrun2::UIElementFont* temp = exp_;
-  exp_ = NULL;
-  return temp;
-}
-inline void UIItemConf::set_allocated_exp(::dogrun2::UIElementFont* exp) {
-  delete exp_;
-  exp_ = exp;
-  if (exp) {
-    set_has_exp();
-  } else {
-    clear_has_exp();
-  }
-}
-
-// required .dogrun2.UIElementIcon icon = 4;
-inline bool UIItemConf::has_icon() const {
-  return (_has_bits_[0] & 0x00000008u) != 0;
-}
-inline void UIItemConf::set_has_icon() {
-  _has_bits_[0] |= 0x00000008u;
-}
 inline void UIItemConf::clear_has_icon() {
-  _has_bits_[0] &= ~0x00000008u;
+  _has_bits_[0] &= ~0x00000002u;
 }
 inline void UIItemConf::clear_icon() {
   if (icon_ != NULL) icon_->::dogrun2::UIElementIcon::Clear();
@@ -1071,15 +1008,15 @@ inline void UIItemConf::set_allocated_icon(::dogrun2::UIElementIcon* icon) {
   }
 }
 
-// required .dogrun2.UIElementFont icon_num = 5;
+// required .dogrun2.UIElementFont icon_num = 3;
 inline bool UIItemConf::has_icon_num() const {
-  return (_has_bits_[0] & 0x00000010u) != 0;
+  return (_has_bits_[0] & 0x00000004u) != 0;
 }
 inline void UIItemConf::set_has_icon_num() {
-  _has_bits_[0] |= 0x00000010u;
+  _has_bits_[0] |= 0x00000004u;
 }
 inline void UIItemConf::clear_has_icon_num() {
-  _has_bits_[0] &= ~0x00000010u;
+  _has_bits_[0] &= ~0x00000004u;
 }
 inline void UIItemConf::clear_icon_num() {
   if (icon_num_ != NULL) icon_num_->::dogrun2::UIElementFont::Clear();
@@ -1106,6 +1043,120 @@ inline void UIItemConf::set_allocated_icon_num(::dogrun2::UIElementFont* icon_nu
     set_has_icon_num();
   } else {
     clear_has_icon_num();
+  }
+}
+
+// optional .dogrun2.UIElementFont speed = 4;
+inline bool UIItemConf::has_speed() const {
+  return (_has_bits_[0] & 0x00000008u) != 0;
+}
+inline void UIItemConf::set_has_speed() {
+  _has_bits_[0] |= 0x00000008u;
+}
+inline void UIItemConf::clear_has_speed() {
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline void UIItemConf::clear_speed() {
+  if (speed_ != NULL) speed_->::dogrun2::UIElementFont::Clear();
+  clear_has_speed();
+}
+inline const ::dogrun2::UIElementFont& UIItemConf::speed() const {
+  return speed_ != NULL ? *speed_ : *default_instance_->speed_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::mutable_speed() {
+  set_has_speed();
+  if (speed_ == NULL) speed_ = new ::dogrun2::UIElementFont;
+  return speed_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::release_speed() {
+  clear_has_speed();
+  ::dogrun2::UIElementFont* temp = speed_;
+  speed_ = NULL;
+  return temp;
+}
+inline void UIItemConf::set_allocated_speed(::dogrun2::UIElementFont* speed) {
+  delete speed_;
+  speed_ = speed;
+  if (speed) {
+    set_has_speed();
+  } else {
+    clear_has_speed();
+  }
+}
+
+// optional .dogrun2.UIElementFont exp = 5;
+inline bool UIItemConf::has_exp() const {
+  return (_has_bits_[0] & 0x00000010u) != 0;
+}
+inline void UIItemConf::set_has_exp() {
+  _has_bits_[0] |= 0x00000010u;
+}
+inline void UIItemConf::clear_has_exp() {
+  _has_bits_[0] &= ~0x00000010u;
+}
+inline void UIItemConf::clear_exp() {
+  if (exp_ != NULL) exp_->::dogrun2::UIElementFont::Clear();
+  clear_has_exp();
+}
+inline const ::dogrun2::UIElementFont& UIItemConf::exp() const {
+  return exp_ != NULL ? *exp_ : *default_instance_->exp_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::mutable_exp() {
+  set_has_exp();
+  if (exp_ == NULL) exp_ = new ::dogrun2::UIElementFont;
+  return exp_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::release_exp() {
+  clear_has_exp();
+  ::dogrun2::UIElementFont* temp = exp_;
+  exp_ = NULL;
+  return temp;
+}
+inline void UIItemConf::set_allocated_exp(::dogrun2::UIElementFont* exp) {
+  delete exp_;
+  exp_ = exp;
+  if (exp) {
+    set_has_exp();
+  } else {
+    clear_has_exp();
+  }
+}
+
+// optional .dogrun2.UIElementFont strong = 6;
+inline bool UIItemConf::has_strong() const {
+  return (_has_bits_[0] & 0x00000020u) != 0;
+}
+inline void UIItemConf::set_has_strong() {
+  _has_bits_[0] |= 0x00000020u;
+}
+inline void UIItemConf::clear_has_strong() {
+  _has_bits_[0] &= ~0x00000020u;
+}
+inline void UIItemConf::clear_strong() {
+  if (strong_ != NULL) strong_->::dogrun2::UIElementFont::Clear();
+  clear_has_strong();
+}
+inline const ::dogrun2::UIElementFont& UIItemConf::strong() const {
+  return strong_ != NULL ? *strong_ : *default_instance_->strong_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::mutable_strong() {
+  set_has_strong();
+  if (strong_ == NULL) strong_ = new ::dogrun2::UIElementFont;
+  return strong_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::release_strong() {
+  clear_has_strong();
+  ::dogrun2::UIElementFont* temp = strong_;
+  strong_ = NULL;
+  return temp;
+}
+inline void UIItemConf::set_allocated_strong(::dogrun2::UIElementFont* strong) {
+  delete strong_;
+  strong_ = strong;
+  if (strong) {
+    set_has_strong();
+  } else {
+    clear_has_strong();
   }
 }
 

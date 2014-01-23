@@ -11,10 +11,13 @@ message DogLevelConfigArray {
 
 message FoodConfig {
 	required int32 type = 1;
-	required int32 str = 2;
-	required int32 speed = 3;
-	required int32 intimacy = 4;
-	required int32 exp = 5;
+	required int32 cd = 2;
+	required int32 consume_heart = 3;
+	required int32 consume_gold = 4;
+	optional int32 strong = 5;
+	optional int32 speed = 6;
+	optional int32 exp = 7;
+	optional int32 intimacy = 8;
 };
 
 message FoodConfigArray {
@@ -23,12 +26,13 @@ message FoodConfigArray {
 
 message TrainConfig {
 	required int32 type = 1;
-	required int32 strong = 2;
-	required int32 speed = 3;
-	required int32 exp = 5;
-	required int32 cd = 6;
-	required int32 consume_heart = 7;
-	required int32 consume_gold = 8;
+	required int32 cd = 2;
+	required int32 consume_heart = 3;
+	required int32 consume_gold = 4;
+	optional int32 strong = 5;
+	optional int32 speed = 6;
+	optional int32 exp = 7;
+	optional int32 intimacy = 8;
 };
 
 message TrainConfigArray {
@@ -37,10 +41,13 @@ message TrainConfigArray {
 
 message PlayConfig {
 	required int32 type = 1;
-	required int32 str = 2;
-	required int32 speed = 3;
-	required int32 intimacy = 4;
-	required int32 exp = 5;
+	required int32 cd = 2;
+	required int32 consume_heart = 3;
+	required int32 consume_gold = 4;
+	optional int32 strong = 5;
+	optional int32 speed = 6;
+	optional int32 exp = 7;
+	optional int32 intimacy = 8;
 };
 
 message PlayConfigArray {
@@ -52,7 +59,7 @@ message DogAttr {
 	required int32 lv = 2 [default = 1];
 	required int32 exp = 3;
 	required int32 star = 4;
-	required int32 str = 5;
+	required int32 strong = 5;
 	required int32 speed = 6;
 	required int32 intimacy = 7;
 	required int32 id = 8;

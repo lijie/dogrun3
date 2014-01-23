@@ -3,14 +3,10 @@
 #include <string>
 USING_NS_CC;
 
-class MultiSpriteMenuItem : public CCMenuItemSprite {
+class MultiSpriteMenuItem : public CCNode {
 public:
   MultiSpriteMenuItem(){}
-  virtual void onEnter()
-  {
-    int a = 0;
-    a++;
-  }
+
   virtual ~MultiSpriteMenuItem(){}
 
   static MultiSpriteMenuItem * create(std::string item_type, CCPoint& pos);
@@ -24,6 +20,7 @@ public:
   void AddToArray(CCArray* array);
   void OnTime(float f);
 protected:
+  void ChangeShowItem(std::string item);
   void InitItem();
   void InitItemPos();
 
@@ -43,7 +40,7 @@ public:
 
   virtual ~FSMenuItem(){}
 
-  static FSMenuItem * create(int item_type, int data_index);
+  static FSMenuItem * create(std::string sprite_name, int item_type, int data_index);
 
   static FSMenuItem * create(CCNode *normalSprite, 
                              CCNode *selectedSprite, 

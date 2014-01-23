@@ -82,12 +82,13 @@ void protobuf_AssignDesc_uiconfig_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UIElementIcon));
   UIItemConf_descriptor_ = file->message_type(2);
-  static const int UIItemConf_offsets_[5] = {
+  static const int UIItemConf_offsets_[6] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, title_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, speed_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, icon_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, icon_num_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, speed_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, exp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, strong_),
   };
   UIItemConf_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -163,15 +164,16 @@ void protobuf_AddDesc_uiconfig_2eproto() {
     "\003 \002(\005\022\r\n\005pos_y\030\004 \002(\005\022\021\n\tfont_size\030\005 \002(\005\022"
     "\022\n\nfont_color\030\006 \003(\005\"J\n\rUIElementIcon\022\014\n\004"
     "icon\030\001 \002(\t\022\r\n\005pos_x\030\002 \002(\005\022\r\n\005pos_y\030\003 \002(\005"
-    "\022\r\n\005scale\030\004 \002(\005\"\317\001\n\nUIItemConf\022%\n\005title\030"
-    "\001 \002(\0132\026.dogrun2.UIElementFont\022%\n\005speed\030\002"
-    " \002(\0132\026.dogrun2.UIElementFont\022#\n\003exp\030\003 \001("
-    "\0132\026.dogrun2.UIElementFont\022$\n\004icon\030\004 \002(\0132"
-    "\026.dogrun2.UIElementIcon\022(\n\010icon_num\030\005 \002("
+    "\022\r\n\005scale\030\004 \002(\005\"\367\001\n\nUIItemConf\022%\n\005title\030"
+    "\001 \002(\0132\026.dogrun2.UIElementFont\022$\n\004icon\030\002 "
+    "\002(\0132\026.dogrun2.UIElementIcon\022(\n\010icon_num\030"
+    "\003 \002(\0132\026.dogrun2.UIElementFont\022%\n\005speed\030\004"
+    " \001(\0132\026.dogrun2.UIElementFont\022#\n\003exp\030\005 \001("
+    "\0132\026.dogrun2.UIElementFont\022&\n\006strong\030\006 \001("
     "\0132\026.dogrun2.UIElementFont\"4\n\017UIItemConfA"
     "rray\022!\n\004conf\030\001 \003(\0132\023.dogrun2.UIItemConf*"
-    "*\n\tkItemType\022\016\n\nkItemTrain\020\000\022\r\n\tkItemPla"
-    "y\020\001", 523);
+    "9\n\tkItemType\022\r\n\tkItemFeed\020\000\022\016\n\nkItemTrai"
+    "n\020\001\022\r\n\tkItemPlay\020\002", 578);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "uiconfig.proto", &protobuf_RegisterTypes);
   UIElementFont::default_instance_ = new UIElementFont();
@@ -199,6 +201,7 @@ bool kItemType_IsValid(int value) {
   switch(value) {
     case 0:
     case 1:
+    case 2:
       return true;
     default:
       return false;
@@ -1007,10 +1010,11 @@ void UIElementIcon::Swap(UIElementIcon* other) {
 
 #ifndef _MSC_VER
 const int UIItemConf::kTitleFieldNumber;
-const int UIItemConf::kSpeedFieldNumber;
-const int UIItemConf::kExpFieldNumber;
 const int UIItemConf::kIconFieldNumber;
 const int UIItemConf::kIconNumFieldNumber;
+const int UIItemConf::kSpeedFieldNumber;
+const int UIItemConf::kExpFieldNumber;
+const int UIItemConf::kStrongFieldNumber;
 #endif  // !_MSC_VER
 
 UIItemConf::UIItemConf()
@@ -1020,10 +1024,11 @@ UIItemConf::UIItemConf()
 
 void UIItemConf::InitAsDefaultInstance() {
   title_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
-  speed_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
-  exp_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
   icon_ = const_cast< ::dogrun2::UIElementIcon*>(&::dogrun2::UIElementIcon::default_instance());
   icon_num_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
+  speed_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
+  exp_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
+  strong_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
 }
 
 UIItemConf::UIItemConf(const UIItemConf& from)
@@ -1035,10 +1040,11 @@ UIItemConf::UIItemConf(const UIItemConf& from)
 void UIItemConf::SharedCtor() {
   _cached_size_ = 0;
   title_ = NULL;
-  speed_ = NULL;
-  exp_ = NULL;
   icon_ = NULL;
   icon_num_ = NULL;
+  speed_ = NULL;
+  exp_ = NULL;
+  strong_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1049,10 +1055,11 @@ UIItemConf::~UIItemConf() {
 void UIItemConf::SharedDtor() {
   if (this != default_instance_) {
     delete title_;
-    delete speed_;
-    delete exp_;
     delete icon_;
     delete icon_num_;
+    delete speed_;
+    delete exp_;
+    delete strong_;
   }
 }
 
@@ -1082,17 +1089,20 @@ void UIItemConf::Clear() {
     if (has_title()) {
       if (title_ != NULL) title_->::dogrun2::UIElementFont::Clear();
     }
+    if (has_icon()) {
+      if (icon_ != NULL) icon_->::dogrun2::UIElementIcon::Clear();
+    }
+    if (has_icon_num()) {
+      if (icon_num_ != NULL) icon_num_->::dogrun2::UIElementFont::Clear();
+    }
     if (has_speed()) {
       if (speed_ != NULL) speed_->::dogrun2::UIElementFont::Clear();
     }
     if (has_exp()) {
       if (exp_ != NULL) exp_->::dogrun2::UIElementFont::Clear();
     }
-    if (has_icon()) {
-      if (icon_ != NULL) icon_->::dogrun2::UIElementIcon::Clear();
-    }
-    if (has_icon_num()) {
-      if (icon_num_ != NULL) icon_num_->::dogrun2::UIElementFont::Clear();
+    if (has_strong()) {
+      if (strong_ != NULL) strong_->::dogrun2::UIElementFont::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1114,40 +1124,12 @@ bool UIItemConf::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(18)) goto parse_speed;
+        if (input->ExpectTag(18)) goto parse_icon;
         break;
       }
 
-      // required .dogrun2.UIElementFont speed = 2;
+      // required .dogrun2.UIElementIcon icon = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_speed:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_speed()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(26)) goto parse_exp;
-        break;
-      }
-
-      // optional .dogrun2.UIElementFont exp = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
-         parse_exp:
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
-               input, mutable_exp()));
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(34)) goto parse_icon;
-        break;
-      }
-
-      // required .dogrun2.UIElementIcon icon = 4;
-      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_icon:
@@ -1156,17 +1138,59 @@ bool UIItemConf::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(42)) goto parse_icon_num;
+        if (input->ExpectTag(26)) goto parse_icon_num;
         break;
       }
 
-      // required .dogrun2.UIElementFont icon_num = 5;
-      case 5: {
+      // required .dogrun2.UIElementFont icon_num = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
          parse_icon_num:
           DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
                input, mutable_icon_num()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(34)) goto parse_speed;
+        break;
+      }
+
+      // optional .dogrun2.UIElementFont speed = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_speed:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_speed()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(42)) goto parse_exp;
+        break;
+      }
+
+      // optional .dogrun2.UIElementFont exp = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_exp:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_exp()));
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(50)) goto parse_strong;
+        break;
+      }
+
+      // optional .dogrun2.UIElementFont strong = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_strong:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_strong()));
         } else {
           goto handle_uninterpreted;
         }
@@ -1198,28 +1222,34 @@ void UIItemConf::SerializeWithCachedSizes(
       1, this->title(), output);
   }
 
-  // required .dogrun2.UIElementFont speed = 2;
-  if (has_speed()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      2, this->speed(), output);
-  }
-
-  // optional .dogrun2.UIElementFont exp = 3;
-  if (has_exp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      3, this->exp(), output);
-  }
-
-  // required .dogrun2.UIElementIcon icon = 4;
+  // required .dogrun2.UIElementIcon icon = 2;
   if (has_icon()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      4, this->icon(), output);
+      2, this->icon(), output);
   }
 
-  // required .dogrun2.UIElementFont icon_num = 5;
+  // required .dogrun2.UIElementFont icon_num = 3;
   if (has_icon_num()) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      5, this->icon_num(), output);
+      3, this->icon_num(), output);
+  }
+
+  // optional .dogrun2.UIElementFont speed = 4;
+  if (has_speed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      4, this->speed(), output);
+  }
+
+  // optional .dogrun2.UIElementFont exp = 5;
+  if (has_exp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      5, this->exp(), output);
+  }
+
+  // optional .dogrun2.UIElementFont strong = 6;
+  if (has_strong()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      6, this->strong(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1237,32 +1267,39 @@ void UIItemConf::SerializeWithCachedSizes(
         1, this->title(), target);
   }
 
-  // required .dogrun2.UIElementFont speed = 2;
-  if (has_speed()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        2, this->speed(), target);
-  }
-
-  // optional .dogrun2.UIElementFont exp = 3;
-  if (has_exp()) {
-    target = ::google::protobuf::internal::WireFormatLite::
-      WriteMessageNoVirtualToArray(
-        3, this->exp(), target);
-  }
-
-  // required .dogrun2.UIElementIcon icon = 4;
+  // required .dogrun2.UIElementIcon icon = 2;
   if (has_icon()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        4, this->icon(), target);
+        2, this->icon(), target);
   }
 
-  // required .dogrun2.UIElementFont icon_num = 5;
+  // required .dogrun2.UIElementFont icon_num = 3;
   if (has_icon_num()) {
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
-        5, this->icon_num(), target);
+        3, this->icon_num(), target);
+  }
+
+  // optional .dogrun2.UIElementFont speed = 4;
+  if (has_speed()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        4, this->speed(), target);
+  }
+
+  // optional .dogrun2.UIElementFont exp = 5;
+  if (has_exp()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        5, this->exp(), target);
+  }
+
+  // optional .dogrun2.UIElementFont strong = 6;
+  if (has_strong()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        6, this->strong(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1283,32 +1320,39 @@ int UIItemConf::ByteSize() const {
           this->title());
     }
 
-    // required .dogrun2.UIElementFont speed = 2;
-    if (has_speed()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->speed());
-    }
-
-    // optional .dogrun2.UIElementFont exp = 3;
-    if (has_exp()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
-          this->exp());
-    }
-
-    // required .dogrun2.UIElementIcon icon = 4;
+    // required .dogrun2.UIElementIcon icon = 2;
     if (has_icon()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->icon());
     }
 
-    // required .dogrun2.UIElementFont icon_num = 5;
+    // required .dogrun2.UIElementFont icon_num = 3;
     if (has_icon_num()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
           this->icon_num());
+    }
+
+    // optional .dogrun2.UIElementFont speed = 4;
+    if (has_speed()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->speed());
+    }
+
+    // optional .dogrun2.UIElementFont exp = 5;
+    if (has_exp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->exp());
+    }
+
+    // optional .dogrun2.UIElementFont strong = 6;
+    if (has_strong()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->strong());
     }
 
   }
@@ -1341,17 +1385,20 @@ void UIItemConf::MergeFrom(const UIItemConf& from) {
     if (from.has_title()) {
       mutable_title()->::dogrun2::UIElementFont::MergeFrom(from.title());
     }
+    if (from.has_icon()) {
+      mutable_icon()->::dogrun2::UIElementIcon::MergeFrom(from.icon());
+    }
+    if (from.has_icon_num()) {
+      mutable_icon_num()->::dogrun2::UIElementFont::MergeFrom(from.icon_num());
+    }
     if (from.has_speed()) {
       mutable_speed()->::dogrun2::UIElementFont::MergeFrom(from.speed());
     }
     if (from.has_exp()) {
       mutable_exp()->::dogrun2::UIElementFont::MergeFrom(from.exp());
     }
-    if (from.has_icon()) {
-      mutable_icon()->::dogrun2::UIElementIcon::MergeFrom(from.icon());
-    }
-    if (from.has_icon_num()) {
-      mutable_icon_num()->::dogrun2::UIElementFont::MergeFrom(from.icon_num());
+    if (from.has_strong()) {
+      mutable_strong()->::dogrun2::UIElementFont::MergeFrom(from.strong());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1370,16 +1417,10 @@ void UIItemConf::CopyFrom(const UIItemConf& from) {
 }
 
 bool UIItemConf::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001b) != 0x0000001b) return false;
+  if ((_has_bits_[0] & 0x00000007) != 0x00000007) return false;
 
   if (has_title()) {
     if (!this->title().IsInitialized()) return false;
-  }
-  if (has_speed()) {
-    if (!this->speed().IsInitialized()) return false;
-  }
-  if (has_exp()) {
-    if (!this->exp().IsInitialized()) return false;
   }
   if (has_icon()) {
     if (!this->icon().IsInitialized()) return false;
@@ -1387,16 +1428,26 @@ bool UIItemConf::IsInitialized() const {
   if (has_icon_num()) {
     if (!this->icon_num().IsInitialized()) return false;
   }
+  if (has_speed()) {
+    if (!this->speed().IsInitialized()) return false;
+  }
+  if (has_exp()) {
+    if (!this->exp().IsInitialized()) return false;
+  }
+  if (has_strong()) {
+    if (!this->strong().IsInitialized()) return false;
+  }
   return true;
 }
 
 void UIItemConf::Swap(UIItemConf* other) {
   if (other != this) {
     std::swap(title_, other->title_);
-    std::swap(speed_, other->speed_);
-    std::swap(exp_, other->exp_);
     std::swap(icon_, other->icon_);
     std::swap(icon_num_, other->icon_num_);
+    std::swap(speed_, other->speed_);
+    std::swap(exp_, other->exp_);
+    std::swap(strong_, other->strong_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

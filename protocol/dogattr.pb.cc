@@ -89,12 +89,15 @@ void protobuf_AssignDesc_dogattr_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(DogLevelConfigArray));
   FoodConfig_descriptor_ = file->message_type(2);
-  static const int FoodConfig_offsets_[5] = {
+  static const int FoodConfig_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, str_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, cd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, consume_heart_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, consume_gold_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, strong_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, speed_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, intimacy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, exp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(FoodConfig, intimacy_),
   };
   FoodConfig_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -123,14 +126,15 @@ void protobuf_AssignDesc_dogattr_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(FoodConfigArray));
   TrainConfig_descriptor_ = file->message_type(4);
-  static const int TrainConfig_offsets_[7] = {
+  static const int TrainConfig_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, strong_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, speed_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, cd_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_heart_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, consume_gold_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, strong_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, speed_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, exp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(TrainConfig, intimacy_),
   };
   TrainConfig_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -159,12 +163,15 @@ void protobuf_AssignDesc_dogattr_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(TrainConfigArray));
   PlayConfig_descriptor_ = file->message_type(6);
-  static const int PlayConfig_offsets_[5] = {
+  static const int PlayConfig_offsets_[8] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, type_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, str_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, cd_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, consume_heart_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, consume_gold_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, strong_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, speed_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, intimacy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, exp_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(PlayConfig, intimacy_),
   };
   PlayConfig_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -198,7 +205,7 @@ void protobuf_AssignDesc_dogattr_2eproto() {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, lv_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, star_),
-    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, str_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, strong_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, speed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, intimacy_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(DogAttr, id_),
@@ -279,21 +286,25 @@ void protobuf_AddDesc_dogattr_2eproto() {
     "\n\rdogattr.proto\022\007dogrun2\")\n\016DogLevelConf"
     "ig\022\n\n\002lv\030\001 \002(\005\022\013\n\003exp\030\002 \002(\005\";\n\023DogLevelC"
     "onfigArray\022$\n\003cfg\030\001 \003(\0132\027.dogrun2.DogLev"
-    "elConfig\"U\n\nFoodConfig\022\014\n\004type\030\001 \002(\005\022\013\n\003"
-    "str\030\002 \002(\005\022\r\n\005speed\030\003 \002(\005\022\020\n\010intimacy\030\004 \002"
-    "(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017FoodConfigArray\022 \n\003cf"
-    "g\030\001 \003(\0132\023.dogrun2.FoodConfig\"\200\001\n\013TrainCo"
-    "nfig\022\014\n\004type\030\001 \002(\005\022\016\n\006strong\030\002 \002(\005\022\r\n\005sp"
-    "eed\030\003 \002(\005\022\013\n\003exp\030\005 \002(\005\022\n\n\002cd\030\006 \002(\005\022\025\n\rco"
-    "nsume_heart\030\007 \002(\005\022\024\n\014consume_gold\030\010 \002(\005\""
-    "5\n\020TrainConfigArray\022!\n\003cfg\030\001 \003(\0132\024.dogru"
-    "n2.TrainConfig\"U\n\nPlayConfig\022\014\n\004type\030\001 \002"
-    "(\005\022\013\n\003str\030\002 \002(\005\022\r\n\005speed\030\003 \002(\005\022\020\n\010intima"
-    "cy\030\004 \002(\005\022\013\n\003exp\030\005 \002(\005\"3\n\017PlayConfigArray"
-    "\022 \n\003cfg\030\001 \003(\0132\023.dogrun2.PlayConfig\"{\n\007Do"
-    "gAttr\022\014\n\004name\030\001 \002(\t\022\r\n\002lv\030\002 \002(\005:\0011\022\013\n\003ex"
-    "p\030\003 \002(\005\022\014\n\004star\030\004 \002(\005\022\013\n\003str\030\005 \002(\005\022\r\n\005sp"
-    "eed\030\006 \002(\005\022\020\n\010intimacy\030\007 \002(\005\022\n\n\002id\030\010 \002(\005", 719);
+    "elConfig\"\221\001\n\nFoodConfig\022\014\n\004type\030\001 \002(\005\022\n\n"
+    "\002cd\030\002 \002(\005\022\025\n\rconsume_heart\030\003 \002(\005\022\024\n\014cons"
+    "ume_gold\030\004 \002(\005\022\016\n\006strong\030\005 \001(\005\022\r\n\005speed\030"
+    "\006 \001(\005\022\013\n\003exp\030\007 \001(\005\022\020\n\010intimacy\030\010 \001(\005\"3\n\017"
+    "FoodConfigArray\022 \n\003cfg\030\001 \003(\0132\023.dogrun2.F"
+    "oodConfig\"\222\001\n\013TrainConfig\022\014\n\004type\030\001 \002(\005\022"
+    "\n\n\002cd\030\002 \002(\005\022\025\n\rconsume_heart\030\003 \002(\005\022\024\n\014co"
+    "nsume_gold\030\004 \002(\005\022\016\n\006strong\030\005 \001(\005\022\r\n\005spee"
+    "d\030\006 \001(\005\022\013\n\003exp\030\007 \001(\005\022\020\n\010intimacy\030\010 \001(\005\"5"
+    "\n\020TrainConfigArray\022!\n\003cfg\030\001 \003(\0132\024.dogrun"
+    "2.TrainConfig\"\221\001\n\nPlayConfig\022\014\n\004type\030\001 \002"
+    "(\005\022\n\n\002cd\030\002 \002(\005\022\025\n\rconsume_heart\030\003 \002(\005\022\024\n"
+    "\014consume_gold\030\004 \002(\005\022\016\n\006strong\030\005 \001(\005\022\r\n\005s"
+    "peed\030\006 \001(\005\022\013\n\003exp\030\007 \001(\005\022\020\n\010intimacy\030\010 \001("
+    "\005\"3\n\017PlayConfigArray\022 \n\003cfg\030\001 \003(\0132\023.dogr"
+    "un2.PlayConfig\"~\n\007DogAttr\022\014\n\004name\030\001 \002(\t\022"
+    "\r\n\002lv\030\002 \002(\005:\0011\022\013\n\003exp\030\003 \002(\005\022\014\n\004star\030\004 \002("
+    "\005\022\016\n\006strong\030\005 \002(\005\022\r\n\005speed\030\006 \002(\005\022\020\n\010inti"
+    "macy\030\007 \002(\005\022\n\n\002id\030\010 \002(\005", 862);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "dogattr.proto", &protobuf_RegisterTypes);
   DogLevelConfig::default_instance_ = new DogLevelConfig();
@@ -783,10 +794,13 @@ void DogLevelConfigArray::Swap(DogLevelConfigArray* other) {
 
 #ifndef _MSC_VER
 const int FoodConfig::kTypeFieldNumber;
-const int FoodConfig::kStrFieldNumber;
+const int FoodConfig::kCdFieldNumber;
+const int FoodConfig::kConsumeHeartFieldNumber;
+const int FoodConfig::kConsumeGoldFieldNumber;
+const int FoodConfig::kStrongFieldNumber;
 const int FoodConfig::kSpeedFieldNumber;
-const int FoodConfig::kIntimacyFieldNumber;
 const int FoodConfig::kExpFieldNumber;
+const int FoodConfig::kIntimacyFieldNumber;
 #endif  // !_MSC_VER
 
 FoodConfig::FoodConfig()
@@ -806,10 +820,13 @@ FoodConfig::FoodConfig(const FoodConfig& from)
 void FoodConfig::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  str_ = 0;
+  cd_ = 0;
+  consume_heart_ = 0;
+  consume_gold_ = 0;
+  strong_ = 0;
   speed_ = 0;
-  intimacy_ = 0;
   exp_ = 0;
+  intimacy_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -846,10 +863,13 @@ FoodConfig* FoodConfig::New() const {
 void FoodConfig::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
-    str_ = 0;
+    cd_ = 0;
+    consume_heart_ = 0;
+    consume_gold_ = 0;
+    strong_ = 0;
     speed_ = 0;
-    intimacy_ = 0;
     exp_ = 0;
+    intimacy_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -872,28 +892,76 @@ bool FoodConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_str;
+        if (input->ExpectTag(16)) goto parse_cd;
         break;
       }
 
-      // required int32 str = 2;
+      // required int32 cd = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_str:
+         parse_cd:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &str_)));
-          set_has_str();
+                 input, &cd_)));
+          set_has_cd();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_speed;
+        if (input->ExpectTag(24)) goto parse_consume_heart;
         break;
       }
 
-      // required int32 speed = 3;
+      // required int32 consume_heart = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_consume_heart:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &consume_heart_)));
+          set_has_consume_heart();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_consume_gold;
+        break;
+      }
+
+      // required int32 consume_gold = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_consume_gold:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &consume_gold_)));
+          set_has_consume_gold();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_strong;
+        break;
+      }
+
+      // optional int32 strong = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_strong:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &strong_)));
+          set_has_strong();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_speed;
+        break;
+      }
+
+      // optional int32 speed = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_speed:
@@ -904,28 +972,12 @@ bool FoodConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_intimacy;
+        if (input->ExpectTag(56)) goto parse_exp;
         break;
       }
 
-      // required int32 intimacy = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_intimacy:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &intimacy_)));
-          set_has_intimacy();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(40)) goto parse_exp;
-        break;
-      }
-
-      // required int32 exp = 5;
-      case 5: {
+      // optional int32 exp = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_exp:
@@ -933,6 +985,22 @@ bool FoodConfig::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &exp_)));
           set_has_exp();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_intimacy;
+        break;
+      }
+
+      // optional int32 intimacy = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_intimacy:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &intimacy_)));
+          set_has_intimacy();
         } else {
           goto handle_uninterpreted;
         }
@@ -963,24 +1031,39 @@ void FoodConfig::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->type(), output);
   }
 
-  // required int32 str = 2;
-  if (has_str()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->str(), output);
+  // required int32 cd = 2;
+  if (has_cd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->cd(), output);
   }
 
-  // required int32 speed = 3;
+  // required int32 consume_heart = 3;
+  if (has_consume_heart()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->consume_heart(), output);
+  }
+
+  // required int32 consume_gold = 4;
+  if (has_consume_gold()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->consume_gold(), output);
+  }
+
+  // optional int32 strong = 5;
+  if (has_strong()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->strong(), output);
+  }
+
+  // optional int32 speed = 6;
   if (has_speed()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->speed(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->speed(), output);
   }
 
-  // required int32 intimacy = 4;
-  if (has_intimacy()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->intimacy(), output);
-  }
-
-  // required int32 exp = 5;
+  // optional int32 exp = 7;
   if (has_exp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->exp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->exp(), output);
+  }
+
+  // optional int32 intimacy = 8;
+  if (has_intimacy()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->intimacy(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -996,24 +1079,39 @@ void FoodConfig::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->type(), target);
   }
 
-  // required int32 str = 2;
-  if (has_str()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->str(), target);
+  // required int32 cd = 2;
+  if (has_cd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->cd(), target);
   }
 
-  // required int32 speed = 3;
+  // required int32 consume_heart = 3;
+  if (has_consume_heart()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->consume_heart(), target);
+  }
+
+  // required int32 consume_gold = 4;
+  if (has_consume_gold()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->consume_gold(), target);
+  }
+
+  // optional int32 strong = 5;
+  if (has_strong()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->strong(), target);
+  }
+
+  // optional int32 speed = 6;
   if (has_speed()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->speed(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->speed(), target);
   }
 
-  // required int32 intimacy = 4;
-  if (has_intimacy()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->intimacy(), target);
-  }
-
-  // required int32 exp = 5;
+  // optional int32 exp = 7;
   if (has_exp()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->exp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->exp(), target);
+  }
+
+  // optional int32 intimacy = 8;
+  if (has_intimacy()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->intimacy(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1034,32 +1132,53 @@ int FoodConfig::ByteSize() const {
           this->type());
     }
 
-    // required int32 str = 2;
-    if (has_str()) {
+    // required int32 cd = 2;
+    if (has_cd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->str());
+          this->cd());
     }
 
-    // required int32 speed = 3;
+    // required int32 consume_heart = 3;
+    if (has_consume_heart()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->consume_heart());
+    }
+
+    // required int32 consume_gold = 4;
+    if (has_consume_gold()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->consume_gold());
+    }
+
+    // optional int32 strong = 5;
+    if (has_strong()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->strong());
+    }
+
+    // optional int32 speed = 6;
     if (has_speed()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->speed());
     }
 
-    // required int32 intimacy = 4;
-    if (has_intimacy()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->intimacy());
-    }
-
-    // required int32 exp = 5;
+    // optional int32 exp = 7;
     if (has_exp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->exp());
+    }
+
+    // optional int32 intimacy = 8;
+    if (has_intimacy()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->intimacy());
     }
 
   }
@@ -1092,17 +1211,26 @@ void FoodConfig::MergeFrom(const FoodConfig& from) {
     if (from.has_type()) {
       set_type(from.type());
     }
-    if (from.has_str()) {
-      set_str(from.str());
+    if (from.has_cd()) {
+      set_cd(from.cd());
+    }
+    if (from.has_consume_heart()) {
+      set_consume_heart(from.consume_heart());
+    }
+    if (from.has_consume_gold()) {
+      set_consume_gold(from.consume_gold());
+    }
+    if (from.has_strong()) {
+      set_strong(from.strong());
     }
     if (from.has_speed()) {
       set_speed(from.speed());
     }
-    if (from.has_intimacy()) {
-      set_intimacy(from.intimacy());
-    }
     if (from.has_exp()) {
       set_exp(from.exp());
+    }
+    if (from.has_intimacy()) {
+      set_intimacy(from.intimacy());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1121,7 +1249,7 @@ void FoodConfig::CopyFrom(const FoodConfig& from) {
 }
 
 bool FoodConfig::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
   return true;
 }
@@ -1129,10 +1257,13 @@ bool FoodConfig::IsInitialized() const {
 void FoodConfig::Swap(FoodConfig* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(str_, other->str_);
+    std::swap(cd_, other->cd_);
+    std::swap(consume_heart_, other->consume_heart_);
+    std::swap(consume_gold_, other->consume_gold_);
+    std::swap(strong_, other->strong_);
     std::swap(speed_, other->speed_);
-    std::swap(intimacy_, other->intimacy_);
     std::swap(exp_, other->exp_);
+    std::swap(intimacy_, other->intimacy_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -1358,12 +1489,13 @@ void FoodConfigArray::Swap(FoodConfigArray* other) {
 
 #ifndef _MSC_VER
 const int TrainConfig::kTypeFieldNumber;
-const int TrainConfig::kStrongFieldNumber;
-const int TrainConfig::kSpeedFieldNumber;
-const int TrainConfig::kExpFieldNumber;
 const int TrainConfig::kCdFieldNumber;
 const int TrainConfig::kConsumeHeartFieldNumber;
 const int TrainConfig::kConsumeGoldFieldNumber;
+const int TrainConfig::kStrongFieldNumber;
+const int TrainConfig::kSpeedFieldNumber;
+const int TrainConfig::kExpFieldNumber;
+const int TrainConfig::kIntimacyFieldNumber;
 #endif  // !_MSC_VER
 
 TrainConfig::TrainConfig()
@@ -1383,12 +1515,13 @@ TrainConfig::TrainConfig(const TrainConfig& from)
 void TrainConfig::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  strong_ = 0;
-  speed_ = 0;
-  exp_ = 0;
   cd_ = 0;
   consume_heart_ = 0;
   consume_gold_ = 0;
+  strong_ = 0;
+  speed_ = 0;
+  exp_ = 0;
+  intimacy_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1425,12 +1558,13 @@ TrainConfig* TrainConfig::New() const {
 void TrainConfig::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
-    strong_ = 0;
-    speed_ = 0;
-    exp_ = 0;
     cd_ = 0;
     consume_heart_ = 0;
     consume_gold_ = 0;
+    strong_ = 0;
+    speed_ = 0;
+    exp_ = 0;
+    intimacy_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -1453,60 +1587,12 @@ bool TrainConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_strong;
+        if (input->ExpectTag(16)) goto parse_cd;
         break;
       }
 
-      // required int32 strong = 2;
+      // required int32 cd = 2;
       case 2: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_strong:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &strong_)));
-          set_has_strong();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(24)) goto parse_speed;
-        break;
-      }
-
-      // required int32 speed = 3;
-      case 3: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_speed:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &speed_)));
-          set_has_speed();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(40)) goto parse_exp;
-        break;
-      }
-
-      // required int32 exp = 5;
-      case 5: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_exp:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &exp_)));
-          set_has_exp();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(48)) goto parse_cd;
-        break;
-      }
-
-      // required int32 cd = 6;
-      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_cd:
@@ -1517,12 +1603,12 @@ bool TrainConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(56)) goto parse_consume_heart;
+        if (input->ExpectTag(24)) goto parse_consume_heart;
         break;
       }
 
-      // required int32 consume_heart = 7;
-      case 7: {
+      // required int32 consume_heart = 3;
+      case 3: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_consume_heart:
@@ -1533,12 +1619,12 @@ bool TrainConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(64)) goto parse_consume_gold;
+        if (input->ExpectTag(32)) goto parse_consume_gold;
         break;
       }
 
-      // required int32 consume_gold = 8;
-      case 8: {
+      // required int32 consume_gold = 4;
+      case 4: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_consume_gold:
@@ -1546,6 +1632,70 @@ bool TrainConfig::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &consume_gold_)));
           set_has_consume_gold();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_strong;
+        break;
+      }
+
+      // optional int32 strong = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_strong:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &strong_)));
+          set_has_strong();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_speed;
+        break;
+      }
+
+      // optional int32 speed = 6;
+      case 6: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_speed:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &speed_)));
+          set_has_speed();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(56)) goto parse_exp;
+        break;
+      }
+
+      // optional int32 exp = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_exp:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &exp_)));
+          set_has_exp();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_intimacy;
+        break;
+      }
+
+      // optional int32 intimacy = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_intimacy:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &intimacy_)));
+          set_has_intimacy();
         } else {
           goto handle_uninterpreted;
         }
@@ -1576,34 +1726,39 @@ void TrainConfig::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->type(), output);
   }
 
-  // required int32 strong = 2;
-  if (has_strong()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->strong(), output);
-  }
-
-  // required int32 speed = 3;
-  if (has_speed()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->speed(), output);
-  }
-
-  // required int32 exp = 5;
-  if (has_exp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->exp(), output);
-  }
-
-  // required int32 cd = 6;
+  // required int32 cd = 2;
   if (has_cd()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->cd(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->cd(), output);
   }
 
-  // required int32 consume_heart = 7;
+  // required int32 consume_heart = 3;
   if (has_consume_heart()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->consume_heart(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->consume_heart(), output);
   }
 
-  // required int32 consume_gold = 8;
+  // required int32 consume_gold = 4;
   if (has_consume_gold()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->consume_gold(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->consume_gold(), output);
+  }
+
+  // optional int32 strong = 5;
+  if (has_strong()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->strong(), output);
+  }
+
+  // optional int32 speed = 6;
+  if (has_speed()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->speed(), output);
+  }
+
+  // optional int32 exp = 7;
+  if (has_exp()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->exp(), output);
+  }
+
+  // optional int32 intimacy = 8;
+  if (has_intimacy()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->intimacy(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -1619,34 +1774,39 @@ void TrainConfig::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->type(), target);
   }
 
-  // required int32 strong = 2;
-  if (has_strong()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->strong(), target);
-  }
-
-  // required int32 speed = 3;
-  if (has_speed()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->speed(), target);
-  }
-
-  // required int32 exp = 5;
-  if (has_exp()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->exp(), target);
-  }
-
-  // required int32 cd = 6;
+  // required int32 cd = 2;
   if (has_cd()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->cd(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->cd(), target);
   }
 
-  // required int32 consume_heart = 7;
+  // required int32 consume_heart = 3;
   if (has_consume_heart()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->consume_heart(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->consume_heart(), target);
   }
 
-  // required int32 consume_gold = 8;
+  // required int32 consume_gold = 4;
   if (has_consume_gold()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->consume_gold(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->consume_gold(), target);
+  }
+
+  // optional int32 strong = 5;
+  if (has_strong()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->strong(), target);
+  }
+
+  // optional int32 speed = 6;
+  if (has_speed()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->speed(), target);
+  }
+
+  // optional int32 exp = 7;
+  if (has_exp()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->exp(), target);
+  }
+
+  // optional int32 intimacy = 8;
+  if (has_intimacy()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->intimacy(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1667,46 +1827,53 @@ int TrainConfig::ByteSize() const {
           this->type());
     }
 
-    // required int32 strong = 2;
-    if (has_strong()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->strong());
-    }
-
-    // required int32 speed = 3;
-    if (has_speed()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->speed());
-    }
-
-    // required int32 exp = 5;
-    if (has_exp()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->exp());
-    }
-
-    // required int32 cd = 6;
+    // required int32 cd = 2;
     if (has_cd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->cd());
     }
 
-    // required int32 consume_heart = 7;
+    // required int32 consume_heart = 3;
     if (has_consume_heart()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->consume_heart());
     }
 
-    // required int32 consume_gold = 8;
+    // required int32 consume_gold = 4;
     if (has_consume_gold()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->consume_gold());
+    }
+
+    // optional int32 strong = 5;
+    if (has_strong()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->strong());
+    }
+
+    // optional int32 speed = 6;
+    if (has_speed()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->speed());
+    }
+
+    // optional int32 exp = 7;
+    if (has_exp()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->exp());
+    }
+
+    // optional int32 intimacy = 8;
+    if (has_intimacy()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->intimacy());
     }
 
   }
@@ -1739,6 +1906,15 @@ void TrainConfig::MergeFrom(const TrainConfig& from) {
     if (from.has_type()) {
       set_type(from.type());
     }
+    if (from.has_cd()) {
+      set_cd(from.cd());
+    }
+    if (from.has_consume_heart()) {
+      set_consume_heart(from.consume_heart());
+    }
+    if (from.has_consume_gold()) {
+      set_consume_gold(from.consume_gold());
+    }
     if (from.has_strong()) {
       set_strong(from.strong());
     }
@@ -1748,14 +1924,8 @@ void TrainConfig::MergeFrom(const TrainConfig& from) {
     if (from.has_exp()) {
       set_exp(from.exp());
     }
-    if (from.has_cd()) {
-      set_cd(from.cd());
-    }
-    if (from.has_consume_heart()) {
-      set_consume_heart(from.consume_heart());
-    }
-    if (from.has_consume_gold()) {
-      set_consume_gold(from.consume_gold());
+    if (from.has_intimacy()) {
+      set_intimacy(from.intimacy());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -1774,7 +1944,7 @@ void TrainConfig::CopyFrom(const TrainConfig& from) {
 }
 
 bool TrainConfig::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000007f) != 0x0000007f) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
   return true;
 }
@@ -1782,12 +1952,13 @@ bool TrainConfig::IsInitialized() const {
 void TrainConfig::Swap(TrainConfig* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(strong_, other->strong_);
-    std::swap(speed_, other->speed_);
-    std::swap(exp_, other->exp_);
     std::swap(cd_, other->cd_);
     std::swap(consume_heart_, other->consume_heart_);
     std::swap(consume_gold_, other->consume_gold_);
+    std::swap(strong_, other->strong_);
+    std::swap(speed_, other->speed_);
+    std::swap(exp_, other->exp_);
+    std::swap(intimacy_, other->intimacy_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2013,10 +2184,13 @@ void TrainConfigArray::Swap(TrainConfigArray* other) {
 
 #ifndef _MSC_VER
 const int PlayConfig::kTypeFieldNumber;
-const int PlayConfig::kStrFieldNumber;
+const int PlayConfig::kCdFieldNumber;
+const int PlayConfig::kConsumeHeartFieldNumber;
+const int PlayConfig::kConsumeGoldFieldNumber;
+const int PlayConfig::kStrongFieldNumber;
 const int PlayConfig::kSpeedFieldNumber;
-const int PlayConfig::kIntimacyFieldNumber;
 const int PlayConfig::kExpFieldNumber;
+const int PlayConfig::kIntimacyFieldNumber;
 #endif  // !_MSC_VER
 
 PlayConfig::PlayConfig()
@@ -2036,10 +2210,13 @@ PlayConfig::PlayConfig(const PlayConfig& from)
 void PlayConfig::SharedCtor() {
   _cached_size_ = 0;
   type_ = 0;
-  str_ = 0;
+  cd_ = 0;
+  consume_heart_ = 0;
+  consume_gold_ = 0;
+  strong_ = 0;
   speed_ = 0;
-  intimacy_ = 0;
   exp_ = 0;
+  intimacy_ = 0;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -2076,10 +2253,13 @@ PlayConfig* PlayConfig::New() const {
 void PlayConfig::Clear() {
   if (_has_bits_[0 / 32] & (0xffu << (0 % 32))) {
     type_ = 0;
-    str_ = 0;
+    cd_ = 0;
+    consume_heart_ = 0;
+    consume_gold_ = 0;
+    strong_ = 0;
     speed_ = 0;
-    intimacy_ = 0;
     exp_ = 0;
+    intimacy_ = 0;
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
   mutable_unknown_fields()->Clear();
@@ -2102,28 +2282,76 @@ bool PlayConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(16)) goto parse_str;
+        if (input->ExpectTag(16)) goto parse_cd;
         break;
       }
 
-      // required int32 str = 2;
+      // required int32 cd = 2;
       case 2: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_str:
+         parse_cd:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &str_)));
-          set_has_str();
+                 input, &cd_)));
+          set_has_cd();
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(24)) goto parse_speed;
+        if (input->ExpectTag(24)) goto parse_consume_heart;
         break;
       }
 
-      // required int32 speed = 3;
+      // required int32 consume_heart = 3;
       case 3: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_consume_heart:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &consume_heart_)));
+          set_has_consume_heart();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(32)) goto parse_consume_gold;
+        break;
+      }
+
+      // required int32 consume_gold = 4;
+      case 4: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_consume_gold:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &consume_gold_)));
+          set_has_consume_gold();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(40)) goto parse_strong;
+        break;
+      }
+
+      // optional int32 strong = 5;
+      case 5: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_strong:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &strong_)));
+          set_has_strong();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(48)) goto parse_speed;
+        break;
+      }
+
+      // optional int32 speed = 6;
+      case 6: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_speed:
@@ -2134,28 +2362,12 @@ bool PlayConfig::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(32)) goto parse_intimacy;
+        if (input->ExpectTag(56)) goto parse_exp;
         break;
       }
 
-      // required int32 intimacy = 4;
-      case 4: {
-        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
-            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_intimacy:
-          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
-                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &intimacy_)));
-          set_has_intimacy();
-        } else {
-          goto handle_uninterpreted;
-        }
-        if (input->ExpectTag(40)) goto parse_exp;
-        break;
-      }
-
-      // required int32 exp = 5;
-      case 5: {
+      // optional int32 exp = 7;
+      case 7: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
          parse_exp:
@@ -2163,6 +2375,22 @@ bool PlayConfig::MergePartialFromCodedStream(
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
                  input, &exp_)));
           set_has_exp();
+        } else {
+          goto handle_uninterpreted;
+        }
+        if (input->ExpectTag(64)) goto parse_intimacy;
+        break;
+      }
+
+      // optional int32 intimacy = 8;
+      case 8: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
+         parse_intimacy:
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &intimacy_)));
+          set_has_intimacy();
         } else {
           goto handle_uninterpreted;
         }
@@ -2193,24 +2421,39 @@ void PlayConfig::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->type(), output);
   }
 
-  // required int32 str = 2;
-  if (has_str()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->str(), output);
+  // required int32 cd = 2;
+  if (has_cd()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->cd(), output);
   }
 
-  // required int32 speed = 3;
+  // required int32 consume_heart = 3;
+  if (has_consume_heart()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->consume_heart(), output);
+  }
+
+  // required int32 consume_gold = 4;
+  if (has_consume_gold()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->consume_gold(), output);
+  }
+
+  // optional int32 strong = 5;
+  if (has_strong()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->strong(), output);
+  }
+
+  // optional int32 speed = 6;
   if (has_speed()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->speed(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(6, this->speed(), output);
   }
 
-  // required int32 intimacy = 4;
-  if (has_intimacy()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->intimacy(), output);
-  }
-
-  // required int32 exp = 5;
+  // optional int32 exp = 7;
   if (has_exp()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->exp(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(7, this->exp(), output);
+  }
+
+  // optional int32 intimacy = 8;
+  if (has_intimacy()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(8, this->intimacy(), output);
   }
 
   if (!unknown_fields().empty()) {
@@ -2226,24 +2469,39 @@ void PlayConfig::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->type(), target);
   }
 
-  // required int32 str = 2;
-  if (has_str()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->str(), target);
+  // required int32 cd = 2;
+  if (has_cd()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->cd(), target);
   }
 
-  // required int32 speed = 3;
+  // required int32 consume_heart = 3;
+  if (has_consume_heart()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->consume_heart(), target);
+  }
+
+  // required int32 consume_gold = 4;
+  if (has_consume_gold()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->consume_gold(), target);
+  }
+
+  // optional int32 strong = 5;
+  if (has_strong()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->strong(), target);
+  }
+
+  // optional int32 speed = 6;
   if (has_speed()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->speed(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(6, this->speed(), target);
   }
 
-  // required int32 intimacy = 4;
-  if (has_intimacy()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->intimacy(), target);
-  }
-
-  // required int32 exp = 5;
+  // optional int32 exp = 7;
   if (has_exp()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->exp(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(7, this->exp(), target);
+  }
+
+  // optional int32 intimacy = 8;
+  if (has_intimacy()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(8, this->intimacy(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -2264,32 +2522,53 @@ int PlayConfig::ByteSize() const {
           this->type());
     }
 
-    // required int32 str = 2;
-    if (has_str()) {
+    // required int32 cd = 2;
+    if (has_cd()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->str());
+          this->cd());
     }
 
-    // required int32 speed = 3;
+    // required int32 consume_heart = 3;
+    if (has_consume_heart()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->consume_heart());
+    }
+
+    // required int32 consume_gold = 4;
+    if (has_consume_gold()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->consume_gold());
+    }
+
+    // optional int32 strong = 5;
+    if (has_strong()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->strong());
+    }
+
+    // optional int32 speed = 6;
     if (has_speed()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->speed());
     }
 
-    // required int32 intimacy = 4;
-    if (has_intimacy()) {
-      total_size += 1 +
-        ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->intimacy());
-    }
-
-    // required int32 exp = 5;
+    // optional int32 exp = 7;
     if (has_exp()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
           this->exp());
+    }
+
+    // optional int32 intimacy = 8;
+    if (has_intimacy()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::Int32Size(
+          this->intimacy());
     }
 
   }
@@ -2322,17 +2601,26 @@ void PlayConfig::MergeFrom(const PlayConfig& from) {
     if (from.has_type()) {
       set_type(from.type());
     }
-    if (from.has_str()) {
-      set_str(from.str());
+    if (from.has_cd()) {
+      set_cd(from.cd());
+    }
+    if (from.has_consume_heart()) {
+      set_consume_heart(from.consume_heart());
+    }
+    if (from.has_consume_gold()) {
+      set_consume_gold(from.consume_gold());
+    }
+    if (from.has_strong()) {
+      set_strong(from.strong());
     }
     if (from.has_speed()) {
       set_speed(from.speed());
     }
-    if (from.has_intimacy()) {
-      set_intimacy(from.intimacy());
-    }
     if (from.has_exp()) {
       set_exp(from.exp());
+    }
+    if (from.has_intimacy()) {
+      set_intimacy(from.intimacy());
     }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
@@ -2351,7 +2639,7 @@ void PlayConfig::CopyFrom(const PlayConfig& from) {
 }
 
 bool PlayConfig::IsInitialized() const {
-  if ((_has_bits_[0] & 0x0000001f) != 0x0000001f) return false;
+  if ((_has_bits_[0] & 0x0000000f) != 0x0000000f) return false;
 
   return true;
 }
@@ -2359,10 +2647,13 @@ bool PlayConfig::IsInitialized() const {
 void PlayConfig::Swap(PlayConfig* other) {
   if (other != this) {
     std::swap(type_, other->type_);
-    std::swap(str_, other->str_);
+    std::swap(cd_, other->cd_);
+    std::swap(consume_heart_, other->consume_heart_);
+    std::swap(consume_gold_, other->consume_gold_);
+    std::swap(strong_, other->strong_);
     std::swap(speed_, other->speed_);
-    std::swap(intimacy_, other->intimacy_);
     std::swap(exp_, other->exp_);
+    std::swap(intimacy_, other->intimacy_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);
@@ -2591,7 +2882,7 @@ const int DogAttr::kNameFieldNumber;
 const int DogAttr::kLvFieldNumber;
 const int DogAttr::kExpFieldNumber;
 const int DogAttr::kStarFieldNumber;
-const int DogAttr::kStrFieldNumber;
+const int DogAttr::kStrongFieldNumber;
 const int DogAttr::kSpeedFieldNumber;
 const int DogAttr::kIntimacyFieldNumber;
 const int DogAttr::kIdFieldNumber;
@@ -2617,7 +2908,7 @@ void DogAttr::SharedCtor() {
   lv_ = 1;
   exp_ = 0;
   star_ = 0;
-  str_ = 0;
+  strong_ = 0;
   speed_ = 0;
   intimacy_ = 0;
   id_ = 0;
@@ -2667,7 +2958,7 @@ void DogAttr::Clear() {
     lv_ = 1;
     exp_ = 0;
     star_ = 0;
-    str_ = 0;
+    strong_ = 0;
     speed_ = 0;
     intimacy_ = 0;
     id_ = 0;
@@ -2742,19 +3033,19 @@ bool DogAttr::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
-        if (input->ExpectTag(40)) goto parse_str;
+        if (input->ExpectTag(40)) goto parse_strong;
         break;
       }
 
-      // required int32 str = 5;
+      // required int32 strong = 5;
       case 5: {
         if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
             ::google::protobuf::internal::WireFormatLite::WIRETYPE_VARINT) {
-         parse_str:
+         parse_strong:
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &str_)));
-          set_has_str();
+                 input, &strong_)));
+          set_has_strong();
         } else {
           goto handle_uninterpreted;
         }
@@ -2852,9 +3143,9 @@ void DogAttr::SerializeWithCachedSizes(
     ::google::protobuf::internal::WireFormatLite::WriteInt32(4, this->star(), output);
   }
 
-  // required int32 str = 5;
-  if (has_str()) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->str(), output);
+  // required int32 strong = 5;
+  if (has_strong()) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(5, this->strong(), output);
   }
 
   // required int32 speed = 6;
@@ -2905,9 +3196,9 @@ void DogAttr::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(4, this->star(), target);
   }
 
-  // required int32 str = 5;
-  if (has_str()) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->str(), target);
+  // required int32 strong = 5;
+  if (has_strong()) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(5, this->strong(), target);
   }
 
   // required int32 speed = 6;
@@ -2964,11 +3255,11 @@ int DogAttr::ByteSize() const {
           this->star());
     }
 
-    // required int32 str = 5;
-    if (has_str()) {
+    // required int32 strong = 5;
+    if (has_strong()) {
       total_size += 1 +
         ::google::protobuf::internal::WireFormatLite::Int32Size(
-          this->str());
+          this->strong());
     }
 
     // required int32 speed = 6;
@@ -3031,8 +3322,8 @@ void DogAttr::MergeFrom(const DogAttr& from) {
     if (from.has_star()) {
       set_star(from.star());
     }
-    if (from.has_str()) {
-      set_str(from.str());
+    if (from.has_strong()) {
+      set_strong(from.strong());
     }
     if (from.has_speed()) {
       set_speed(from.speed());
@@ -3071,7 +3362,7 @@ void DogAttr::Swap(DogAttr* other) {
     std::swap(lv_, other->lv_);
     std::swap(exp_, other->exp_);
     std::swap(star_, other->star_);
-    std::swap(str_, other->str_);
+    std::swap(strong_, other->strong_);
     std::swap(speed_, other->speed_);
     std::swap(intimacy_, other->intimacy_);
     std::swap(id_, other->id_);

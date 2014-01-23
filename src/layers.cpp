@@ -231,6 +231,9 @@ void DogMenuLayer::InitMenuItem() {
   menu_->setPosition(ccp(0, 0));
 
   addChild(menu_);
+  addChild(food_items);
+  addChild(train_items);
+  addChild(play_items);
 }
 
 void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
@@ -261,7 +264,7 @@ void TrainMenuLayer::InitMenuItem() {
   FSMenuItem* item = NULL;
   for(int i = 0; i < GetUITrainCfg()->conf_size(); ++i)
   {
-    item = FSMenuItem::create(dogrun2::kItemTrain, i);
+    item = FSMenuItem::create("white_mid.png", dogrun2::kItemTrain, i);
     item_arry->addObject(item);
   }
   menu_ = CCMenu::createWithArray(item_arry);
@@ -291,18 +294,6 @@ void PlayMenuLayer::BackItemClickCallback(CCObject* sender) {
   EventMgr::Instance().Response(kEventClickBackItem);
 }
 
-void PlayMenuLayer::WalkItemClickCallback(CCObject* sender) {
-}
-
-void PlayMenuLayer::TouchItemClickCallback(CCObject* sender) {
-}
-
-void PlayMenuLayer::BallItemClickCallback(CCObject* sender) {
-}
-
-void PlayMenuLayer::FrisbeeItemClickCallback(CCObject* sender) {
-}
-
 bool PlayMenuLayer::init() {
   if (!CCLayer::init())
     return false;
@@ -316,61 +307,39 @@ void PlayMenuLayer::InitMenuItem() {
   CCSprite* back_sprite = CCSprite::create();
   back_sprite->initWithSpriteFrameName("back.png");
 
-  CCSprite* walk_sprite = CCSprite::create();
-  walk_sprite->initWithSpriteFrameName("white.png");
-
-  CCSprite* touch_sprite = CCSprite::create();
-  touch_sprite->initWithSpriteFrameName("white.png");
-
-  CCSprite* ball_sprite = CCSprite::create();
-  ball_sprite->initWithSpriteFrameName("white.png");
-
-  CCSprite* frisbee_sprite = CCSprite::create();
-  frisbee_sprite->initWithSpriteFrameName("white.png");
-
   CCMenuItemSprite* back_item = CCMenuItemSprite::create(
     back_sprite, back_sprite, back_sprite, this, menu_selector(PlayMenuLayer::BackItemClickCallback));
   
-  FSMenuItem* walk_item = FSMenuItem::create(
-    walk_sprite, walk_sprite, walk_sprite, this, menu_selector(PlayMenuLayer::WalkItemClickCallback));
-  walk_item->InitData(dogrun2::kItemPlay, 0);
 
-  FSMenuItem* touch_item = FSMenuItem::create(
-    touch_sprite, touch_sprite, touch_sprite, this, menu_selector(PlayMenuLayer::TouchItemClickCallback));
-  touch_item->InitData(dogrun2::kItemPlay, 1);
-  
-  FSMenuItem* ball_item = FSMenuItem::create(
-    ball_sprite, ball_sprite, ball_sprite, this, menu_selector(PlayMenuLayer::BallItemClickCallback));
-  ball_item->InitData(dogrun2::kItemPlay, 2);
+  CCArray* item_arry = CCArray::create();
+  item_arry->addObject(back_item);
+  FSMenuItem* item = NULL;
+  for(int i = 0; i < GetUIPlayCfg()->conf_size(); ++i)
+  {
+    item = FSMenuItem::create("white.png", dogrun2::kItemPlay, i);
+    item_arry->addObject(item);
+  }
 
-  FSMenuItem* frisbee_item = FSMenuItem::create(
-    frisbee_sprite, frisbee_sprite, frisbee_sprite, this, menu_selector(PlayMenuLayer::FrisbeeItemClickCallback));
-  frisbee_item->InitData(dogrun2::kItemPlay, 3);
-
-  menu_ = CCMenu::create(back_item, walk_item, touch_item, ball_item, frisbee_item, NULL);
+  menu_ = CCMenu::createWithArray(item_arry);
   menu_->setAnchorPoint(ccp(0, 0));
   menu_->setPosition(ccp(0, 0));
 
-  int base_x = 15; int base_y = 10; int delt = 35; int last_item_x = 0;
+  int base_x = 15; int base_y = 10; int delt = 35;
+  int last_item_x = back_item->getContentSize().width + delt;
 
   back_item->setAnchorPoint(ccp(0, 0));
   back_item->setPosition(ccp(base_x, base_y));
 
-  last_item_x += (int)back_item->getContentSize().width + delt;
-  walk_item->setAnchorPoint(ccp(0, 0));
-  walk_item->setPosition(ccp(base_x + last_item_x, base_y));
+  int menu_item_size = menu_->getChildrenCount();
+  for(int i = 0; i < menu_item_size; ++i)
+  {
+    if(i == 0) continue;
 
-  last_item_x += (int)walk_item->getContentSize().width + delt;
-  touch_item->setAnchorPoint(ccp(0, 0));
-  touch_item->setPosition(ccp(base_x + last_item_x, base_y));
-
-  last_item_x += (int)touch_item->getContentSize().width + delt;
-  ball_item->setAnchorPoint(ccp(0, 0));
-  ball_item->setPosition(ccp(base_x + last_item_x, base_y));
-
-  last_item_x += (int)ball_item->getContentSize().width + delt;
-  frisbee_item->setAnchorPoint(ccp(0, 0));
-  frisbee_item->setPosition(ccp(base_x + last_item_x, base_y));
+    item = (FSMenuItem*)(menu_->getChildren()->objectAtIndex(i));
+    item->setAnchorPoint(ccp(0, 0));
+    item->setPosition(ccp(base_x + last_item_x, base_y));
+    last_item_x += (int)item->getContentSize().width + delt;
+  }
 
   addChild(menu_);
 }

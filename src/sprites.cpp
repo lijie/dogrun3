@@ -31,7 +31,7 @@ bool DogAttrPanelSprite::init() {
   addChild(label_dog_lv_, 1);
 
   char dog_strong[32] = {0};
-  snprintf(dog_strong,sizeof(dog_strong),"%d", dog_->attr().str());
+  snprintf(dog_strong,sizeof(dog_strong),"%d", dog_->attr().strong());
   label_dog_strong_ = CCLabelTTF::create( dog_strong, "Arial", 20);
   label_dog_strong_->setAnchorPoint(ccp(0, 0));
   label_dog_strong_->setPosition(ccp(30, 24));
@@ -64,7 +64,7 @@ void DogAttrPanelSprite::UpdateAttr() {
   label_dog_lv_->setString(dog_lv);
 
   char dog_strong[32] = {0};
-  snprintf(dog_strong,sizeof(dog_strong),"%d", dog_->attr().str());
+  snprintf(dog_strong,sizeof(dog_strong),"%d", dog_->attr().strong());
   label_dog_strong_->setString(dog_strong);
 
   char dog_speed[32] = {0};
