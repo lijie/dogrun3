@@ -6,7 +6,11 @@ USING_NS_CC;
 class MultiSpriteMenuItem : public CCMenuItemSprite {
 public:
   MultiSpriteMenuItem(){}
-
+  virtual void onEnter()
+  {
+    int a = 0;
+    a++;
+  }
   virtual ~MultiSpriteMenuItem(){}
 
   static MultiSpriteMenuItem * create(std::string item_type, CCPoint& pos);

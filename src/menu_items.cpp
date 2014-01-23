@@ -134,7 +134,7 @@ void MultiSpriteMenuItem::ChangeDoingItemCallback(CCObject* sender) {
     cd_time_ = User::current()->dogs(0)->RemainTime(kFeedCD);
   }
   if(cd_time_ > 1) {
-    schedule(schedule_selector(MultiSpriteMenuItem::OnTime), 1.0f, (unsigned int)cd_time_, 1.0f);
+    this->schedule(schedule_selector(MultiSpriteMenuItem::OnTime), 1.0f, (unsigned int)cd_time_, 1.0f);
   }
 }
 
@@ -215,6 +215,7 @@ void FSMenuItem::InitData(int item_type, int data_index) {
         cfg->title().font_color().Get(2)));
     }
   }
+
 
   if(cfg->has_speed()) {
     CCLabelTTF *label_speed_desc = CCLabelTTF::create(
