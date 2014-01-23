@@ -326,7 +326,7 @@ void FSMenuItem::ItemClickCallback(CCObject* sender) {
     }
   case dogrun2::kItemPlay:
     {
-      ret = User::current()->dogs(0)->Feed(data_index_);
+      ret = User::current()->dogs(0)->Play(data_index_);
       if(ret >= 0) {
         EventMgr::Instance().Response(kEventUserInfoChange);
         EventMgr::Instance().Response(kEventClickBackItem);
