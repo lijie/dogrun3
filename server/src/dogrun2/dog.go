@@ -1,12 +1,12 @@
 package dogrun2
 
-//import "errors"
+import "errors"
 import "log"
 //import "time"
-//import "dogrun2cs"
+import "dogrun2cs"
 import "labix.org/v2/mgo"
 import "labix.org/v2/mgo/bson"
-//import proto "code.google.com/p/goprotobuf/proto"
+import proto "code.google.com/p/goprotobuf/proto"
 
 // dog in database
 type DogOne struct {
@@ -23,6 +23,14 @@ type DogDB struct {
 	UserId string `bson:"_id"`
 	Dogs []DogOne
 }
+
+const (
+	CD_FEED = 0
+	CD_Play = 1
+	CD_TRAIN = 2
+)
+
+var ErrDogNotFound = errors.New("dog id not found")
 
 func init() {
 }
@@ -50,9 +58,45 @@ func (dd *DogDB) Store() error {
 	return nil
 }
 
+func (dd *DogDB) Feed(req *dogrun2cs.DogFeedReq) error {
+	dog := dd.getDog(req.GetDogid());
+	if dog == nil {
+		log.Printf("dog id %d not found\n", req.GetDogid())
+		return ErrDogNotFound
+	}
+
+	// Test
+	dog.Level++
+	dog.Exp++
+	dog.Str++
+	dog.Speed++
+	return nil
+}
+
+func (dd *DogDB) getDog(id uint32) *DogOne {
+	for i := 0; i < len(dd.Dogs); i++ {
+		if id == dd.Dogs[i].Id {
+			return &dd.Dogs[i]
+		}
+	}
+	return nil
+}
+
 func ProcFeedDog(c *Client, msg *Msg) int {
 	if !c.U.IsLogin() {
 		return CLI_PROC_RET_KICK
 	}
+
+	var req dogrun2cs.DogFeedReq
+	if err := proto.Unmarshal(msg.Body, &req); err != nil {
+		return CLI_PROC_RET_KICK
+	}
+
+	dd := c.U.dogs;
+	if err := dd.Feed(&req); err != nil {
+		log.Printf("dog feed error %v\n", err)
+		return CLI_PROC_RET_ERR
+	}
+
 	return CLI_PROC_RET_SUCC
 }
