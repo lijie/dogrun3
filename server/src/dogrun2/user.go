@@ -8,6 +8,8 @@ import "labix.org/v2/mgo"
 import "labix.org/v2/mgo/bson"
 import proto "code.google.com/p/goprotobuf/proto"
 
+var ErrInvalidParam = errors.New("Invalid paramters")
+
 func init() {
 	// register login cmd
 	ClientProcRegister(int(dogrun2cs.Command_kCmdUserLoginReq), ProcUserLogin)
@@ -22,7 +24,7 @@ type User struct {
 	// data struct saved in db
 	udb UserDb
 	// dogs in db
-	dogs DogDB
+	dk DogKeeper
 	// whether of not user info is changed.
 	// true means should sync to db
 	dirty bool
@@ -53,7 +55,7 @@ func (u *User) Load(userid string) error {
 	}
 
 	// load dog
-	if err = u.dogs.Load(userid); err != nil {
+	if err = u.dk.Load(userid); err != nil {
 		log.Println(err)
 		return err
 	}
@@ -135,6 +137,30 @@ func (u *User) Notify() error {
 
 func (u *User) IsLogin() bool {
 	return u.ready
+}
+
+func (u *User) AddMoney(money int) error {
+	u.udb.Attr.Money = (uint32)(int(u.udb.Attr.Money) + money)
+	return nil
+}
+
+func (u *User) UseMoney(money int) error {
+	if money < 0 {
+		return ErrInvalidParam
+	}
+	return u.AddMoney(-money)
+}
+
+func (u *User) AddHeart(heart int) error {
+	u.udb.Attr.Heart = (uint32)(int(u.udb.Attr.Heart) + heart)
+	return nil
+}
+
+func (u *User) UseHeart(heart int) error {
+	if heart < 0 {
+		return ErrInvalidParam
+	}
+	return u.AddMoney(-heart)
 }
 
 func ProcUserLogin(c *Client, msg *Msg) int {

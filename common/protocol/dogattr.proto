@@ -1,8 +1,8 @@
 package dogrun2cs;
 
 message DogLevelConfig {
-	required int32 lv = 1;
-	required int32 exp = 2;
+	required uint32 lv = 1;
+	required uint32 exp = 2;
 };
 
 message DogLevelConfigArray {
@@ -10,14 +10,14 @@ message DogLevelConfigArray {
 };
 
 message FoodConfig {
-	required int32 type = 1;
-	required int32 cd = 2;
-	required int32 consume_heart = 3;
-	required int32 consume_gold = 4;
-	optional int32 strong = 5;
-	optional int32 speed = 6;
-	optional int32 exp = 7;
-	optional int32 intimacy = 8;
+	required uint32 type = 1;
+	required uint32 cd = 2;
+	required uint32 consume_heart = 3;
+	required uint32 consume_gold = 4;
+	optional uint32 strong = 5;
+	optional uint32 speed = 6;
+	optional uint32 exp = 7;
+	optional uint32 intimacy = 8;
 };
 
 message FoodConfigArray {
@@ -25,14 +25,14 @@ message FoodConfigArray {
 };
 
 message TrainConfig {
-	required int32 type = 1;
-	required int32 cd = 2;
-	required int32 consume_heart = 3;
-	required int32 consume_gold = 4;
-	optional int32 strong = 5;
-	optional int32 speed = 6;
-	optional int32 exp = 7;
-	optional int32 intimacy = 8;
+	required uint32 type = 1;
+	required uint32 cd = 2;
+	required uint32 consume_heart = 3;
+	required uint32 consume_gold = 4;
+	optional uint32 strong = 5;
+	optional uint32 speed = 6;
+	optional uint32 exp = 7;
+	optional uint32 intimacy = 8;
 };
 
 message TrainConfigArray {
@@ -40,14 +40,14 @@ message TrainConfigArray {
 };
 
 message PlayConfig {
-	required int32 type = 1;
-	required int32 cd = 2;
-	required int32 consume_heart = 3;
-	required int32 consume_gold = 4;
-	optional int32 strong = 5;
-	optional int32 speed = 6;
-	optional int32 exp = 7;
-	optional int32 intimacy = 8;
+	required uint32 type = 1;
+	required uint32 cd = 2;
+	required uint32 consume_heart = 3;
+	required uint32 consume_gold = 4;
+	optional uint32 strong = 5;
+	optional uint32 speed = 6;
+	optional uint32 exp = 7;
+	optional uint32 intimacy = 8;
 };
 
 message PlayConfigArray {
@@ -56,11 +56,11 @@ message PlayConfigArray {
 
 message DogAttr {
 	required string name = 1;
-	required int32 lv = 2 [default = 1];
-	required int32 exp = 3;
-	required int32 star = 4;
-	required int32 strong = 5;
-	required int32 speed = 6;
-	required int32 intimacy = 7;
-	required int32 id = 8;
+	required uint32 lv = 2 [default = 1];
+	required uint32 exp = 3;
+	required uint32 star = 4;
+	required uint32 strong = 5;
+	required uint32 speed = 6;
+	required uint32 intimacy = 7;
+	required uint32 id = 8;
 };
