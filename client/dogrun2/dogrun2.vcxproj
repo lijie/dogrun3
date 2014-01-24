@@ -58,7 +58,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USE_MATH_DEFINES;GL_GLEXT_PROTOTYPES;CC_ENABLE_CHIPMUNK_INTEGRATION=1;COCOS2D_DEBUG=1;_CRT_SECURE_NO_WARNINGS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\;$(ProjectDir)..\dep\protobuf-2.5.0\src;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\..\cocos2d-x-2.2\external;$(ProjectDir)..\..\..\cocos2d-x-2.2\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\..\cocos2d-x-2.2\CocosDenshion\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\..\common;$(ProjectDir)..\;$(ProjectDir)..\..\common\dep\protobuf-2.5.0\src;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\include;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\platform\win32;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\CocosDenshion\include;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <SuppressStartupBanner>true</SuppressStartupBanner>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
     </ClCompile>
@@ -70,7 +70,7 @@
     </Link>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Command>
+xcopy /Y /Q "$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -83,7 +83,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>$(ProjectDir)..\;$(ProjectDir)..\dep\protobuf-2.5.0\src;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\..\cocos2d-x-2.2\external;$(ProjectDir)..\..\..\cocos2d-x-2.2\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\..\cocos2d-x-2.2\CocosDenshion\include;$(ProjectDir)..\..\..\cocos2d-x-2.2\extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\;$(ProjectDir)..\..\common\dep\protobuf-2.5.0\src;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\include;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\kazmath\include;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\platform\win32;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\cocos2dx\platform\third_party\win32\OGLES;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external\chipmunk\include\chipmunk;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\CocosDenshion\include;$(ProjectDir)..\..\..\..\cocos2d-x-2.2\extensions;..\Classes;..;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4267;4251;4244;%(DisableSpecificWarnings)</DisableSpecificWarnings>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
@@ -97,28 +97,28 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
     </Link>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Command>
+xcopy /Y /Q "$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\lib\*.*" "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\cocos2d-x-2.2\cocos2dx\proj.win32\cocos2d.vcxproj">
+    <ProjectReference Include="..\..\..\..\cocos2d-x-2.2\cocos2dx\proj.win32\cocos2d.vcxproj">
       <Project>{98a51ba8-fc3a-415b-ac8f-8c7bd464e93e}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\cocos2d-x-2.2\CocosDenshion\proj.win32\CocosDenshion.vcxproj">
+    <ProjectReference Include="..\..\..\..\cocos2d-x-2.2\CocosDenshion\proj.win32\CocosDenshion.vcxproj">
       <Project>{f8edd7fa-9a51-4e80-baeb-860825d2eac6}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\cocos2d-x-2.2\extensions\proj.win32\libExtensions.vcxproj">
+    <ProjectReference Include="..\..\..\..\cocos2d-x-2.2\extensions\proj.win32\libExtensions.vcxproj">
       <Project>{21b2c324-891f-48ea-ad1a-5ae13de12e28}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\cocos2d-x-2.2\external\Box2D\proj.win32\Box2D.vcxproj">
+    <ProjectReference Include="..\..\..\..\cocos2d-x-2.2\external\Box2D\proj.win32\Box2D.vcxproj">
       <Project>{929480e7-23c0-4df6-8456-096d71547116}</Project>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\cocos2d-x-2.2\external\chipmunk\proj.win32\chipmunk.vcxproj">
+    <ProjectReference Include="..\..\..\..\cocos2d-x-2.2\external\chipmunk\proj.win32\chipmunk.vcxproj">
       <Project>{207bc7a9-ccf1-4f2f-a04d-45f72242ae25}</Project>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\protocol\dogattr.pb.cc" />
+    <ClCompile Include="..\..\common\protocol\dogattr.pb.cc" />
     <ClCompile Include="..\protocol\uiconfig.pb.cc" />
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\common.cpp" />
@@ -131,7 +131,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\cocos2d-x-2.2\external\libwebsockets\win32\li
     <ClCompile Include="..\src\ui_config_init.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\protocol\dogattr.pb.h" />
+    <ClInclude Include="..\..\common\protocol\dogattr.pb.h" />
     <ClInclude Include="..\protocol\uiconfig.pb.h" />
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\common.h" />
