@@ -114,7 +114,6 @@ void MultiSpriteMenuItem::ClickDoingItemCallback(CCObject* sender) {
 }
 
 void MultiSpriteMenuItem::ClickDoneItemCallback(CCObject* sender) {
-  EventMgr::Instance().Response(kEventDogAttrChange);
   ChangeShowItem("normal");
 }
 
@@ -145,6 +144,7 @@ void MultiSpriteMenuItem::OnTime(float f) {
     label_cd_->setString(str);
   } else {
     label_cd_->setString("");
+    EventMgr::Instance().Response(kEventDogAttrChange);
     ChangeShowItem("done");
   }
 }
