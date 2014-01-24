@@ -6,7 +6,7 @@ else
 PROTOC := ../../server/bin/protoc
 endif
 
-SOURCE := cs.proto userinfo.proto
+SOURCE := cs.proto userinfo.proto dogattr.proto
 TARGET := $(SOURCE:.proto=.pb.cc)
 GODIR := ../../server/src/dogrun2cs
 GOTARGET := $(SOURCE:.proto=.pb.go)
