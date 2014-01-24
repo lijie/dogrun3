@@ -6,11 +6,10 @@ USING_NS_CC;
 class MultiSpriteMenuItem : public CCNode {
 public:
   MultiSpriteMenuItem(){}
-
   virtual ~MultiSpriteMenuItem(){}
 
   virtual void onEnter();
-
+  virtual void onExit();
   static MultiSpriteMenuItem * create(std::string item_type, CCPoint& pos);
 
   void ClickItemCallback(CCObject* sender);
@@ -24,6 +23,7 @@ public:
 protected:
   void ChangeShowItem(std::string item);
   void StartCD();
+  void FinishDoing();
   void InitItem();
   void InitItemPos();
 

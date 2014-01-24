@@ -9,6 +9,12 @@ void MultiSpriteMenuItem::onEnter() {
   StartCD();
 }
 
+void MultiSpriteMenuItem::onExit() {
+  CCNode::onExit();
+  label_cd_->setString("");
+  unschedule(schedule_selector(MultiSpriteMenuItem::OnTime));
+}
+
 MultiSpriteMenuItem * MultiSpriteMenuItem::create(std::string item_type, CCPoint& pos) {
   MultiSpriteMenuItem *ret = new MultiSpriteMenuItem();
   if (ret) {
@@ -114,8 +120,30 @@ void MultiSpriteMenuItem::ClickItemCallback(CCObject* sender) {
 }
 
 void MultiSpriteMenuItem::ClickDoingItemCallback(CCObject* sender) {
-  int a = 0;
-  a++;
+  if(item_type_ == "train") {
+    if (User::current()->UseMoney(100) == 0) {
+      User::current()->dogs(0)->ClearCD(kTrainCD);
+      EventMgr::Instance().Response(kEventUserInfoChange);
+      FinishDoing();
+    }
+  }
+
+  if(item_type_ == "play") {
+    if (User::current()->UseMoney(100) == 0) {
+      User::current()->dogs(0)->ClearCD(kPlayCD);
+      EventMgr::Instance().Response(kEventUserInfoChange);
+      FinishDoing();
+    }
+  }
+
+  if(item_type_ == "food") {
+    if (User::current()->UseMoney(100) == 0) {
+      EventMgr::Instance().Response(kEventUserInfoChange);
+      User::current()->dogs(0)->ClearCD(kFeedCD);
+      FinishDoing();
+    }
+  }
+
 }
 
 void MultiSpriteMenuItem::ClickDoneItemCallback(CCObject* sender) {
@@ -134,10 +162,16 @@ void MultiSpriteMenuItem::OnTime(float f) {
   if(cd_time_ > 0) {
     label_cd_->setString(str);
   } else {
-    label_cd_->setString("");
-    EventMgr::Instance().Response(kEventDogAttrChange);
-    ChangeShowItem("done");
+    FinishDoing();
   }
+}
+
+void MultiSpriteMenuItem::FinishDoing() {
+  cd_time_ = 0;
+  label_cd_->setString("");
+  EventMgr::Instance().Response(kEventDogAttrChange);
+  ChangeShowItem("done");
+  unschedule(schedule_selector(MultiSpriteMenuItem::OnTime));
 }
 
 void MultiSpriteMenuItem::StartCD() {

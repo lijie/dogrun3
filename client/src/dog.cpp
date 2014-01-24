@@ -31,7 +31,9 @@ int Dog::Feed(int feedtype) {
   const dogrun2::FoodConfig& cfg = FoodCfg->cfg(feedtype);
   attr_.set_strong(attr_.strong() + cfg.strong());
   attr_.set_exp(attr_.exp() + cfg.exp());
-  cd_[kFeedCD] = now + kDefalutFeedCD;
+  cd_[kFeedCD] = now + cfg.cd();
+  owner_->set_money(owner_->money() - cfg.consume_gold());
+  owner_->set_heart(owner_->heart() - cfg.consume_heart());
   return 0;
 }
 
@@ -58,9 +60,12 @@ int Dog::Play(int playtype) {
     return -1;
   }
 
+  const dogrun2::FoodConfig& cfg = FoodCfg->cfg(playtype);
   attr_.set_exp(attr_.exp() + 1);
   attr_.set_intimacy(attr_.intimacy() + 1);
-  cd_[kPlayCD] = now + kDefaultPlayCD;
+  cd_[kPlayCD] = now + cfg.cd();
+  owner_->set_money(owner_->money() - cfg.consume_gold());
+  owner_->set_heart(owner_->heart() - cfg.consume_heart());
   return 0;
 }
 
