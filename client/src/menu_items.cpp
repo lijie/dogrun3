@@ -4,6 +4,11 @@
 #include "dog.h"
 #include "event_mgr.h"
 
+void MultiSpriteMenuItem::onEnter() {
+  CCNode::onEnter();
+  StartCD();
+}
+
 MultiSpriteMenuItem * MultiSpriteMenuItem::create(std::string item_type, CCPoint& pos) {
   MultiSpriteMenuItem *ret = new MultiSpriteMenuItem();
   if (ret) {
@@ -119,7 +124,23 @@ void MultiSpriteMenuItem::ClickDoneItemCallback(CCObject* sender) {
 
 void MultiSpriteMenuItem::ChangeDoingItemCallback(CCObject* sender) {
   ChangeShowItem("doing");
+  StartCD();
+}
 
+void MultiSpriteMenuItem::OnTime(float f) {
+  char str[32] = {};
+  snprintf(str, sizeof(str), "%d%d:%d%d", cd_time_/60/10, cd_time_/60%10, cd_time_%60/10, cd_time_%60%10);
+  cd_time_--;
+  if(cd_time_ > 0) {
+    label_cd_->setString(str);
+  } else {
+    label_cd_->setString("");
+    EventMgr::Instance().Response(kEventDogAttrChange);
+    ChangeShowItem("done");
+  }
+}
+
+void MultiSpriteMenuItem::StartCD() {
   if(item_type_ == "train") {
     cd_time_ = User::current()->dogs(0)->RemainTime(kTrainCD);
   }
@@ -133,19 +154,6 @@ void MultiSpriteMenuItem::ChangeDoingItemCallback(CCObject* sender) {
   }
   if(cd_time_ > 1) {
     this->schedule(schedule_selector(MultiSpriteMenuItem::OnTime), 1.0f, (unsigned int)cd_time_, 0.0f);
-  }
-}
-
-void MultiSpriteMenuItem::OnTime(float f) {
-  char str[32] = {};
-  snprintf(str, sizeof(str), "%d%d:%d%d", cd_time_/60/10, cd_time_/60%10, cd_time_%60/10, cd_time_%60%10);
-  cd_time_--;
-  if(cd_time_ > 0) {
-    label_cd_->setString(str);
-  } else {
-    label_cd_->setString("");
-    EventMgr::Instance().Response(kEventDogAttrChange);
-    ChangeShowItem("done");
   }
 }
 

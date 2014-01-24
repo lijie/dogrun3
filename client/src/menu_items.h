@@ -9,6 +9,8 @@ public:
 
   virtual ~MultiSpriteMenuItem(){}
 
+  virtual void onEnter();
+
   static MultiSpriteMenuItem * create(std::string item_type, CCPoint& pos);
 
   void ClickItemCallback(CCObject* sender);
@@ -21,6 +23,7 @@ public:
   void OnTime(float f);
 protected:
   void ChangeShowItem(std::string item);
+  void StartCD();
   void InitItem();
   void InitItemPos();
 

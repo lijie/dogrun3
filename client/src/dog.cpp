@@ -142,17 +142,17 @@ int DogRunInit() {
   if (!FoodCfg) {
     FoodCfg = new dogrun2::FoodConfigArray;
     assert(FoodCfg != NULL);
-    ParseFromFile("etc/food.cfg", FoodCfg);
+    ParseFromFile("../common/etc/food.cfg", FoodCfg);
   }
   if (!TrainCfg) {
     TrainCfg = new dogrun2::TrainConfigArray;
     assert(TrainCfg != NULL);
-    ParseFromFile("etc/train.cfg", TrainCfg);
+    ParseFromFile("../common/etc/train.cfg", TrainCfg);
   }
   if (!PlayCfg) {
     PlayCfg = new dogrun2::PlayConfigArray;
     assert(PlayCfg != NULL);
-    ParseFromFile("etc/play.cfg", PlayCfg);
+    ParseFromFile("../common/etc/play.cfg", PlayCfg);
   }
 
   return 0;
