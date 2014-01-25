@@ -1,10 +1,10 @@
 EXECUTABLE = DogRun2
 
-INCLUDES = -I./ -I./dep/protobuf-2.5.0/src
+INCLUDES = -I./ -I../common/dep/protobuf-2.5.0/src -I../common
 
 SOURCES = $(wildcard src/*.cpp)
 
-COCOS_ROOT = ../cocos2d-x-2.2
+COCOS_ROOT = ../../cocos2d-x-2.2
 include $(COCOS_ROOT)/cocos2dx/proj.linux/cocos2dx.mk
 
 SHAREDLIBS += -lcocos2d

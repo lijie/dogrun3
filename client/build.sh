@@ -4,7 +4,7 @@ TXTCOLOR_DEFAULT="\033[0;m"
 TXTCOLOR_RED="\033[0;31m"
 TXTCOLOR_GREEN="\033[0;32m"
 
-COCOS2DX20_TRUNK=`pwd`/../cocos2d-x-2.2
+COCOS2DX20_TRUNK=`pwd`/../../cocos2d-x-2.2
 OUTPUT_DEBUG=$COCOS2DX20_TRUNK/lib/linux/debug/
 OUTPUT_RELEASE=$COCOS2DX20_TRUNK/lib/linux/release/
 
@@ -56,7 +56,7 @@ make -C $COCOS2DX20_TRUNK/extensions/proj.linux DEBUG=1
 check_make_result
 
 # for protobuf
-make -C dep/protobuf-2.5.0 -f protobuf.mk
+make -C ../common/dep/protobuf-2.5.0 -f protobuf.mk
 
 # for dogrun
 make DEBUG=1
