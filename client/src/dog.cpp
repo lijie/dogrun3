@@ -60,9 +60,9 @@ int Dog::Play(int playtype) {
     return -1;
   }
 
-  const dogrun2::FoodConfig& cfg = FoodCfg->cfg(playtype);
-  attr_.set_exp(attr_.exp() + 1);
-  attr_.set_intimacy(attr_.intimacy() + 1);
+  const dogrun2::PlayConfig& cfg = PlayCfg->cfg(playtype);
+  attr_.set_exp(attr_.exp() + cfg.exp());
+  attr_.set_intimacy(attr_.intimacy() + cfg.intimacy());
   cd_[kPlayCD] = now + cfg.cd();
   owner_->set_money(owner_->money() - cfg.consume_gold());
   owner_->set_heart(owner_->heart() - cfg.consume_heart());

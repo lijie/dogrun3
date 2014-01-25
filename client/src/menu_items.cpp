@@ -115,7 +115,7 @@ void MultiSpriteMenuItem::ClickItemCallback(CCObject* sender) {
   }
 
   if(item_type_ == "food") {
-    EventMgr::Instance().Response(kEventClickFoodItem);
+    EventMgr::Instance().Response(kEventClickFeedItem);
   }
 }
 
@@ -220,22 +220,6 @@ void MultiSpriteMenuItem::ChangeShowItem(std::string item) {
 
 
 //FSMenuItem
-FSMenuItem* FSMenuItem::create(CCNode *normalSprite, 
-                               CCNode *selectedSprite, 
-                               CCNode *disabledSprite, 
-                               CCObject *target, 
-                               SEL_MenuHandler selector) {
-  FSMenuItem *ret = new FSMenuItem();
-  if (ret) {
-    ret->autorelease();
-  } else {
-    delete ret;
-    ret = NULL;
-    return ret;
-  }
-  ret->initWithNormalSprite(normalSprite, selectedSprite, disabledSprite, target, selector);
-  return ret;
-}
 
 FSMenuItem * FSMenuItem::create(std::string sprite_name, int item_type, int data_index) {
   CCSprite* sprite = CCSprite::create();
@@ -258,7 +242,7 @@ void FSMenuItem::InitData(int item_type, int data_index) {
   switch(item_type) {
   case dogrun2::kItemFeed:
     {
-      cfg = &(GetUITrainCfg()->conf(data_index));
+      cfg = &(GetUIFeedCfg()->conf(data_index));
       break;
     }
   case dogrun2::kItemTrain:
@@ -292,6 +276,22 @@ void FSMenuItem::InitData(int item_type, int data_index) {
         cfg->title().font_color().Get(0),
         cfg->title().font_color().Get(1),
         cfg->title().font_color().Get(2)));
+    }
+  }
+
+  if(cfg->has_strong()) {
+    CCLabelTTF *label_strong_desc = CCLabelTTF::create(
+      cfg->strong().desc().c_str(),
+      cfg->strong().font().c_str(),
+      cfg->strong().font_size());
+    addChild(label_strong_desc, 1);
+    label_strong_desc->setAnchorPoint(ccp(0,0));
+    label_strong_desc->setPosition(ccp(cfg->strong().pos_x(), cfg->strong().pos_y()));
+    if(cfg->strong().font_color_size() > 0) {
+      label_strong_desc->setColor(ccc3(
+        cfg->strong().font_color().Get(0),
+        cfg->strong().font_color().Get(1),
+        cfg->strong().font_color().Get(2)));
     }
   }
 
@@ -350,12 +350,38 @@ void FSMenuItem::InitData(int item_type, int data_index) {
         cfg->icon_num().font_color().Get(2)));
     }
   }
+
+  if(cfg->has_intimacy()) {
+    CCLabelTTF *label_intimacy_desc = CCLabelTTF::create(
+      cfg->intimacy().desc().c_str(),
+      cfg->intimacy().font().c_str(),
+      cfg->intimacy().font_size());
+    addChild(label_intimacy_desc, 1);
+    label_intimacy_desc->setAnchorPoint(ccp(0,0));
+    label_intimacy_desc->setPosition(ccp(cfg->intimacy().pos_x(), cfg->intimacy().pos_y()));
+    if(cfg->intimacy().font_color_size() > 0) {
+      label_intimacy_desc->setColor(ccc3(
+        cfg->intimacy().font_color().Get(0),
+        cfg->intimacy().font_color().Get(1),
+        cfg->intimacy().font_color().Get(2)));
+    }
+  }
   return ;
 }
 
 void FSMenuItem::ItemClickCallback(CCObject* sender) {
   int ret = 0;
   switch(item_type_) {
+  case dogrun2::kItemFeed:
+    {
+      ret = User::current()->dogs(0)->Feed(data_index_);
+      if(ret >= 0) {
+        EventMgr::Instance().Response(kEventUserInfoChange);
+        EventMgr::Instance().Response(kEventClickBackItem);
+        EventMgr::Instance().Response(kEventChangeToFeedingItem);
+      }
+      break;
+    }
   case dogrun2::kItemTrain:
     {
       ret = User::current()->dogs(0)->Train(data_index_);

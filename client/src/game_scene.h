@@ -26,6 +26,7 @@ public:
   // implement the "static node()" method manually
 
   void DogMenuClickCallback(CCObject* sender);
+  void FeedItemClickCallback(CCObject* sender);
   void TrainItemClickCallback(CCObject* sender);
   void PlayItemClickCallback(CCObject* sender);
   void BackItemClickCallback(CCObject* sender);

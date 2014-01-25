@@ -236,12 +236,58 @@ void DogMenuLayer::InitMenuItem() {
   addChild(play_items);
 }
 
-void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
+void FeedMenuLayer::BackItemClickCallback(CCObject* sender) {
   EventMgr::Instance().Response(kEventClickBackItem);
 }
 
-void TrainMenuLayer::ItemClickCallback(CCObject* sender) {
+bool FeedMenuLayer::init() {
+  if (!CCLayer::init())
+    return false;
+
+  InitMenuItem();
+  return true;
+}
+
+void FeedMenuLayer::InitMenuItem() {
+  CCSprite* back_sprite = CCSprite::create();
+  back_sprite->initWithSpriteFrameName("back.png");
+
+  CCMenuItemSprite* back_item = CCMenuItemSprite::create(
+    back_sprite, back_sprite, back_sprite, this, menu_selector(TrainMenuLayer::BackItemClickCallback));
   
+  CCArray* item_arry = CCArray::create();
+  item_arry->addObject(back_item);
+  FSMenuItem* item = NULL;
+  for(int i = 0; i < GetUITrainCfg()->conf_size(); ++i)
+  {
+    item = FSMenuItem::create("white_mid.png", dogrun2::kItemFeed, i);
+    item_arry->addObject(item);
+  }
+  menu_ = CCMenu::createWithArray(item_arry);
+  menu_->setAnchorPoint(ccp(0, 0));
+  menu_->setPosition(ccp(0, 0));
+
+  int base_x = 15; int base_y = 10; int delt = 10;
+  int last_item_x = back_item->getContentSize().width + delt;
+
+  back_item->setAnchorPoint(ccp(0, 0));
+  back_item->setPosition(ccp(base_x, base_y));
+
+  int menu_item_size = menu_->getChildrenCount();
+  for(int i = 0; i < menu_item_size; ++i)
+  {
+    if(i == 0) continue;
+
+    item = (FSMenuItem*)(menu_->getChildren()->objectAtIndex(i));
+    item->setAnchorPoint(ccp(0, 0));
+    item->setPosition(ccp(base_x + last_item_x, base_y));
+    last_item_x += (int)item->getContentSize().width + delt;
+  }
+  addChild(menu_);
+}
+
+void TrainMenuLayer::BackItemClickCallback(CCObject* sender) {
+  EventMgr::Instance().Response(kEventClickBackItem);
 }
 
 bool TrainMenuLayer::init() {

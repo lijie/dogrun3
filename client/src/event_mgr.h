@@ -8,7 +8,7 @@ enum {
   kEventClickDogMenu = 1,
   kEventClickTrainItem = 2,
   kEventClickPlayItem = 3,
-  kEventClickFoodItem = 4,
+  kEventClickFeedItem = 4,
   kEventClickBackItem = 5,
   kEventDogAttrChange = 6,
   kEventUserInfoChange = 7,

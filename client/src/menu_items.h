@@ -45,11 +45,6 @@ public:
 
   static FSMenuItem * create(std::string sprite_name, int item_type, int data_index);
 
-  static FSMenuItem * create(CCNode *normalSprite, 
-                             CCNode *selectedSprite, 
-                             CCNode *disabledSprite, 
-                             CCObject *target, 
-                             SEL_MenuHandler selector);
   void ItemClickCallback(CCObject* sender);
   void InitData(int item_type, int data_index);
 protected:

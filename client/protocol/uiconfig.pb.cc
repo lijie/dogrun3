@@ -82,13 +82,14 @@ void protobuf_AssignDesc_uiconfig_2eproto() {
       ::google::protobuf::MessageFactory::generated_factory(),
       sizeof(UIElementIcon));
   UIItemConf_descriptor_ = file->message_type(2);
-  static const int UIItemConf_offsets_[6] = {
+  static const int UIItemConf_offsets_[7] = {
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, title_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, icon_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, icon_num_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, speed_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, exp_),
     GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, strong_),
+    GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(UIItemConf, intimacy_),
   };
   UIItemConf_reflection_ =
     new ::google::protobuf::internal::GeneratedMessageReflection(
@@ -164,16 +165,17 @@ void protobuf_AddDesc_uiconfig_2eproto() {
     "\003 \002(\005\022\r\n\005pos_y\030\004 \002(\005\022\021\n\tfont_size\030\005 \002(\005\022"
     "\022\n\nfont_color\030\006 \003(\005\"J\n\rUIElementIcon\022\014\n\004"
     "icon\030\001 \002(\t\022\r\n\005pos_x\030\002 \002(\005\022\r\n\005pos_y\030\003 \002(\005"
-    "\022\r\n\005scale\030\004 \002(\005\"\367\001\n\nUIItemConf\022%\n\005title\030"
+    "\022\r\n\005scale\030\004 \002(\005\"\241\002\n\nUIItemConf\022%\n\005title\030"
     "\001 \002(\0132\026.dogrun2.UIElementFont\022$\n\004icon\030\002 "
     "\002(\0132\026.dogrun2.UIElementIcon\022(\n\010icon_num\030"
     "\003 \002(\0132\026.dogrun2.UIElementFont\022%\n\005speed\030\004"
     " \001(\0132\026.dogrun2.UIElementFont\022#\n\003exp\030\005 \001("
     "\0132\026.dogrun2.UIElementFont\022&\n\006strong\030\006 \001("
-    "\0132\026.dogrun2.UIElementFont\"4\n\017UIItemConfA"
-    "rray\022!\n\004conf\030\001 \003(\0132\023.dogrun2.UIItemConf*"
-    "9\n\tkItemType\022\r\n\tkItemFeed\020\000\022\016\n\nkItemTrai"
-    "n\020\001\022\r\n\tkItemPlay\020\002", 578);
+    "\0132\026.dogrun2.UIElementFont\022(\n\010intimacy\030\007 "
+    "\001(\0132\026.dogrun2.UIElementFont\"4\n\017UIItemCon"
+    "fArray\022!\n\004conf\030\001 \003(\0132\023.dogrun2.UIItemCon"
+    "f*9\n\tkItemType\022\r\n\tkItemFeed\020\000\022\016\n\nkItemTr"
+    "ain\020\001\022\r\n\tkItemPlay\020\002", 620);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "uiconfig.proto", &protobuf_RegisterTypes);
   UIElementFont::default_instance_ = new UIElementFont();
@@ -1015,6 +1017,7 @@ const int UIItemConf::kIconNumFieldNumber;
 const int UIItemConf::kSpeedFieldNumber;
 const int UIItemConf::kExpFieldNumber;
 const int UIItemConf::kStrongFieldNumber;
+const int UIItemConf::kIntimacyFieldNumber;
 #endif  // !_MSC_VER
 
 UIItemConf::UIItemConf()
@@ -1029,6 +1032,7 @@ void UIItemConf::InitAsDefaultInstance() {
   speed_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
   exp_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
   strong_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
+  intimacy_ = const_cast< ::dogrun2::UIElementFont*>(&::dogrun2::UIElementFont::default_instance());
 }
 
 UIItemConf::UIItemConf(const UIItemConf& from)
@@ -1045,6 +1049,7 @@ void UIItemConf::SharedCtor() {
   speed_ = NULL;
   exp_ = NULL;
   strong_ = NULL;
+  intimacy_ = NULL;
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
 }
 
@@ -1060,6 +1065,7 @@ void UIItemConf::SharedDtor() {
     delete speed_;
     delete exp_;
     delete strong_;
+    delete intimacy_;
   }
 }
 
@@ -1103,6 +1109,9 @@ void UIItemConf::Clear() {
     }
     if (has_strong()) {
       if (strong_ != NULL) strong_->::dogrun2::UIElementFont::Clear();
+    }
+    if (has_intimacy()) {
+      if (intimacy_ != NULL) intimacy_->::dogrun2::UIElementFont::Clear();
     }
   }
   ::memset(_has_bits_, 0, sizeof(_has_bits_));
@@ -1194,6 +1203,20 @@ bool UIItemConf::MergePartialFromCodedStream(
         } else {
           goto handle_uninterpreted;
         }
+        if (input->ExpectTag(58)) goto parse_intimacy;
+        break;
+      }
+
+      // optional .dogrun2.UIElementFont intimacy = 7;
+      case 7: {
+        if (::google::protobuf::internal::WireFormatLite::GetTagWireType(tag) ==
+            ::google::protobuf::internal::WireFormatLite::WIRETYPE_LENGTH_DELIMITED) {
+         parse_intimacy:
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessageNoVirtual(
+               input, mutable_intimacy()));
+        } else {
+          goto handle_uninterpreted;
+        }
         if (input->ExpectAtEnd()) return true;
         break;
       }
@@ -1252,6 +1275,12 @@ void UIItemConf::SerializeWithCachedSizes(
       6, this->strong(), output);
   }
 
+  // optional .dogrun2.UIElementFont intimacy = 7;
+  if (has_intimacy()) {
+    ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
+      7, this->intimacy(), output);
+  }
+
   if (!unknown_fields().empty()) {
     ::google::protobuf::internal::WireFormat::SerializeUnknownFields(
         unknown_fields(), output);
@@ -1300,6 +1329,13 @@ void UIItemConf::SerializeWithCachedSizes(
     target = ::google::protobuf::internal::WireFormatLite::
       WriteMessageNoVirtualToArray(
         6, this->strong(), target);
+  }
+
+  // optional .dogrun2.UIElementFont intimacy = 7;
+  if (has_intimacy()) {
+    target = ::google::protobuf::internal::WireFormatLite::
+      WriteMessageNoVirtualToArray(
+        7, this->intimacy(), target);
   }
 
   if (!unknown_fields().empty()) {
@@ -1355,6 +1391,13 @@ int UIItemConf::ByteSize() const {
           this->strong());
     }
 
+    // optional .dogrun2.UIElementFont intimacy = 7;
+    if (has_intimacy()) {
+      total_size += 1 +
+        ::google::protobuf::internal::WireFormatLite::MessageSizeNoVirtual(
+          this->intimacy());
+    }
+
   }
   if (!unknown_fields().empty()) {
     total_size +=
@@ -1400,6 +1443,9 @@ void UIItemConf::MergeFrom(const UIItemConf& from) {
     if (from.has_strong()) {
       mutable_strong()->::dogrun2::UIElementFont::MergeFrom(from.strong());
     }
+    if (from.has_intimacy()) {
+      mutable_intimacy()->::dogrun2::UIElementFont::MergeFrom(from.intimacy());
+    }
   }
   mutable_unknown_fields()->MergeFrom(from.unknown_fields());
 }
@@ -1437,6 +1483,9 @@ bool UIItemConf::IsInitialized() const {
   if (has_strong()) {
     if (!this->strong().IsInitialized()) return false;
   }
+  if (has_intimacy()) {
+    if (!this->intimacy().IsInitialized()) return false;
+  }
   return true;
 }
 
@@ -1448,6 +1497,7 @@ void UIItemConf::Swap(UIItemConf* other) {
     std::swap(speed_, other->speed_);
     std::swap(exp_, other->exp_);
     std::swap(strong_, other->strong_);
+    std::swap(intimacy_, other->intimacy_);
     std::swap(_has_bits_[0], other->_has_bits_[0]);
     _unknown_fields_.Swap(&other->_unknown_fields_);
     std::swap(_cached_size_, other->_cached_size_);

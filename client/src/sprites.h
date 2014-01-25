@@ -57,6 +57,7 @@ protected:
   CCSprite* heart_mid_;
   CCSprite* heart_right_;
   CCLabelTTF* heart_num_;
+  CCSpriteFrame* heart_mid_frame_;
 };
 
 

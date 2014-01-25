@@ -47,22 +47,28 @@ protected:
   CCMenu *menu_;
 };
 
+class FeedMenuLayer : public CCLayer {
+public:
+  virtual bool init();
+  CREATE_FUNC(FeedMenuLayer);
+
+  void BackItemClickCallback(CCObject* sender);
+protected:
+  void InitMenuItem();
+protected:
+  CCMenu *menu_;
+};
+
 class TrainMenuLayer : public CCLayer {
 public:
   virtual bool init();
   CREATE_FUNC(TrainMenuLayer);
 
   void BackItemClickCallback(CCObject* sender);
-  void ItemClickCallback(CCObject* sender);
-
 protected:
   void InitMenuItem();
-  void CreateTraining();
-  void CreateTrainDone();
 protected:
   CCMenu *menu_;
-  CCSprite* training_sprite_;
-  CCSprite* traindone_sprite_;
 };
 
 class PlayMenuLayer : public CCLayer {
@@ -71,11 +77,6 @@ public:
   CREATE_FUNC(PlayMenuLayer);
 
   void BackItemClickCallback(CCObject* sender);
-  void WalkItemClickCallback(CCObject* sender);
-  void TouchItemClickCallback(CCObject* sender);
-  void BallItemClickCallback(CCObject* sender);
-  void FrisbeeItemClickCallback(CCObject* sender);
-
 protected:
   void InitMenuItem();
 

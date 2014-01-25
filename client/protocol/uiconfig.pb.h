@@ -431,6 +431,15 @@ class UIItemConf : public ::google::protobuf::Message {
   inline ::dogrun2::UIElementFont* release_strong();
   inline void set_allocated_strong(::dogrun2::UIElementFont* strong);
 
+  // optional .dogrun2.UIElementFont intimacy = 7;
+  inline bool has_intimacy() const;
+  inline void clear_intimacy();
+  static const int kIntimacyFieldNumber = 7;
+  inline const ::dogrun2::UIElementFont& intimacy() const;
+  inline ::dogrun2::UIElementFont* mutable_intimacy();
+  inline ::dogrun2::UIElementFont* release_intimacy();
+  inline void set_allocated_intimacy(::dogrun2::UIElementFont* intimacy);
+
   // @@protoc_insertion_point(class_scope:dogrun2.UIItemConf)
  private:
   inline void set_has_title();
@@ -445,6 +454,8 @@ class UIItemConf : public ::google::protobuf::Message {
   inline void clear_has_exp();
   inline void set_has_strong();
   inline void clear_has_strong();
+  inline void set_has_intimacy();
+  inline void clear_has_intimacy();
 
   ::google::protobuf::UnknownFieldSet _unknown_fields_;
 
@@ -454,9 +465,10 @@ class UIItemConf : public ::google::protobuf::Message {
   ::dogrun2::UIElementFont* speed_;
   ::dogrun2::UIElementFont* exp_;
   ::dogrun2::UIElementFont* strong_;
+  ::dogrun2::UIElementFont* intimacy_;
 
   mutable int _cached_size_;
-  ::google::protobuf::uint32 _has_bits_[(6 + 31) / 32];
+  ::google::protobuf::uint32 _has_bits_[(7 + 31) / 32];
 
   friend void  protobuf_AddDesc_uiconfig_2eproto();
   friend void protobuf_AssignDesc_uiconfig_2eproto();
@@ -1157,6 +1169,44 @@ inline void UIItemConf::set_allocated_strong(::dogrun2::UIElementFont* strong) {
     set_has_strong();
   } else {
     clear_has_strong();
+  }
+}
+
+// optional .dogrun2.UIElementFont intimacy = 7;
+inline bool UIItemConf::has_intimacy() const {
+  return (_has_bits_[0] & 0x00000040u) != 0;
+}
+inline void UIItemConf::set_has_intimacy() {
+  _has_bits_[0] |= 0x00000040u;
+}
+inline void UIItemConf::clear_has_intimacy() {
+  _has_bits_[0] &= ~0x00000040u;
+}
+inline void UIItemConf::clear_intimacy() {
+  if (intimacy_ != NULL) intimacy_->::dogrun2::UIElementFont::Clear();
+  clear_has_intimacy();
+}
+inline const ::dogrun2::UIElementFont& UIItemConf::intimacy() const {
+  return intimacy_ != NULL ? *intimacy_ : *default_instance_->intimacy_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::mutable_intimacy() {
+  set_has_intimacy();
+  if (intimacy_ == NULL) intimacy_ = new ::dogrun2::UIElementFont;
+  return intimacy_;
+}
+inline ::dogrun2::UIElementFont* UIItemConf::release_intimacy() {
+  clear_has_intimacy();
+  ::dogrun2::UIElementFont* temp = intimacy_;
+  intimacy_ = NULL;
+  return temp;
+}
+inline void UIItemConf::set_allocated_intimacy(::dogrun2::UIElementFont* intimacy) {
+  delete intimacy_;
+  intimacy_ = intimacy;
+  if (intimacy) {
+    set_has_intimacy();
+  } else {
+    clear_has_intimacy();
   }
 }
 

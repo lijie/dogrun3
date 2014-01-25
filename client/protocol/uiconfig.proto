@@ -30,6 +30,7 @@ message UIItemConf {
     optional UIElementFont speed = 4;
     optional UIElementFont exp = 5;
     optional UIElementFont strong = 6;
+    optional UIElementFont intimacy = 7;
 };
 
 message UIItemConfArray {
