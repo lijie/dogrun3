@@ -22,18 +22,18 @@ const (
 // we can pre-alloc many Client objects for performance
 type Client struct {
 	// save current user data
-	U User
+	u User
 
 	// current tcp connection
-	Conn *net.TCPConn
+	conn *net.TCPConn
 
 	// this client should be close
-	Enable bool
+	enable bool
 
 	// save last error message
 	// if proc() returns ERR or KICK
 	// this string will send to client
-	LastErr string
+	lastErr string
 
 	// save client last request
 	msg Msg
@@ -117,9 +117,9 @@ func (c *Client) Proc() {
 	req_chan := make(chan *Msg, 1)
 	// read request from client
 	// process req and send rsp
-	for c.Enable {
+	for c.enable {
 		// clear last error message
-		c.LastErr = ""
+		c.lastErr = ""
 
 		select {
 		case msg := <-c.readMsg(req_chan):
@@ -136,9 +136,9 @@ func (c *Client) Proc() {
 
 // read packet from tcp conn
 func (c *Client) readMsg(req_chan chan *Msg) chan *Msg {
-	if msg, err := c.readPacket(c.Conn); err != nil {
+	if msg, err := c.readPacket(c.conn); err != nil {
 		// if readPacket err, close client
-		c.Enable = false
+		c.enable = false
 		req_chan <- nil
 	} else {
 		req_chan <- msg
@@ -158,7 +158,7 @@ func (c *Client) procMsg(msg *Msg) {
 
 	// proc error and client should be kick off
 	if ret == CLI_PROC_RET_KICK {
-		c.Enable = false
+		c.enable = false
 	}
 
 	// send last error message
@@ -168,24 +168,24 @@ func (c *Client) procMsg(msg *Msg) {
 
 // heartbeat timeout
 func (c *Client) procTimeout() {
-	c.Enable = false
+	c.enable = false
 }
 
 // client current client
 func (c *Client) Close() {
-	if c.Conn != nil {
-		c.Conn.Close()
+	if c.conn != nil {
+		c.conn.Close()
 	}
 }
 
 func (c *Client) Send(buf []byte) (int, error) {
-	return c.Conn.Write(buf)
+	return c.conn.Write(buf)
 }
 
 func (c *Client) sendLastErr() error {
 	var s dogrun2cs.SvrErrNtf
 
-	s.Message = &c.LastErr
+	s.Message = &c.lastErr
 	msg := c.GetReplyMsg()
 	msg.H.Cmd = uint32(dogrun2cs.Command_kCmdSvrErrNtf)
 	return c.SendMsg(msg, &s)
@@ -208,7 +208,7 @@ func (c *Client) SendMsg(msg *Msg, pb proto.Message) error {
 		return err
 	}
 
-	_, err = c.Conn.Write(c.pbuf.Bytes())
+	_, err = c.conn.Write(c.pbuf.Bytes())
 	return err
 }
 
@@ -229,7 +229,7 @@ func (c *Client) SendNotify(msg *Msg, pb proto.Message) error {
 		return err
 	}
 
-	_, err = c.Conn.Write(c.pbuf.Bytes())
+	_, err = c.conn.Write(c.pbuf.Bytes())
 	return err
 }
 
@@ -244,8 +244,8 @@ func (c *Client) GetReplyMsg() *Msg {
 
 func NewClient(conn *net.TCPConn) *Client {
 	return &Client{
-		Conn: conn,
-		Enable: true,
+		conn: conn,
+		enable: true,
 	}
 }
 

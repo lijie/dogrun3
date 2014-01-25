@@ -34,19 +34,23 @@ message UserLogoutRsp {
 
 message DogFeedReq {
      required uint32 dogid = 1;
-     required uint32 feedtype = 2;
+     required uint32 type = 2;
 };
 
 message DogFeedRsp {
 };
 
 message DogTrainReq {
+     required uint32 dogid = 1;
+     required uint32 type = 2;
 };
 
 message DogTrainRsp {
 };
 
 message DogPlayReq {
+     required uint32 dogid = 1;
+     required uint32 type = 2;
 };
 
 message DogPlayRsp {

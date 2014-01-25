@@ -164,7 +164,7 @@ func (u *User) UseHeart(heart int) error {
 }
 
 func ProcUserLogin(c *Client, msg *Msg) int {
-	if c.U.IsLogin() {
+	if c.u.IsLogin() {
 		return CLI_PROC_RET_SUCC
 	}
 
@@ -175,7 +175,7 @@ func ProcUserLogin(c *Client, msg *Msg) int {
 		return CLI_PROC_RET_KICK
 	}
 
-	if err := c.U.Login(req.GetUserid()); err != nil {
+	if err := c.u.Login(req.GetUserid()); err != nil {
 		return CLI_PROC_RET_KICK
 	}
 
