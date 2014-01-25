@@ -69,10 +69,10 @@ const int kTimeDaySeconds = 60 * 1024 * 1024;
 class Dog {
 public:
   Dog();
-  virtual int Feed(int foodtype);
-  virtual int Train(int traintype);
-  virtual int Play(int playtype);
-  virtual int ClearCD(int cdtype);
+  int Feed(int foodtype);
+  int Train(int traintype);
+  int Play(int playtype);
+  int ClearCD(int cdtype);
 
   const DogAttr& attr() {return attr_;}
   User *owner();
@@ -89,7 +89,7 @@ protected:
   int cd_clear_count_[kOperationCDNR];
   User *owner_;
 
-  int Levelup();
+  int TryLevelup();
 };
 
 int DogRunInit();

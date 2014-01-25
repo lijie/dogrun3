@@ -93,24 +93,20 @@ bool GameScene::init() {
   return true;
 }
 
-void GameScene::DogMenuClickCallback(CCObject* sender)
-{
+void GameScene::DogMenuClickCallback(CCObject* sender) {
   menu_flag_ = (menu_flag_ + 1) % 2;
   menu_layer_->switchTo(menu_flag_);
 }
 
-void GameScene::FeedItemClickCallback(CCObject* sender)
-{
+void GameScene::FeedItemClickCallback(CCObject* sender) {
   menu_layer_->switchTo(2);
 }
 
-void GameScene::TrainItemClickCallback(CCObject* sender)
-{
+void GameScene::TrainItemClickCallback(CCObject* sender) {
   menu_layer_->switchTo(3);
 }
 
-void GameScene::PlayItemClickCallback(CCObject* sender)
-{
+void GameScene::PlayItemClickCallback(CCObject* sender) {
   menu_layer_->switchTo(4);
 }
 

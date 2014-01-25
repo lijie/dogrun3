@@ -43,6 +43,8 @@ protected:
   CCLabelTTF* label_dog_strong_;
   CCLabelTTF* label_dog_speed_;
   CCLabelTTF* label_dog_intimacy_;
+  CCSprite* lv_bar_;
+  CCSpriteFrame* lv_bar_frame_;
 };
 
 class HeartProgressBar{

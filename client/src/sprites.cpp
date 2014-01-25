@@ -51,6 +51,17 @@ bool DogAttrPanelSprite::init() {
   label_dog_intimacy_->setPosition(ccp(185, 24));
   addChild(label_dog_intimacy_, 1);
 
+  /*lv_bar_ = CCSprite::create();
+  lv_bar_frame_ = CCSpriteFrameCache::sharedSpriteFrameCache()->spriteFrameByName("lv_bar.png");
+  lv_bar_->initWithSpriteFrameName("lv_bar.png");
+  lv_bar_->setAnchorPoint(ccp(0,0));
+  lv_bar_->setPosition(ccp(60, 80));
+  addChild(lv_bar_, 1);*/
+
+  //float lv_bar_width = dog_->attr().exp()*(100/100);
+  //CCRect frame_rect = lv_bar_frame_->getRect();
+  //CCRect rect(frame_rect.getMinX(), frame_rect.getMinY(), lv_bar_width, frame_rect.size.height);
+
   return true;
 }
 
@@ -74,6 +85,8 @@ void DogAttrPanelSprite::UpdateAttr() {
   char dog_intimacy[32] = {0};
   snprintf(dog_intimacy,sizeof(dog_intimacy),"%d", dog_->attr().intimacy());
   label_dog_intimacy_->setString(dog_intimacy);
+
+
 }
 
 void DogSprite::DogAttrChangeCallBack(CCObject* sender) {
@@ -96,12 +109,7 @@ bool DogSprite::init() {
 
   EventMgr::Instance().Register(kEventDogAttrChange,
     this, callfuncO_selector(DogSprite::DogAttrChangeCallBack));
-  //ability_sprite_ = CCSprite::create();
-  //ability_sprite_->initWithSpriteFrameName("dog_ability.png");
-  //addChild(ability_sprite_, 1);
-  //ability_sprite_->setAnchorPoint(ccp(0,0));
-  //ability_sprite_->setPosition(ccp(-96,96));
-  //ability_sprite_->setVisible(ability_status_);
+
   return true;
 }
 

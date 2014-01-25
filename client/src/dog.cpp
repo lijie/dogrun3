@@ -69,7 +69,8 @@ int Dog::Play(int playtype) {
   return 0;
 }
 
-int Dog::Levelup() {
+int Dog::TryLevelup() {
+  //int cur_exp = 
   int nextlv = attr_.lv() + 1;
   if (nextlv >= DogLevelCfg->cfg_size()) {
     CCLOGERROR("Dog reaches max level %d\n", attr_.lv());
@@ -160,5 +161,11 @@ int DogRunInit() {
     ParseFromFile("../common/etc/play.cfg", PlayCfg);
   }
 
+  if (!DogLevelCfg) {
+    DogLevelCfg = new dogrun2::DogLevelConfigArray;
+    assert(DogLevelCfg != NULL);
+    ParseFromFile("../common/etc/doglevel.cfg", DogLevelCfg);
+  }
+  
   return 0;
 }
