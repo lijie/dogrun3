@@ -208,7 +208,7 @@ void DogMenuLayer::InitMenuItem() {
     game_sprite, game_sprite, game_sprite, this, menu_selector(DogMenuLayer::GameItemClickCallback));
 
   int base_x = 8; int base_y = 10; int delt = 18; int last_item_x = 0;
-  MultiSpriteMenuItem* food_items = MultiSpriteMenuItem::create("food", ccp(base_x, base_y));
+  MultiSpriteMenuItem* food_items = MultiSpriteMenuItem::create(string("food"), ccp(base_x, base_y));
 
   last_item_x += food_items->GetItemWidth() + delt;
   MultiSpriteMenuItem* train_items = MultiSpriteMenuItem::create("train", ccp(base_x + last_item_x, base_y));

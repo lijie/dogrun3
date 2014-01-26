@@ -15,7 +15,7 @@ void MultiSpriteMenuItem::onExit() {
   unschedule(schedule_selector(MultiSpriteMenuItem::OnTime));
 }
 
-MultiSpriteMenuItem * MultiSpriteMenuItem::create(std::string item_type, CCPoint& pos) {
+MultiSpriteMenuItem * MultiSpriteMenuItem::create(std::string item_type, CCPoint pos) {
   MultiSpriteMenuItem *ret = new MultiSpriteMenuItem();
   if (ret) {
     ret->autorelease();

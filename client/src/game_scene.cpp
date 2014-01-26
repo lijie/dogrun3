@@ -28,6 +28,38 @@ static void AddSearchPath() {
 #endif
 }
 
+#if 0
+#include <cocos-ext.h>
+USING_NS_CC_EXT;
+class TestObject : public CCObject {
+public:
+    bool init() {
+	return true;
+    }
+
+    void Resp(CCHttpClient *client, CCHttpResponse *resp) {
+	CCLOG("network response\n");
+	CCLOG("resp %s\n", &((*resp->getResponseData())[0]));
+	delete this;
+    }
+};
+
+static void TestNetwork(void) {
+    TestObject *to = new(TestObject);
+    to->init();
+
+    //CCHttpResponse rsp;
+    CCHttpRequest *req = new CCHttpRequest;
+    req->setRequestType(CCHttpRequest::kHttpGet);
+    req->setUrl("http://127.0.0.1:8081/foo");
+    req->setUserData((void *)"HelloWorld");
+    req->setResponseCallback(to, httpresponse_selector(TestObject::Resp));
+
+    CCHttpClient *cli = CCHttpClient::getInstance();
+    cli->send(req);
+}
+#endif
+
 bool GameScene::init() {
   //////////////////////////////
   // 1. super init first
@@ -89,7 +121,10 @@ bool GameScene::init() {
   EventMgr::Instance().Register(kEventClickTrainItem, this, callfuncO_selector(GameScene::TrainItemClickCallback));
   EventMgr::Instance().Register(kEventClickPlayItem, this, callfuncO_selector(GameScene::PlayItemClickCallback));
   EventMgr::Instance().Register(kEventClickBackItem, this, callfuncO_selector(GameScene::BackItemClickCallback));
-  
+
+#if 0
+  TestNetwork();
+#endif  
   return true;
 }
 

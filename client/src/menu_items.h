@@ -10,7 +10,7 @@ public:
 
   virtual void onEnter();
   virtual void onExit();
-  static MultiSpriteMenuItem * create(std::string item_type, CCPoint& pos);
+  static MultiSpriteMenuItem * create(std::string item_type, CCPoint pos);
 
   void ClickItemCallback(CCObject* sender);
   void ClickDoingItemCallback(CCObject* sender);
