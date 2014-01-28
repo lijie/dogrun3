@@ -34,6 +34,7 @@ int Dog::Feed(int feedtype) {
   cd_[kFeedCD] = now + cfg.cd();
   owner_->set_money(owner_->money() - cfg.consume_gold());
   owner_->set_heart(owner_->heart() - cfg.consume_heart());
+  TryLevelup();
   return 0;
 }
 
@@ -50,6 +51,7 @@ int Dog::Train(int traintype) {
   cd_[kTrainCD] = now + cfg.cd();
   owner_->set_money(owner_->money() - cfg.consume_gold());
   owner_->set_heart(owner_->heart() - cfg.consume_heart());
+  TryLevelup();
   return 0;
 }
 
@@ -66,21 +68,23 @@ int Dog::Play(int playtype) {
   cd_[kPlayCD] = now + cfg.cd();
   owner_->set_money(owner_->money() - cfg.consume_gold());
   owner_->set_heart(owner_->heart() - cfg.consume_heart());
+  TryLevelup();
   return 0;
 }
 
 int Dog::TryLevelup() {
-  //int cur_exp = 
-  int nextlv = attr_.lv() + 1;
-  if (nextlv >= DogLevelCfg->cfg_size()) {
-    CCLOGERROR("Dog reaches max level %d\n", attr_.lv());
-    return -1;
+  const dogrun2::DogLevelConfig& cur = DogLevelCfg->cfg(attr_.lv());
+  while (attr_.exp() >= cur.exp()) {
+    if (attr_.lv() < DogLevelCfg->cfg_size()) {
+      attr_.set_lv(attr_.lv() + 1);
+      attr_.set_exp(attr_.exp() - cur.exp());
+      CCLOG("levelup %d -> %d\n", attr_.lv() - 1, attr_.lv());
+    } else {
+      CCLOGERROR("Dog reaches max level %d\n", attr_.lv());
+      return -1;
+    }
   }
-  const dogrun2::DogLevelConfig& c = DogLevelCfg->cfg(nextlv);
-  if (attr_.exp() >= c.exp()) {
-    CCLOG("levelup %d -> %d\n", attr_.lv(), nextlv);
-    attr_.set_lv(nextlv);
-  }
+
   return 0;
 }
 
