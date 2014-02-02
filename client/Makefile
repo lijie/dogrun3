@@ -17,7 +17,7 @@ OBJECTS1 := $(SOURCES1:.cc=.o)
 OBJECTS1 := $(subst ../,,$(OBJECTS1))
 OBJECTS1 := $(subst $(COCOS_ROOT)/,,$(OBJECTS1))
 OBJECTS1 := $(addprefix $(OBJ_DIR)/, $(OBJECTS1))
-OBJECTS += $(OBJECTS1)
+OBJECTS += $(OBJECTS1) $(OBJ_DIR)/src/tcp.o
 
 INCLUDES += -I$(COCOS_ROOT)/extensions \
 	-I$(COCOS_ROOT)/external/chipmunk/include/chipmunk \
@@ -41,3 +41,7 @@ $(OBJ_DIR)/%.o: %.cc $(CORE_MAKEFILE_LIST)
 $(OBJ_DIR)/%.o: ../%.cc $(CORE_MAKEFILE_LIST)
 	mkdir -p $(@D)
 	$(LOG_CXX)$(CXX) $(CXXFLAGS) $(INCLUDES) $(DEFINES) $(VISIBILITY) -c $< -o $@
+
+$(OBJ_DIR)/%.o: %.c $(CORE_MAKEFILE_LIST)
+	mkdir -p $(@D)
+	$(LOG_CXX)$(CC) $(CXXFLAGS) $(INCLUDES) $(DEFINES) $(VISIBILITY) -c $< -o $@

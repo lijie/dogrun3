@@ -60,6 +60,8 @@ static void TestNetwork(void) {
 }
 #endif
 
+extern "C" void tcpc_test();
+
 bool GameScene::init() {
   //////////////////////////////
   // 1. super init first
@@ -124,7 +126,10 @@ bool GameScene::init() {
 
 #if 0
   TestNetwork();
-#endif  
+#endif
+#if 1
+  tcpc_test();
+#endif
   return true;
 }
 
