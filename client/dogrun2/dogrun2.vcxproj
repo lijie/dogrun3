@@ -123,6 +123,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external\libwebsockets\win32
     <ClCompile Include="..\src\AppDelegate.cpp" />
     <ClCompile Include="..\src\common.cpp" />
     <ClCompile Include="..\src\dog.cpp" />
+    <ClCompile Include="..\src\dog_action.cpp" />
     <ClCompile Include="..\src\game_scene.cpp" />
     <ClCompile Include="..\src\layers.cpp" />
     <ClCompile Include="..\src\main.cpp" />
@@ -136,6 +137,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\..\cocos2d-x-2.2\external\libwebsockets\win32
     <ClInclude Include="..\src\AppDelegate.h" />
     <ClInclude Include="..\src\common.h" />
     <ClInclude Include="..\src\dog.h" />
+    <ClInclude Include="..\src\dog_action.h" />
     <ClInclude Include="..\src\event_mgr.h" />
     <ClInclude Include="..\src\game_scene.h" />
     <ClInclude Include="..\src\layers.h" />

@@ -112,15 +112,8 @@ bool DogSprite::init() {
   dog_attr_sprite_->setVisible(dog_attr_status_);
   addChild(dog_attr_sprite_, 1);
 
-  CCAnimation* animation = CCAnimation::create();
-  animation->setDelayPerUnit(0.15f);
-  for(int i = 1; i < 7; i++) {
-    char temp[32] = {0};
-    sprintf(temp,"run_%d.png", i);
-    animation->addSpriteFrameWithFileName(temp);
-  }
-  CCAnimate* animate = CCAnimate::create(animation);
-  this->runAction(CCRepeatForever::create(animate));
+
+  dog_action_.init(this);
 
   EventMgr::Instance().Register(kEventDogAttrChange,
     this, callfuncO_selector(DogSprite::DogAttrChangeCallBack));

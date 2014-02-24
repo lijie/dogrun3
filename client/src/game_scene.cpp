@@ -34,13 +34,13 @@ USING_NS_CC_EXT;
 class TestObject : public CCObject {
 public:
     bool init() {
-	return true;
+  return true;
     }
 
     void Resp(CCHttpClient *client, CCHttpResponse *resp) {
-	CCLOG("network response\n");
-	CCLOG("resp %s\n", &((*resp->getResponseData())[0]));
-	delete this;
+  CCLOG("network response\n");
+  CCLOG("resp %s\n", &((*resp->getResponseData())[0]));
+  delete this;
     }
 };
 
@@ -128,7 +128,7 @@ bool GameScene::init() {
   TestNetwork();
 #endif
 #if 1
-  tcpc_test();
+  //tcpc_test();
 #endif
   return true;
 }

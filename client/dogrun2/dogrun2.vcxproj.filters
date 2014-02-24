@@ -43,6 +43,9 @@
     <ClCompile Include="..\protocol\uiconfig.pb.cc">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\dog_action.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AppDelegate.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="..\protocol\uiconfig.pb.h">
       <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\dog_action.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

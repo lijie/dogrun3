@@ -1,6 +1,7 @@
 #pragma once
 #include "cocos2d.h"
 #include "dog.h"
+#include "dog_action.h"
 
 USING_NS_CC;
 class DogAttrPanelSprite;
@@ -29,6 +30,7 @@ protected:
   Dog* dog_;
   DogAttrPanelSprite* dog_attr_sprite_;
   bool dog_attr_status_;
+  DogAction dog_action_;
 };
 
 class DogAttrPanelSprite : public CCSprite {
